@@ -226,8 +226,13 @@ body {
 
 .hero-stats {
   display: flex; justify-content: center; gap: 4rem;
-  padding-top: 3rem;   /* equal to hero padding-bottom = equal gaps both sides */
+  margin-top: 3rem;   /* equal to hero padding-bottom = equal gaps both sides */
   flex-shrink: 0;
+  padding: 1.25rem 2.5rem;
+  background: rgba(13, 11, 8, 0.55);
+  border-radius: 12px;
+  max-width: fit-content;
+  margin-left: auto; margin-right: auto;
 }
 
 .stat { text-align: center; color: white; }
