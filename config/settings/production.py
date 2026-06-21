@@ -12,6 +12,15 @@ ALLOWED_HOSTS = env("ALLOWED_HOSTS")
 DATABASES = {
     "default": env.db("DATABASE_URL")
 }
+# Keep DB connections alive between requests instead of reconnecting each time
+DATABASES["default"]["CONN_MAX_AGE"] = 60
+
+# nginx terminates TLS and proxies over plain HTTP — without this, Django
+# thinks every request is insecure and SECURE_SSL_REDIRECT loops forever.
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+USE_X_FORWARDED_HOST = True
+
+WAGTAILADMIN_BASE_URL = env("WAGTAILADMIN_BASE_URL", default="https://uzbektrip.com")
 
 CACHES = {
     "default": {
