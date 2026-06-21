@@ -1,4 +1,4 @@
-{% load static wagtailcore_tags wagtailimages_tags i18n %}
+{% load static wagtailcore_tags wagtailimages_tags i18n core_tags %}
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
 <head>
@@ -8,6 +8,7 @@
   {# ── CORE SEO ───────────────────────────────────────────────── #}
   <title>{% block title %}{% if page.seo_title %}{{ page.seo_title }}{% elif page.title %}{{ page.title }} — UzbekTrip{% else %}UzbekTrip — Discover Uzbekistan{% endif %}{% endblock %}</title>
   <meta name="description" content="{% block meta_desc %}{% if page.search_description %}{{ page.search_description }}{% else %}Your complete guide to tourism in Uzbekistan. Explore Samarkand, Bukhara, Tashkent, Khiva and more.{% endif %}{% endblock %}">
+  {% if page.meta_keywords %}<meta name="keywords" content="{{ page.meta_keywords }}">{% endif %}
   <meta name="robots" content="{% if page.noindex is not none and page.noindex %}noindex, nofollow{% else %}index, follow{% endif %}">
 
   {% if page.canonical_url %}
@@ -25,39 +26,43 @@
   {% endif %}
 
   {# ── OPEN GRAPH ────────────────────────────────────────────── #}
-  <meta property="og:site_name" content="UzbekTrip">
+  <meta property="og:site_name" content="{{ seo_settings.organization_name }}">
   <meta property="og:locale" content="{{ LANGUAGE_CODE }}">
   <meta property="og:type" content="{% block og_type %}website{% endblock %}">
-  <meta property="og:title" content="{% block og_title %}{% if page.seo_title %}{{ page.seo_title }}{% elif page.title %}{{ page.title }}{% else %}UzbekTrip{% endif %}{% endblock %}">
+  <meta property="og:title" content="{% block og_title %}{% if page.seo_title %}{{ page.seo_title }}{% elif page.title %}{{ page.title }}{% else %}{{ seo_settings.organization_name }}{% endif %}{% endblock %}">
   <meta property="og:description" content="{% block og_desc %}{{ page.search_description }}{% endblock %}">
   {% if page %}<meta property="og:url" content="{{ page.full_url }}">{% endif %}
   {% block og_image %}
-  {% if page.og_image %}
-    {% image page.og_image fill-1200x630 format-webp as og_img %}
+  {% with img=page.og_image|default:seo_settings.default_og_image %}
+  {% if img %}
+    {% image img fill-1200x630 format-webp as og_img %}
     <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ og_img.url }}">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="{{ page.title }}">
   {% endif %}
+  {% endwith %}
   {% endblock %}
   {% block og_article %}{% endblock %}
 
   {# ── TWITTER / X CARDS ─────────────────────────────────────── #}
   <meta name="twitter:card" content="{% block tw_card %}{% if page.twitter_card_type %}{{ page.twitter_card_type }}{% else %}summary_large_image{% endif %}{% endblock %}">
-  <meta name="twitter:site" content="@uzbektrip">
+  <meta name="twitter:site" content="{{ seo_settings.twitter_handle }}">
   <meta name="twitter:title" content="{% block tw_title %}{% if page.seo_title %}{{ page.seo_title }}{% elif page.title %}{{ page.title }}{% endif %}{% endblock %}">
   <meta name="twitter:description" content="{% block tw_desc %}{{ page.search_description }}{% endblock %}">
-  {% if page.og_image %}
-  {% image page.og_image fill-1200x630 format-webp as tw_img %}
+  {% with img=page.og_image|default:seo_settings.default_og_image %}
+  {% if img %}
+  {% image img fill-1200x630 format-webp as tw_img %}
   <meta name="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{{ tw_img.url }}">
   {% endif %}
+  {% endwith %}
 
-  {# ── SCHEMA.ORG: WebSite (every page) ─────────────────────── #}
+  {# ── SCHEMA.ORG: WebSite + Organization (every page) ──────── #}
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "UzbekTrip",
+    "name": "{{ seo_settings.organization_name }}",
     "url": "{{ request.scheme }}://{{ request.get_host }}",
     "inLanguage": "{{ LANGUAGE_CODE }}",
     "potentialAction": {
@@ -70,15 +75,19 @@
     },
     "publisher": {
       "@type": "Organization",
-      "name": "UzbekTrip",
+      "name": "{{ seo_settings.organization_name }}",
       "url": "{{ request.scheme }}://{{ request.get_host }}",
       "logo": {
         "@type": "ImageObject",
-        "url": "{{ request.scheme }}://{{ request.get_host }}{% static 'img/logo.png' %}"
-      }
+        "url": "{% if seo_settings.organization_logo %}{{ request.scheme }}://{{ request.get_host }}{{ seo_settings.organization_logo.file.url }}{% else %}{{ request.scheme }}://{{ request.get_host }}{% static 'img/logo.png' %}{% endif %}"
+      }{% if seo_settings.get_same_as_list %},
+      "sameAs": [{% for url in seo_settings.get_same_as_list %}"{{ url|escapejs }}"{% if not forloop.last %}, {% endif %}{% endfor %}]
+      {% endif %}
     }
   }
   </script>
+
+  {% if page %}{% breadcrumb_jsonld page %}{% endif %}
 
   {% block schema_ld %}{% endblock %}
 
@@ -109,7 +118,7 @@
   {% else %}
   <nav class="main-nav">
     <div class="nav-inner">
-      <a href="/{{ lang }}/" class="logo">Uzbek<span>Trip</span></a>
+      <a href="/{{ lang }}/" class="logo"><img src="{% static 'img/logo-horizontal.svg' %}" alt="UzbekTrip" class="logo-img"></a>
 
       <ul class="nav-links">
         {% if sections.show_cities %}<li><a href="/{{ lang }}/cities/">Cities</a></li>{% endif %}
@@ -122,14 +131,17 @@
       </ul>
 
       <div class="nav-right">
-        {# Language switcher — show EN/RU/UZ, swap the lang prefix in the path #}
+        {# Language switcher — built from the Locales actually configured in Settings -> Locales.
+           Hidden entirely when there's nothing to switch to. #}
+        {% if active_locales|length > 1 %}
         <div class="lang-switcher" role="navigation" aria-label="Language switcher">
           {% with path_suffix=request.path|slice:"3:" %}
-          <a href="/en{{ path_suffix }}" class="lang-btn {% if lang == 'en' %}active{% endif %}" hreflang="en" lang="en">EN</a>
-          <a href="/ru{{ path_suffix }}" class="lang-btn {% if lang == 'ru' %}active{% endif %}" hreflang="ru" lang="ru">RU</a>
-          <a href="/uz{{ path_suffix }}" class="lang-btn {% if lang == 'uz' %}active{% endif %}" hreflang="uz" lang="uz">UZ</a>
+          {% for loc in active_locales %}
+          <a href="/{{ loc.language_code }}{{ path_suffix }}" class="lang-btn {% if lang == loc.language_code %}active{% endif %}" hreflang="{{ loc.language_code }}" lang="{{ loc.language_code }}" title="{{ loc.get_display_name }}">{{ loc.language_code|upper }}</a>
+          {% endfor %}
           {% endwith %}
         </div>
+        {% endif %}
       </div>
     </div>
   </nav>
@@ -152,7 +164,7 @@
 
       <div class="footer-top">
         <div class="footer-brand">
-          <a href="/{{ lang }}/" class="logo">Uzbek<span>Trip</span></a>
+          <a href="/{{ lang }}/" class="logo"><img src="{% static 'img/logo-horizontal.svg' %}" alt="UzbekTrip" class="logo-img"></a>
           <p class="footer-tagline">
             The most complete independent travel guide to Uzbekistan.<br>
             Written by travelers, for travelers.

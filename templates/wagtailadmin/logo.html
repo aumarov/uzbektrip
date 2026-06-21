@@ -1,0 +1,11 @@
+{% load wagtailadmin_tags static %}
+{% spaceless %}
+    {% if wordmark %}
+        <span class="{% classnames "icon-wagtail" classname %}" style="display:inline-flex;align-items:center;gap:10px;">
+            <img src="{% static 'img/logo.png' %}" alt="UzbekTrip" style="height:36px;width:36px;border-radius:50%;">
+            <span style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.6rem;font-weight:700;color:#1A3A6B;">UzbekTrip</span>
+        </span>
+    {% else %}
+        <img class="{% classnames "icon-wagtail" classname %}" src="{% static 'img/logo.png' %}" alt="" aria-hidden="true">
+    {% endif %}
+{% endspaceless %}

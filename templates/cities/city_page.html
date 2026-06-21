@@ -18,17 +18,6 @@
   }{% endif %}
 }
 </script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {"@type": "ListItem", "position": 1, "name": "Home",   "item": "{{ request.scheme }}://{{ request.get_host }}/{{ LANGUAGE_CODE }}/"},
-    {"@type": "ListItem", "position": 2, "name": "Cities", "item": "{{ page.get_parent.full_url }}"},
-    {"@type": "ListItem", "position": 3, "name": "{{ page.title|escapejs }}"}
-  ]
-}
-</script>
 {% endblock %}
 
 {% block hero_preload %}
@@ -61,21 +50,151 @@
     </div>
   </div>
 
-  {# ── BODY ────────────────────────────────────────────────────── #}
-  <div style="max-width:860px;margin:0 auto;padding:3rem 2rem;">
-    {% if page.description %}
-    <div class="rich-text" style="margin-bottom:2rem;font-size:1.05rem;line-height:1.8;">{{ page.description|richtext }}</div>
-    {% endif %}
-
-    {% for block in page.body %}
-      {% include_block block %}
-    {% endfor %}
+  {# ── QUICK NAV TABS ──────────────────────────────────────────── #}
+  <div class="quick-nav">
+    <div class="quick-nav-inner">
+      {% if page.description or page.body %}<a href="#about" class="qnav-item active"><span class="qnav-icon">📖</span> About</a>{% endif %}
+      {% if city_sights %}<a href="#sights" class="qnav-item"><span class="qnav-icon">🏛</span> Sights</a>{% endif %}
+      {% if city_restaurants %}<a href="#eat" class="qnav-item"><span class="qnav-icon">🍽️</span> Where to Eat</a>{% endif %}
+      {% if city_hotels %}<a href="#stay" class="qnav-item"><span class="qnav-icon">🏨</span> Where to Stay</a>{% endif %}
+      {% if city_routes %}<a href="#routes" class="qnav-item"><span class="qnav-icon">🗺️</span> Routes</a>{% endif %}
+      {% if city_news %}<a href="#news" class="qnav-item"><span class="qnav-icon">📰</span> News</a>{% endif %}
+    </div>
   </div>
+
+  {# ── ABOUT ───────────────────────────────────────────────────── #}
+  <section class="section" id="about">
+    <div style="max-width:860px;margin:0 auto;padding:3rem 2rem;">
+      {% if page.description %}
+      <div class="rich-text" style="margin-bottom:2rem;font-size:1.05rem;line-height:1.8;">{{ page.description|richtext }}</div>
+      {% endif %}
+      {% for block in page.body %}
+        {% include_block block %}
+      {% endfor %}
+    </div>
+  </section>
+
+  {# ── SIGHTS ──────────────────────────────────────────────────── #}
+  {% if city_sights %}
+  <section class="section" id="sights" style="background:var(--cream);">
+    <div class="section-inner">
+      <div class="section-header">
+        <h2 class="section-title">What to <span>See</span> in {{ page.title }}</h2>
+        <a href="/{{ LANGUAGE_CODE }}/sights/?city={{ page.slug }}" class="see-all">All {{ page.title }} sights →</a>
+      </div>
+      <div class="articles-grid">
+        {% for sight in city_sights %}
+        <a href="{{ sight.url }}" class="article-card">
+          {% if sight.cover_image %}
+          {% image sight.cover_image fill-600x338 format-webp as simg %}
+          <img class="article-img" src="{{ simg.url }}" alt="{{ sight.title }}" loading="lazy" width="600" height="338">
+          {% endif %}
+          <div class="article-body">
+            <div class="article-cat">{{ sight.get_category_icon }} {{ sight.get_category_display }}</div>
+            <div class="article-title">{{ sight.title }}</div>
+            {% if sight.tagline %}<div class="article-meta">{{ sight.tagline }}</div>{% endif %}
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  {# ── WHERE TO EAT ────────────────────────────────────────────── #}
+  {% if city_restaurants %}
+  <section class="section" id="eat" style="background:white;">
+    <div class="section-inner">
+      <div class="section-header">
+        <h2 class="section-title">Where to <span>Eat</span> in {{ page.title }}</h2>
+        <a href="/{{ LANGUAGE_CODE }}/restaurants/?city={{ page.slug }}" class="see-all">All {{ page.title }} restaurants →</a>
+      </div>
+      <div class="block-cards block-cards--cols-3">
+        {% for r in city_restaurants %}
+        <a href="{{ r.url }}" class="block-card">
+          {% if r.cover_image %}
+          {% image r.cover_image fill-600x400 format-webp as rimg %}
+          <img class="block-card__img" src="{{ rimg.url }}" alt="{{ r.title }}" loading="lazy" width="600" height="400">
+          {% endif %}
+          <div class="block-card__body">
+            <div class="news-card__meta">
+              <span class="news-cat-badge">{{ r.get_cuisine_display }}</span>
+              <span class="news-card__city">{{ r.get_price_range_display }}</span>
+              {% if r.is_partner %}<span class="partner-badge">Partner</span>{% endif %}
+            </div>
+            <h3 class="block-card__title">{{ r.title }}</h3>
+            {% if r.excerpt %}<p class="block-card__text">{{ r.excerpt }}</p>{% endif %}
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  {# ── WHERE TO STAY ───────────────────────────────────────────── #}
+  {% if city_hotels %}
+  <section class="section" id="stay" style="background:var(--cream);">
+    <div class="section-inner">
+      <div class="section-header">
+        <h2 class="section-title">Where to <span>Stay</span> in {{ page.title }}</h2>
+        <a href="/{{ LANGUAGE_CODE }}/hotels/?city={{ page.slug }}" class="see-all">All {{ page.title }} hotels →</a>
+      </div>
+      <div class="block-cards block-cards--cols-3">
+        {% for h in city_hotels %}
+        <a href="{{ h.url }}" class="block-card">
+          {% if h.cover_image %}
+          {% image h.cover_image fill-600x400 format-webp as himg %}
+          <img class="block-card__img" src="{{ himg.url }}" alt="{{ h.title }}" loading="lazy" width="600" height="400">
+          {% endif %}
+          <div class="block-card__body">
+            <div class="news-card__meta">
+              <span class="news-cat-badge">{{ h.star_rating }}★</span>
+              <span class="news-card__city">{{ h.get_price_range_display }}</span>
+              {% if h.is_partner %}<span class="partner-badge">Partner</span>{% endif %}
+            </div>
+            <h3 class="block-card__title">{{ h.title }}</h3>
+            {% if h.excerpt %}<p class="block-card__text">{{ h.excerpt }}</p>{% endif %}
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  {# ── ROUTES ──────────────────────────────────────────────────── #}
+  {% if city_routes %}
+  <section class="section" id="routes" style="background:white;">
+    <div class="section-inner">
+      <div class="section-header">
+        <h2 class="section-title">Routes through <span>{{ page.title }}</span></h2>
+        <a href="/{{ LANGUAGE_CODE }}/routes/" class="see-all">All routes →</a>
+      </div>
+      <div class="routes-grid">
+        {% for route in city_routes %}
+        <a href="{{ route.url }}" class="route-card">
+          {% if route.cover_image %}
+          {% image route.cover_image fill-400x533 format-webp as route_img %}
+          <div class="route-card-bg" style="background-image: url('{{ route_img.url }}')"></div>
+          {% endif %}
+          <div class="route-card-overlay"></div>
+          <div class="route-card-body">
+            <div class="route-duration">{{ route.duration }}</div>
+            <div class="route-title">{{ route.title }}</div>
+            <div class="route-cities">{{ route.cities_covered }}</div>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
 
   {# ── CITY NEWS ────────────────────────────────────────────────── #}
   {% if city_news %}
-  <section style="background:var(--cream);padding:3rem 2rem;border-top:1px solid var(--border);">
-    <div style="max-width:1280px;margin:0 auto;">
+  <section class="section" id="news" style="background:var(--cream);">
+    <div class="section-inner">
       <div class="section-header">
         <h2 class="section-title">Latest News from <span>{{ page.title }}</span></h2>
         <a href="/{{ LANGUAGE_CODE }}/news/?city={{ page.slug }}" class="see-all">All {{ page.title }} news →</a>
@@ -101,4 +220,22 @@
   </section>
   {% endif %}
 
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  // Active quick-nav on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navItems = document.querySelectorAll('.qnav-item');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navItems.forEach(item => {
+          item.classList.toggle('active', item.getAttribute('href') === '#' + entry.target.id);
+        });
+      }
+    });
+  }, { threshold: 0.4 });
+  sections.forEach(s => observer.observe(s));
+</script>
 {% endblock %}

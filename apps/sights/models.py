@@ -78,6 +78,7 @@ class SightPage(SectionToggleMixin, SEOMixin, Page):
     cover_image = models.ForeignKey(
         "wagtailimages.Image", null=True, blank=True,
         on_delete=models.SET_NULL, related_name="+",
+        help_text="Upload at least 2400×1000px, wide landscape. Auto-cropped and served as WebP.",
     )
 
     ticket_price = models.CharField(max_length=100, blank=True, help_text='e.g. "Free" or "50,000 UZS"')

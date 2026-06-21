@@ -129,7 +129,10 @@ class NewsArticle(SectionToggleMixin, SEOMixin, Page):
         blank=True,
         on_delete=models.SET_NULL,
         related_name="+",
-        help_text="Hero / card image. Also used as OG image when no separate og_image is set",
+        help_text=(
+            "Hero / card image. Also used as OG image when no separate og_image is set. "
+            "Upload at least 2400×1000px, wide landscape. Auto-cropped and served as WebP."
+        ),
     )
 
     # ── Content ───────────────────────────────────────────────────

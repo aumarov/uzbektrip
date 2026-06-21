@@ -147,6 +147,10 @@ WAGTAIL_SITE_NAME = "UzbekTrip"
 WAGTAILADMIN_BASE_URL = "http://localhost:8000"
 WAGTAILIMAGES_IMAGE_MODEL = "wagtailimages.Image"
 WAGTAIL_ENABLE_UPDATE_CHECK = False
+# Every {% image %} tag site-wide requests format-webp — these cap the
+# rendition file size without a visible quality hit at these dimensions.
+WAGTAILIMAGES_WEBP_QUALITY = 80
+WAGTAILIMAGES_JPEG_QUALITY = 82
 
 # Search
 WAGTAILSEARCH_BACKENDS = {

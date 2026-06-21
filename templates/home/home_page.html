@@ -399,6 +399,15 @@
   </section>
   {% endif %}{# /sections.show_visa #}
 
+  {# ── EXTRA SECTIONS (editor-added StreamField blocks) ──────────── #}
+  {% if page.body %}
+  <div class="section-inner" style="padding-top:2rem;padding-bottom:2rem;">
+    {% for block in page.body %}
+      {% include_block block %}
+    {% endfor %}
+  </div>
+  {% endif %}
+
 {% endblock %}
 
 {% block extra_js %}

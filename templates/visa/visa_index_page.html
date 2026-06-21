@@ -19,6 +19,16 @@
 
 <div style="max-width:860px;margin:0 auto;padding:3rem 2rem;">
 
+  {# Permanent disclaimer — hardcoded so it can't be edited away from the CMS #}
+  <div class="block-alert block-alert--warning" style="margin-bottom:2rem;">
+    <strong class="block-alert__heading">Visa rules can change without notice</strong>
+    <div class="block-alert__body">
+      <p>Always confirm current visa-free durations, e-Visa eligibility, and fees on the
+      official <a href="https://gov.uz/en/mfa/activity_page/o-zbekiston-respublikasi-vizasi">Ministry of Foreign Affairs visa page</a>
+      or <a href="https://e-visa.gov.uz">e-visa.gov.uz</a> before booking flights or finalizing travel plans.</p>
+    </div>
+  </div>
+
   {% if page.visa_free_note or page.visa_free_countries %}
   <div style="margin-bottom:3rem;">
     {% if page.visa_free_note %}<div class="rich-text">{{ page.visa_free_note|richtext }}</div>{% endif %}

@@ -1,5 +1,7 @@
 {% extends "base.html" %}
-{% load wagtailimages_tags wagtailcore_tags %}
+{% load wagtailimages_tags wagtailcore_tags core_tags %}
+
+{% block schema_ld %}{{ restaurants|itemlist_jsonld }}{% endblock %}
 
 {% block content %}
 <div style="margin-top:64px; background:var(--terracotta); padding:3rem 2rem 2rem;">

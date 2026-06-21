@@ -1,5 +1,8 @@
 {% extends "base.html" %}
-{% load static wagtailimages_tags wagtailcore_tags i18n %}
+{% load static wagtailimages_tags wagtailcore_tags i18n core_tags %}
+
+{% block schema_ld %}{{ articles|itemlist_jsonld }}{% endblock %}
+
 {% with lang=LANGUAGE_CODE %}
 
 {% block content %}

@@ -24,6 +24,11 @@ class SEOMixin(models.Model):
         default=False,
         help_text="Prevent search engines from indexing this page",
     )
+    meta_keywords = models.CharField(
+        max_length=255,
+        blank=True,
+        help_text="Comma-separated. Most search engines ignore this now, but some verticals/aggregators still read it.",
+    )
 
     # ── Layout / design ───────────────────────────────────────────
     hide_nav = models.BooleanField(
@@ -41,6 +46,7 @@ class SEOMixin(models.Model):
                 FieldPanel("og_image"),
                 FieldPanel("twitter_card_type"),
                 FieldPanel("noindex"),
+                FieldPanel("meta_keywords"),
             ],
             heading="Social / SEO",
         ),

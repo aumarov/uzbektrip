@@ -1,5 +1,7 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags core_tags %}
+
+{% block schema_ld %}{{ pages|itemlist_jsonld }}{% endblock %}
 
 {% block content %}
 <div style="margin-top: 64px; background: var(--lapis);">

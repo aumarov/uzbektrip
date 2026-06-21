@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags core_tags %}
+
+{% block og_type %}website{% endblock %}
+
+{% block schema_ld %}
+<script type="application/ld+json">{{ page.get_schema_ld|jsonld }}</script>
+{% endblock %}
+
+{% block content %}
+<div style="margin-top: 64px; background: var(--lapis);">
+  <div style="max-width: 860px; margin: 0 auto; padding: 4rem 2rem;">
+    <nav style="font-size:0.8rem;color:rgba(255,255,255,0.6);margin-bottom:1rem;">
+      <a href="/{{ LANGUAGE_CODE }}/" style="color:rgba(255,255,255,0.6);text-decoration:none;">Home</a>
+      <span style="margin:0 0.4rem;">/</span>
+      <a href="{{ page.get_parent.url }}" style="color:rgba(255,255,255,0.6);text-decoration:none;">Practical</a>
+      <span style="margin:0 0.4rem;">/</span>
+      <span style="color:white;">{{ page.title }}</span>
+    </nav>
+    <span style="font-size:2rem;">{{ page.icon }}</span>
+    <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,5vw,3.2rem);color:white;margin:.5rem 0;">{{ page.title }}</h1>
+    {% if page.short_desc %}<p style="color:rgba(255,255,255,.8);font-size:1.05rem;max-width:600px;">{{ page.short_desc }}</p>{% endif %}
+  </div>
+</div>
+
+<div style="max-width:860px;margin:0 auto;padding:3rem 2rem;">
+  {% for block in page.body %}
+    {% include_block block %}
+  {% endfor %}
+</div>
+{% endblock %}

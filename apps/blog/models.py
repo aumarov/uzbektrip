@@ -53,6 +53,7 @@ class BlogPost(SectionToggleMixin, SEOMixin, Page):
     cover_image = models.ForeignKey(
         "wagtailimages.Image", null=True, blank=True,
         on_delete=models.SET_NULL, related_name="+",
+        help_text="Upload at least 2000×1000px, wide landscape. Auto-cropped and served as WebP.",
     )
     excerpt = models.TextField(max_length=300, blank=True)
     reading_time = models.PositiveSmallIntegerField(default=5)

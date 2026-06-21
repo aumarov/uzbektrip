@@ -41,3 +41,12 @@ class PracticalPage(SectionToggleMixin, SEOMixin, Page):
 
     promote_panels = SEOMixin.seo_panels
     parent_page_types = ["practical.PracticalIndexPage"]
+
+    def get_schema_ld(self):
+        return {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": self.title,
+            "description": self.search_description or self.short_desc,
+            "url": self.full_url,
+        }

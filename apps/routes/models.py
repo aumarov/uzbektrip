@@ -29,6 +29,7 @@ class RoutePage(SectionToggleMixin, SEOMixin, Page):
     cover_image = models.ForeignKey(
         "wagtailimages.Image", null=True, blank=True,
         on_delete=models.SET_NULL, related_name="+",
+        help_text="Upload at least 1200×1600px, portrait — used as a tall card image. Auto-cropped and served as WebP.",
     )
     featured_order = models.PositiveSmallIntegerField(default=99)
     difficulty = models.CharField(
@@ -56,3 +57,29 @@ class RoutePage(SectionToggleMixin, SEOMixin, Page):
 
     promote_panels = SEOMixin.seo_panels
     parent_page_types = ["routes.RoutesIndexPage"]
+
+    def get_schema_ld(self):
+        from urllib.parse import urlsplit
+
+        data = {
+            "@context": "https://schema.org",
+            "@type": "TouristTrip",
+            "name": self.title,
+            "description": self.search_description or self.excerpt,
+            "url": self.full_url,
+            "touristType": self.get_difficulty_display(),
+        }
+        if self.cities_covered:
+            data["itinerary"] = {
+                "@type": "ItemList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": i + 1, "name": city.strip()}
+                    for i, city in enumerate(self.cities_covered.split("·"))
+                    if city.strip()
+                ],
+            }
+        img = self.og_image or self.cover_image
+        if img:
+            base = urlsplit(self.full_url)
+            data["image"] = f"{base.scheme}://{base.netloc}{img.file.url}"
+        return data

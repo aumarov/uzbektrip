@@ -136,3 +136,49 @@ class AdSettings(BaseGenericSetting):
 
     class Meta:
         verbose_name = "Ad Placements"
+
+
+@register_setting(icon="globe")
+class SEOSettings(BaseGenericSetting):
+    """
+    Site-wide Organization / publisher data used in the WebSite schema.org
+    block, Open Graph tags, and Twitter Cards on every page — editable here
+    instead of hardcoded in templates.
+    """
+
+    organization_name = models.CharField(max_length=120, default="UzbekTrip")
+    organization_logo = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True, blank=True,
+        on_delete=models.SET_NULL, related_name="+",
+        help_text="Used as the Organization logo in schema.org markup. Falls back to the static site logo if left blank.",
+    )
+    default_og_image = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True, blank=True,
+        on_delete=models.SET_NULL, related_name="+",
+        help_text="Fallback social share image (1200×630px) for any page that doesn't set its own.",
+    )
+    twitter_handle = models.CharField(
+        max_length=50, blank=True, default="@uzbektrip",
+        help_text='Include the @ — used as the twitter:site meta tag.',
+    )
+    same_as_links = models.TextField(
+        blank=True,
+        verbose_name="Social profile URLs",
+        help_text="One URL per line (Facebook, Instagram, YouTube, etc.) — used as the Organization's sameAs schema.org property.",
+    )
+
+    panels = [
+        FieldPanel("organization_name"),
+        FieldPanel("organization_logo"),
+        FieldPanel("default_og_image"),
+        FieldPanel("twitter_handle"),
+        FieldPanel("same_as_links"),
+    ]
+
+    class Meta:
+        verbose_name = "SEO"
+
+    def get_same_as_list(self):
+        return [url.strip() for url in self.same_as_links.splitlines() if url.strip()]

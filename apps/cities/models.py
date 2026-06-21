@@ -30,6 +30,7 @@ class CityPage(SectionToggleMixin, SEOMixin, Page):
     hero_image = models.ForeignKey(
         "wagtailimages.Image", null=True, blank=True,
         on_delete=models.SET_NULL, related_name="+",
+        help_text="Upload at least 2400×1000px, wide landscape. Auto-cropped and served as WebP.",
     )
     featured_order = models.PositiveSmallIntegerField(default=99)
     is_featured = models.BooleanField(default=False)
@@ -69,6 +70,7 @@ class CityPage(SectionToggleMixin, SEOMixin, Page):
     def get_context(self, request):
         from django.db.models import Q
         from apps.news.models import NewsArticle
+        from apps.routes.models import RoutePage
 
         ctx = super().get_context(request)
         ctx["city_news"] = (
@@ -77,6 +79,32 @@ class CityPage(SectionToggleMixin, SEOMixin, Page):
             .distinct()
             .select_related("cover_image")
             .order_by("-published_date")[:4]
+        )
+        ctx["city_sights"] = (
+            self.sights.live().public()
+            .select_related("cover_image")
+            .order_by("-is_featured", "title")[:8]
+        )
+        ctx["city_routes"] = (
+            RoutePage.objects.live().public()
+            .filter(cities_covered__icontains=self.title)
+            .order_by("featured_order", "title")[:4]
+        )
+
+        from apps.core.models import SectionSettings
+        sections = SectionSettings.load(request_or_site=request)
+
+        ctx["city_restaurants"] = (
+            self.restaurants.live().public()
+            .select_related("cover_image")
+            .order_by("-is_featured", "title")[:6]
+            if sections.show_eat else []
+        )
+        ctx["city_hotels"] = (
+            self.hotels.live().public()
+            .select_related("cover_image")
+            .order_by("-is_featured", "-star_rating", "title")[:6]
+            if sections.show_stay else []
         )
         return ctx
 

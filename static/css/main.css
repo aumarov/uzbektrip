@@ -70,6 +70,8 @@ body {
   letter-spacing: 0.02em;
 }
 .logo span { color: white; }
+.logo-img { height: 34px; width: auto; display: block; }
+.footer-brand .logo-img { height: 42px; }
 
 .nav-links {
   display: flex; gap: 2rem; list-style: none;

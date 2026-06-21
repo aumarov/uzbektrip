@@ -8,10 +8,14 @@ from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.documents import urls as wagtaildocs_urls
 from wagtail.contrib.sitemaps.views import sitemap
 
+from apps.core.views import robots_txt, llms_txt
+
 urlpatterns = [
     # Root → always redirect to English homepage
     path("", RedirectView.as_view(url="/en/", permanent=False)),
     path("sitemap.xml", sitemap),
+    path("robots.txt", robots_txt),
+    path("llms.txt", llms_txt),
     path("cms/", include(wagtailadmin_urls)),
     path("documents/", include(wagtaildocs_urls)),
 ]

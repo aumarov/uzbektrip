@@ -25,6 +25,7 @@ class HomePage(SEOMixin, Page):
         blank=True,
         on_delete=models.SET_NULL,
         related_name="+",
+        help_text="Upload at least 2400×1350px (16:9), landscape. Auto-cropped and served as WebP.",
     )
     hero_cta_primary_text = models.CharField(max_length=60, default="Explore Cities")
     hero_cta_secondary_text = models.CharField(max_length=60, default="Plan Your Route")
@@ -47,6 +48,13 @@ class HomePage(SEOMixin, Page):
             "Uzbekistan has opened its doors to the world. Check if your country qualifies "
             "for visa-free entry, or learn how to apply for an e-Visa in minutes."
         ),
+    )
+
+    body = StreamField(
+        STANDARD_BLOCKS,
+        use_json_field=True,
+        blank=True,
+        help_text="Optional extra sections rendered below the standard homepage layout.",
     )
 
     max_count = 1
@@ -95,6 +103,7 @@ class HomePage(SEOMixin, Page):
             ],
             heading="Visa Banner",
         ),
+        FieldPanel("body"),
     ]
 
     promote_panels = SEOMixin.seo_panels

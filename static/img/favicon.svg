@@ -1,5 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="4" fill="#1A3A6B"/>
-  <text x="8" y="22" font-size="13" font-family="serif" font-weight="bold" fill="#C9A84C">Uz</text>
-  <text x="8" y="30" font-size="8" font-family="serif" fill="rgba(255,255,255,0.7)" letter-spacing="1">trip</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="50" fill="#1A3A6B"/>
+  <path d="M 50.0,12.0 L 56.89,33.37 L 76.87,23.13 L 66.63,43.11 L 88.0,50.0 L 66.63,56.89 L 76.87,76.87 L 56.89,66.63 L 50.0,88.0 L 43.11,66.63 L 23.13,76.87 L 33.37,56.89 L 12.0,50.0 L 33.37,43.11 L 23.13,23.13 L 43.11,33.37 Z"
+        fill="#C9A84C"/>
+  <circle cx="50" cy="50" r="10" fill="#1A3A6B"/>
 </svg>
