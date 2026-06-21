@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags core_tags %}
+
+{% block og_type %}website{% endblock %}
+
+{% block schema_ld %}
+{% if page.faq_items %}
+<script type="application/ld+json">{{ page.get_schema_ld|jsonld }}</script>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<section class="visa-banner" style="margin-top:64px;">
+  <div class="visa-banner-inner">
+    <h1>🛂 {{ page.title }}</h1>
+    {% if page.intro %}<div style="color:rgba(255,255,255,0.7);">{{ page.intro|richtext }}</div>{% endif %}
+  </div>
+</section>
+
+<div style="max-width:860px;margin:0 auto;padding:3rem 2rem;">
+
+  {% if page.visa_free_note or page.visa_free_countries %}
+  <div style="margin-bottom:3rem;">
+    {% if page.visa_free_note %}<div class="rich-text">{{ page.visa_free_note|richtext }}</div>{% endif %}
+    {% if page.visa_free_countries %}
+    <div class="visa-flags" style="justify-content:flex-start;margin-top:1rem;">
+      {% for country in page.get_visa_free_list %}
+      <span class="visa-flag" style="background:rgba(26,58,107,0.06);border-color:var(--border);color:var(--ink);">{{ country }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  {% for block in page.body %}
+    {% include_block block %}
+  {% endfor %}
+
+  {% if page.faq_items %}
+  <div class="block-accordion" style="margin-top:3rem;">
+    <h2 class="block-accordion__heading">Frequently Asked Questions</h2>
+    {% for item in page.faq_items %}
+    <div class="accordion-item">
+      <button class="accordion-trigger" aria-expanded="false" aria-controls="visa-faq-{{ forloop.counter0 }}">
+        <span>{{ item.value.question }}</span>
+        <span class="accordion-icon" aria-hidden="true"></span>
+      </button>
+      <div class="accordion-panel" id="visa-faq-{{ forloop.counter0 }}" hidden>
+        <div class="accordion-panel__inner">{{ item.value.answer|richtext }}</div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

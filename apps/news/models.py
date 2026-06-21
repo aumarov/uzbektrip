@@ -13,6 +13,7 @@ from wagtail.search import index
 
 from apps.core.seo import SEOMixin
 from apps.core.blocks import STANDARD_BLOCKS
+from apps.core.sections import SectionToggleMixin
 
 
 class NewsTag(TaggedItemBase):
@@ -23,7 +24,8 @@ class NewsTag(TaggedItemBase):
     )
 
 
-class NewsIndexPage(Page):
+class NewsIndexPage(SectionToggleMixin, Page):
+    section_flag = "show_news"
     intro = RichTextField(blank=True)
 
     content_panels = Page.content_panels + [FieldPanel("intro")]
@@ -63,7 +65,8 @@ class NewsIndexPage(Page):
         return ctx
 
 
-class NewsArticle(SEOMixin, Page):
+class NewsArticle(SectionToggleMixin, SEOMixin, Page):
+    section_flag = "show_news"
     CATEGORY_CHOICES = [
         ("tourism", "Tourism News"),
         ("openings", "New Openings"),

@@ -14,6 +14,11 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         from apps.home.models import HomePage
         from apps.cities.models import CityIndexPage
+        from apps.sights.models import SightsIndexPage
+        from apps.restaurants.models import RestaurantIndexPage
+        from apps.hotels.models import HotelIndexPage
+        from apps.visa.models import VisaIndexPage
+        from apps.news.models import NewsIndexPage
         from apps.blog.models import BlogIndexPage
         from apps.practical.models import PracticalIndexPage
         from apps.routes.models import RoutesIndexPage
@@ -28,16 +33,19 @@ class Command(BaseCommand):
             self.stderr.write("No root page found. Run migrations first.")
             return
 
-        # Remove the default welcome page if it exists
-        old_home = Page.objects.filter(depth=2).first()
-        if old_home and old_home.__class__.__name__ != "HomePage":
-            self.stdout.write(f"Removing old home page: {old_home.title}")
-            old_home.delete()
-            # Re-fetch root so treebeard path state is fresh
-            root = Page.objects.filter(depth=1).first()
-
-        # Create HomePage if it doesn't exist
+        # Create HomePage if it doesn't exist. Only touch the default Wagtail
+        # "Welcome" page when we're about to create our real one — checking
+        # old_home.__class__ here is a no-op (Page.objects always returns the
+        # base Page model, never the specific subclass), so doing this
+        # unconditionally on every run would delete HomePage and all its
+        # children — Cities, Sights, every page in the tree — each time.
         if not HomePage.objects.exists():
+            old_home = Page.objects.filter(depth=2).first()
+            if old_home:
+                self.stdout.write(f"Removing old home page: {old_home.title}")
+                old_home.delete()
+                root = Page.objects.filter(depth=1).first()
+
             home = HomePage(
                 title="Home",
                 slug="home",
@@ -58,6 +66,11 @@ class Command(BaseCommand):
         # Create sub-sections
         sections = [
             ("Cities", "cities", CityIndexPage),
+            ("Sights", "sights", SightsIndexPage),
+            ("Eat", "restaurants", RestaurantIndexPage),
+            ("Stay", "hotels", HotelIndexPage),
+            ("Visa & Entry", "visa", VisaIndexPage),
+            ("News", "news", NewsIndexPage),
             ("Blog", "blog", BlogIndexPage),
             ("Practical Info", "practical", PracticalIndexPage),
             ("Routes", "routes", RoutesIndexPage),

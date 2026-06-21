@@ -112,13 +112,13 @@
       <a href="/{{ lang }}/" class="logo">Uzbek<span>Trip</span></a>
 
       <ul class="nav-links">
-        <li><a href="/{{ lang }}/cities/">Cities</a></li>
-        <li><a href="/{{ lang }}/sights/">Sights</a></li>
-        <li><a href="/{{ lang }}/restaurants/">Eat</a></li>
-        <li><a href="/{{ lang }}/hotels/">Stay</a></li>
-        <li><a href="/{{ lang }}/routes/">Routes</a></li>
-        <li><a href="/{{ lang }}/visa/">Visa &amp; Entry</a></li>
-        <li><a href="/{{ lang }}/practical/">Practical</a></li>
+        {% if sections.show_cities %}<li><a href="/{{ lang }}/cities/">Cities</a></li>{% endif %}
+        {% if sections.show_sights %}<li><a href="/{{ lang }}/sights/">Sights</a></li>{% endif %}
+        {% if sections.show_eat %}<li><a href="/{{ lang }}/restaurants/">Eat</a></li>{% endif %}
+        {% if sections.show_stay %}<li><a href="/{{ lang }}/hotels/">Stay</a></li>{% endif %}
+        {% if sections.show_routes %}<li><a href="/{{ lang }}/routes/">Routes</a></li>{% endif %}
+        {% if sections.show_visa %}<li><a href="/{{ lang }}/visa/">Visa &amp; Entry</a></li>{% endif %}
+        {% if sections.show_practical %}<li><a href="/{{ lang }}/practical/">Practical</a></li>{% endif %}
       </ul>
 
       <div class="nav-right">
@@ -142,61 +142,62 @@
 
   {# ── FOOTER — hidden when page.hide_footer = True ────────────── #}
   {% if not page.hide_footer %}
+  {% with lang=LANGUAGE_CODE %}
   <footer>
     <div class="footer-inner">
+
+      {% if ads.footer_enabled and ads.footer_code %}
+      <div class="ad-footer-banner">{{ ads.footer_code|safe }}</div>
+      {% endif %}
+
       <div class="footer-top">
         <div class="footer-brand">
-          <a href="/" class="logo">Uzbek<span>Trip</span></a>
+          <a href="/{{ lang }}/" class="logo">Uzbek<span>Trip</span></a>
           <p class="footer-tagline">
             The most complete independent travel guide to Uzbekistan.<br>
             Written by travelers, for travelers.
           </p>
         </div>
 
+        {% if sections.show_cities %}
         <div>
           <div class="footer-col-title">Cities</div>
           <ul class="footer-links">
-            <li><a href="/cities/samarkand/">Samarkand</a></li>
-            <li><a href="/cities/bukhara/">Bukhara</a></li>
-            <li><a href="/cities/tashkent/">Tashkent</a></li>
-            <li><a href="/cities/khiva/">Khiva</a></li>
-            <li><a href="/cities/fergana/">Fergana</a></li>
-            <li><a href="/cities/">All Cities →</a></li>
+            <li><a href="/{{ lang }}/cities/samarkand/">Samarkand</a></li>
+            <li><a href="/{{ lang }}/cities/bukhara/">Bukhara</a></li>
+            <li><a href="/{{ lang }}/cities/tashkent/">Tashkent</a></li>
+            <li><a href="/{{ lang }}/cities/khiva/">Khiva</a></li>
+            <li><a href="/{{ lang }}/cities/">All Cities →</a></li>
           </ul>
         </div>
+        {% endif %}
 
+        {% if sections.show_visa or sections.show_practical %}
         <div>
           <div class="footer-col-title">Useful Info</div>
           <ul class="footer-links">
-            <li><a href="/visa/">Visa &amp; Entry</a></li>
-            <li><a href="/practical/sim/">SIM &amp; eSIM</a></li>
-            <li><a href="/practical/transport/">Transport</a></li>
-            <li><a href="/practical/currency/">Money &amp; Currency</a></li>
-            <li><a href="/practical/weather/">Best Time to Visit</a></li>
-            <li><a href="/practical/">All Practical Info →</a></li>
+            {% if sections.show_visa %}<li><a href="/{{ lang }}/visa/">Visa &amp; Entry</a></li>{% endif %}
+            {% if sections.show_practical %}<li><a href="/{{ lang }}/practical/">Practical Info</a></li>{% endif %}
           </ul>
         </div>
+        {% endif %}
 
         <div>
           <div class="footer-col-title">Discover</div>
           <ul class="footer-links">
-            <li><a href="/routes/">Travel Routes</a></li>
-            <li><a href="/blog/">Travel Blog</a></li>
-            <li><a href="/sights/">Top Sights</a></li>
-            <li><a href="/restaurants/">Restaurants</a></li>
-            <li><a href="/hotels/">Hotels</a></li>
-            <li><a href="/shopping/">Shopping</a></li>
+            {% if sections.show_routes %}<li><a href="/{{ lang }}/routes/">Travel Routes</a></li>{% endif %}
+            {% if sections.show_blog %}<li><a href="/{{ lang }}/blog/">Travel Blog</a></li>{% endif %}
+            {% if sections.show_news %}<li><a href="/{{ lang }}/news/">News</a></li>{% endif %}
+            {% if sections.show_sights %}<li><a href="/{{ lang }}/sights/">Top Sights</a></li>{% endif %}
+            {% if sections.show_eat %}<li><a href="/{{ lang }}/restaurants/">Restaurants</a></li>{% endif %}
+            {% if sections.show_stay %}<li><a href="/{{ lang }}/hotels/">Hotels</a></li>{% endif %}
           </ul>
         </div>
 
         <div>
           <div class="footer-col-title">About</div>
           <ul class="footer-links">
-            <li><a href="/about/">About Us</a></li>
-            <li><a href="/advertise/">Advertise</a></li>
-            <li><a href="/contact/">Contact</a></li>
             <li><a href="/sitemap.xml">Sitemap</a></li>
-            <li><a href="/privacy/">Privacy Policy</a></li>
           </ul>
         </div>
       </div>
@@ -214,6 +215,7 @@
       </div>
     </div>
   </footer>
+  {% endwith %}
   {% endif %}{# /hide_footer #}
 
   <script src="{% static 'js/main.js' %}"></script>

@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ── CORE SEO ──────────────────────────────────────────────────── -->
+  <title>UzbekGuide — Discover Uzbekistan, the Silk Road Reborn</title>
+  <meta name="description" content="Your complete guide to tourism in Uzbekistan. Explore Samarkand, Bukhara, Tashkent, Khiva and more. Visa info, hotels, restaurants, routes, and practical tips.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://uzbekguide.uz/">
+
+  <!-- ── HREFLANG — auto-generated per active Wagtail locale ───────── -->
+  <!-- In production these are rendered by Wagtail from page.get_translations.live -->
+  <link rel="alternate" hreflang="en"       href="https://uzbekguide.uz/">
+  <link rel="alternate" hreflang="ru"       href="https://uzbekguide.uz/ru/">
+  <link rel="alternate" hreflang="uz"       href="https://uzbekguide.uz/uz/">
+  <link rel="alternate" hreflang="x-default" href="https://uzbekguide.uz/">
+
+  <!-- ── OPEN GRAPH (Facebook · LinkedIn · WhatsApp · Telegram) ────── -->
+  <meta property="og:site_name"    content="UzbekGuide">
+  <meta property="og:locale"       content="en_US">
+  <meta property="og:type"         content="website">
+  <meta property="og:title"        content="UzbekGuide — Discover Uzbekistan, the Silk Road Reborn">
+  <meta property="og:description"  content="Your complete guide to tourism in Uzbekistan. Samarkand, Bukhara, Tashkent, Khiva and more.">
+  <meta property="og:url"          content="https://uzbekguide.uz/">
+  <meta property="og:image"        content="https://uzbekguide.uz/static/img/og-home.jpg">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt"    content="Registan Square, Samarkand, Uzbekistan">
+  <meta property="og:image:type"   content="image/jpeg">
+
+  <!-- ── TWITTER / X CARDS ──────────────────────────────────────────── -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:site"        content="@uzbekguide">
+  <meta name="twitter:creator"     content="@uzbekguide">
+  <meta name="twitter:title"       content="UzbekGuide — Discover Uzbekistan, the Silk Road Reborn">
+  <meta name="twitter:description" content="Your complete guide to tourism in Uzbekistan. Samarkand, Bukhara, Tashkent, Khiva and more.">
+  <meta name="twitter:image"       content="https://uzbekguide.uz/static/img/og-home.jpg">
+  <meta name="twitter:image:alt"   content="Registan Square, Samarkand, Uzbekistan">
+
+  <!-- ── SCHEMA.ORG JSON-LD ──────────────────────────────────────────── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "UzbekGuide",
+    "url": "https://uzbekguide.uz",
+    "description": "Complete travel guide to Uzbekistan — cities, sights, hotels, restaurants, visa info and practical tips.",
+    "inLanguage": "en",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://uzbekguide.uz/search?q={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "UzbekGuide",
+      "url": "https://uzbekguide.uz",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://uzbekguide.uz/static/img/logo.png",
+        "width": 300,
+        "height": 60
+      },
+      "sameAs": [
+        "https://twitter.com/uzbekguide",
+        "https://www.instagram.com/uzbekguide",
+        "https://t.me/uzbekguide"
+      ]
+    }
+  }
+  </script>
+
+  <!-- ── FAVICON & PWA ─────────────────────────────────────────────── -->
+  <link rel="icon" type="image/svg+xml" href="/static/img/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/static/img/favicon-32.png">
+  <link rel="apple-touch-icon" href="/static/img/apple-touch-icon.png">
+  <link rel="manifest" href="/static/manifest.webmanifest">
+  <meta name="theme-color" content="#1A3A6B">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --gold:       #C9A84C;
+      --gold-light: #E8C96D;
+      --lapis:      #1A3A6B;
+      --lapis-mid:  #2B5499;
+      --turquoise:  #2AABB8;
+      --terracotta: #C4612A;
+      --cream:      #FAF6EE;
+      --ink:        #1A1510;
+      --muted:      #6B6258;
+      --border:     #E8DFD0;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    /* ─── NAVIGATION ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(26, 21, 16, 0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+    }
+
+    .nav-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 64px;
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem; font-weight: 700;
+      color: var(--gold-light);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    .logo span { color: white; }
+
+    .nav-links {
+      display: flex; gap: 2rem; list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none; font-size: 0.875rem;
+      font-weight: 500; letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold-light); }
+
+    .nav-right {
+      display: flex; align-items: center; gap: 1rem;
+    }
+
+    .lang-switcher {
+      display: flex; gap: 0.5rem;
+    }
+
+    .lang-btn {
+      background: none; border: 1px solid rgba(201,168,76,0.4);
+      color: rgba(255,255,255,0.7); padding: 0.2rem 0.5rem;
+      border-radius: 3px; font-size: 0.75rem; cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      transition: all 0.2s;
+    }
+
+    .lang-btn.active, .lang-btn:hover {
+      background: var(--gold); color: var(--ink); border-color: var(--gold);
+    }
+
+    /* ─── AD SLOT 1: TOP LEADERBOARD ─── */
+    .ad-leaderboard {
+      margin-top: 64px;
+      background: #1a1a2e;
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+      display: flex; align-items: center; justify-content: center;
+      height: 90px; position: relative;
+    }
+
+    .ad-placeholder {
+      border: 1px dashed rgba(201,168,76,0.3);
+      border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      gap: 0.75rem;
+      color: rgba(255,255,255,0.4); font-size: 0.8rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+
+    .ad-leaderboard .ad-placeholder {
+      width: 970px; max-width: 90vw; height: 70px;
+    }
+
+    .ad-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--gold); opacity: 0.5;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative; overflow: hidden;
+      height: 90vh; min-height: 600px;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(26,21,16,0.3) 0%, rgba(26,21,16,0.6) 100%),
+        url('https://images.unsplash.com/photo-1602615576820-ea14cf3e1e8e?w=1600&q=80') center/cover;
+      transform-origin: center;
+      animation: heroZoom 20s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroZoom {
+      from { transform: scale(1); }
+      to   { transform: scale(1.06); }
+    }
+
+    /* Geometric decorative overlay */
+    .hero-ornament {
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A84C' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative; text-align: center;
+      padding: 2rem; max-width: 800px;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.75rem; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--gold);
+      border: 1px solid rgba(201,168,76,0.4);
+      padding: 0.4rem 1.2rem; border-radius: 2px;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 700; line-height: 1.05;
+      color: white;
+      text-shadow: 0 2px 40px rgba(0,0,0,0.4);
+      animation: fadeUp 0.8s 0.15s ease both;
+    }
+
+    .hero h1 em {
+      font-style: italic; color: var(--gold-light);
+    }
+
+    .hero-sub {
+      font-size: 1.1rem; color: rgba(255,255,255,0.85);
+      max-width: 520px; margin: 1.5rem auto 2.5rem;
+      font-weight: 300; line-height: 1.7;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+
+    .hero-actions {
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+      animation: fadeUp 0.8s 0.45s ease both;
+    }
+
+    .btn-primary {
+      background: var(--gold); color: var(--ink);
+      padding: 0.85rem 2rem; border-radius: 3px;
+      font-weight: 600; font-size: 0.9rem;
+      text-decoration: none; letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light); transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(255,255,255,0.5); color: white;
+      padding: 0.85rem 2rem; border-radius: 3px;
+      font-weight: 500; font-size: 0.9rem;
+      text-decoration: none; letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: border-color 0.2s, background 0.2s;
+      display: inline-block;
+    }
+
+    .btn-outline:hover {
+      border-color: white; background: rgba(255,255,255,0.1);
+    }
+
+    /* Hero stats */
+    .hero-stats {
+      position: absolute; bottom: 2.5rem;
+      left: 0; right: 0;
+      display: flex; justify-content: center; gap: 4rem;
+    }
+
+    .stat {
+      text-align: center; color: white;
+    }
+
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem; font-weight: 700;
+      color: var(--gold-light); display: block;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.7rem; letter-spacing: 0.15em;
+      text-transform: uppercase; opacity: 0.7;
+      margin-top: 0.3rem; display: block;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── QUICK NAV TABS ─── */
+    .quick-nav {
+      background: white;
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 64px; z-index: 80;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .quick-nav-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: flex; align-items: center;
+      padding: 0 2rem; gap: 0; overflow-x: auto;
+    }
+
+    .qnav-item {
+      display: flex; flex-direction: column; align-items: center;
+      padding: 0.75rem 1.25rem; gap: 0.3rem;
+      text-decoration: none; color: var(--muted);
+      font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.04em; text-transform: uppercase;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+    }
+
+    .qnav-item:hover, .qnav-item.active {
+      color: var(--lapis); border-bottom-color: var(--gold);
+    }
+
+    .qnav-icon { font-size: 1.3rem; }
+
+    /* ─── SECTION WRAPPER ─── */
+    .section {
+      padding: 5rem 2rem;
+    }
+
+    .section-inner {
+      max-width: 1280px; margin: 0 auto;
+    }
+
+    .section-header {
+      display: flex; align-items: baseline;
+      justify-content: space-between; margin-bottom: 2.5rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem; font-weight: 700;
+      color: var(--ink);
+    }
+
+    .section-title span {
+      color: var(--gold);
+    }
+
+    .see-all {
+      color: var(--lapis-mid); font-size: 0.85rem;
+      font-weight: 600; text-decoration: none;
+      letter-spacing: 0.05em; display: flex; align-items: center; gap: 0.4rem;
+      transition: gap 0.2s;
+    }
+
+    .see-all:hover { gap: 0.7rem; }
+
+    /* ─── CITIES GRID ─── */
+    .cities-section { background: white; }
+
+    .cities-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+    }
+
+    .city-card {
+      position: relative; overflow: hidden;
+      aspect-ratio: 4/3; cursor: pointer;
+      text-decoration: none; display: block;
+    }
+
+    .city-card:nth-child(1) { grid-row: span 2; aspect-ratio: auto; }
+
+    .city-card-img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .city-card:hover .city-card-img { transform: scale(1.05); }
+
+    .city-card-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(26,21,16,0.8) 0%, transparent 60%);
+    }
+
+    .city-card-body {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 1.5rem 1.5rem 1.25rem;
+    }
+
+    .city-tag {
+      display: inline-block;
+      background: var(--gold); color: var(--ink);
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 0.2rem 0.6rem; border-radius: 2px;
+      margin-bottom: 0.5rem;
+    }
+
+    .city-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem; font-weight: 700; color: white;
+      line-height: 1.1;
+    }
+
+    .city-card:nth-child(1) .city-name { font-size: 2.8rem; }
+
+    .city-desc {
+      color: rgba(255,255,255,0.75); font-size: 0.825rem;
+      margin-top: 0.4rem; display: none;
+    }
+
+    .city-card:nth-child(1) .city-desc { display: block; }
+
+    /* ─── WHAT TO SEE ─── */
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .article-card {
+      text-decoration: none; color: inherit;
+      border-radius: 4px; overflow: hidden;
+      background: white;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .article-card:hover {
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+
+    .article-img {
+      width: 100%; aspect-ratio: 16/9;
+      object-fit: cover; display: block;
+    }
+
+    .article-body { padding: 1.1rem 1.25rem 1.25rem; }
+
+    .article-cat {
+      font-size: 0.7rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--gold);
+      font-weight: 700; margin-bottom: 0.4rem;
+    }
+
+    .article-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem; font-weight: 600;
+      line-height: 1.35; color: var(--ink);
+    }
+
+    .article-meta {
+      font-size: 0.75rem; color: var(--muted);
+      margin-top: 0.6rem;
+    }
+
+    /* ─── AD SLOT 2: SIDEBAR / MIDPAGE BANNER ─── */
+    .ad-midpage {
+      background: var(--lapis);
+      padding: 2rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .ad-midpage .ad-placeholder {
+      width: 100%; max-width: 728px; height: 90px;
+      border-color: rgba(201,168,76,0.3);
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* ─── PRACTICAL INFO STRIP ─── */
+    .practical-section { background: var(--lapis); }
+
+    .practical-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.1);
+    }
+
+    .practical-item {
+      background: var(--lapis);
+      padding: 2rem 1.5rem; text-align: center;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .practical-item:hover { background: var(--lapis-mid); }
+
+    .practical-icon {
+      font-size: 2rem; display: block; margin-bottom: 0.75rem;
+    }
+
+    .practical-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; font-weight: 600; color: white;
+      margin-bottom: 0.4rem;
+    }
+
+    .practical-desc {
+      font-size: 0.775rem; color: rgba(255,255,255,0.6);
+      line-height: 1.5;
+    }
+
+    /* ─── ROUTES ─── */
+    .routes-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+
+    .route-card {
+      position: relative; border-radius: 4px;
+      overflow: hidden; aspect-ratio: 3/4;
+      text-decoration: none;
+    }
+
+    .route-card-bg {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      transition: transform 0.6s;
+    }
+
+    .route-card:hover .route-card-bg { transform: scale(1.05); }
+
+    .route-card-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(26,58,107,0.95) 30%, rgba(0,0,0,0.2) 100%);
+    }
+
+    .route-card-body {
+      position: absolute; bottom: 0; padding: 1.5rem 1.25rem;
+    }
+
+    .route-duration {
+      font-size: 0.7rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--gold);
+      font-weight: 700; margin-bottom: 0.5rem;
+    }
+
+    .route-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-weight: 700; color: white;
+      line-height: 1.2; margin-bottom: 0.5rem;
+    }
+
+    .route-cities {
+      font-size: 0.775rem; color: rgba(255,255,255,0.65);
+    }
+
+    /* ─── NEWS SIDEBAR LAYOUT ─── */
+    .news-section { background: var(--cream); }
+
+    .news-layout {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .news-main-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .news-sidebar-sticky {
+      position: sticky; top: 140px;
+    }
+
+    .sidebar-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-weight: 700;
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 0.5rem; margin-bottom: 1rem;
+    }
+
+    .sidebar-news-item {
+      display: flex; gap: 0.75rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none; color: inherit;
+      transition: opacity 0.2s;
+    }
+
+    .sidebar-news-item:hover { opacity: 0.7; }
+
+    .sidebar-thumb {
+      width: 64px; height: 64px;
+      object-fit: cover; border-radius: 3px;
+      flex-shrink: 0;
+    }
+
+    .sidebar-news-title {
+      font-size: 0.85rem; font-weight: 500;
+      line-height: 1.4; color: var(--ink);
+    }
+
+    .sidebar-news-date {
+      font-size: 0.7rem; color: var(--muted); margin-top: 0.3rem;
+    }
+
+    /* AD SLOT 4: Sidebar 300x600 */
+    .ad-sidebar {
+      margin-top: 1.5rem;
+      display: flex; justify-content: center;
+    }
+
+    .ad-sidebar .ad-placeholder {
+      width: 300px; height: 250px;
+      border-color: rgba(0,0,0,0.1);
+      color: var(--muted);
+    }
+
+    /* ─── VISA BANNER ─── */
+    .visa-banner {
+      background: var(--ink);
+      padding: 4rem 2rem;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+
+    .visa-banner::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5z' fill='%23C9A84C' fill-opacity='0.04'/%3E%3C/svg%3E");
+    }
+
+    .visa-banner-inner {
+      position: relative; max-width: 640px; margin: 0 auto;
+    }
+
+    .visa-banner h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.6rem; color: white; margin-bottom: 1rem;
+    }
+
+    .visa-banner p {
+      color: rgba(255,255,255,0.7); font-size: 1rem; margin-bottom: 2rem;
+    }
+
+    .visa-flags {
+      display: flex; gap: 0.5rem; justify-content: center;
+      flex-wrap: wrap; margin-bottom: 2rem;
+    }
+
+    .visa-flag {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 0.3rem 0.6rem; border-radius: 3px;
+      font-size: 0.8rem; color: rgba(255,255,255,0.7);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #0D0B08; border-top: 1px solid rgba(201,168,76,0.15);
+      padding: 4rem 2rem 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1280px; margin: 0 auto;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+      gap: 3rem; margin-bottom: 3rem;
+    }
+
+    .footer-brand .logo { font-size: 2rem; }
+
+    .footer-tagline {
+      color: rgba(255,255,255,0.5); font-size: 0.875rem;
+      margin-top: 0.75rem; line-height: 1.6;
+    }
+
+    .footer-col-title {
+      color: var(--gold); font-size: 0.7rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      font-weight: 700; margin-bottom: 1rem;
+    }
+
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 0.5rem; }
+    .footer-links a {
+      color: rgba(255,255,255,0.55); font-size: 0.85rem;
+      text-decoration: none; transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--gold-light); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 1.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem;
+    }
+
+    .footer-copy {
+      color: rgba(255,255,255,0.3); font-size: 0.8rem;
+    }
+
+    .footer-socials {
+      display: flex; gap: 0.75rem;
+    }
+
+    .social-btn {
+      width: 36px; height: 36px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.5); font-size: 0.85rem;
+      text-decoration: none; transition: all 0.2s;
+    }
+
+    .social-btn:hover {
+      border-color: var(--gold); color: var(--gold);
+    }
+
+    /* ─── AD SLOT 5: Article inline ─── */
+    .ad-article {
+      display: flex; justify-content: center; padding: 1.5rem 0;
+    }
+
+    .ad-article .ad-placeholder {
+      width: 728px; max-width: 100%; height: 90px;
+      border-color: rgba(0,0,0,0.12); color: var(--muted);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .cities-grid { grid-template-columns: repeat(2, 1fr); }
+      .city-card:nth-child(1) { grid-column: span 2; grid-row: span 1; }
+      .practical-grid { grid-template-columns: repeat(3, 1fr); }
+      .routes-grid { grid-template-columns: repeat(2, 1fr); }
+      .news-layout { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .articles-grid { grid-template-columns: 1fr; }
+      .news-main-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 2rem; }
+      .stat-num { font-size: 1.6rem; }
+      .cities-grid { grid-template-columns: 1fr; }
+      .city-card:nth-child(1) { grid-column: span 1; }
+      .routes-grid { grid-template-columns: 1fr; }
+      .practical-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr; }
+      .hero-stats { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="logo">Uzbek<span>Guide</span></a>
+
+      <ul class="nav-links">
+        <li><a href="/cities/">Cities</a></li>
+        <li><a href="/what-to-see/">Sights</a></li>
+        <li><a href="/restaurants/">Eat</a></li>
+        <li><a href="/hotels/">Stay</a></li>
+        <li><a href="/routes/">Routes</a></li>
+        <li><a href="/visa/">Visa & Entry</a></li>
+        <li><a href="/practical/">Practical</a></li>
+      </ul>
+
+      <div class="nav-right">
+        <!--
+          Wagtail template: {% for translation in page.get_translations.live %}
+            <a href="{{ translation.full_url }}"
+               class="lang-btn {% if translation.locale == page.locale %}active{% endif %}"
+               hreflang="{{ translation.locale.language_code }}">
+              {{ translation.locale.language_code|upper }}
+            </a>
+          {% endfor %}
+          New locales added via Settings → Locales in admin auto-appear here.
+        -->
+        <nav class="lang-switcher" aria-label="Language switcher">
+          <a href="/" class="lang-btn active" hreflang="en" lang="en">EN</a>
+          <a href="/ru/" class="lang-btn" hreflang="ru" lang="ru">RU</a>
+          <a href="/uz/" class="lang-btn" hreflang="uz" lang="uz">UZ</a>
+        </nav>
+      </div>
+    </div>
+  </nav>
+
+  <!-- AD SLOT 1: Leaderboard (970×90) -->
+  <div class="ad-leaderboard">
+    <div class="ad-placeholder">
+      <span class="ad-dot"></span>
+      Advertisement — 970 × 90
+      <span class="ad-dot"></span>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-ornament"></div>
+
+    <div class="hero-content">
+      <span class="hero-eyebrow">✦ The Silk Road Reborn ✦</span>
+      <h1>Discover<br><em>Uzbekistan</em></h1>
+      <p class="hero-sub">
+        7,000 years of civilization. Turquoise domes that pierce the desert sky.
+        A hospitality that will rearrange your understanding of welcome.
+      </p>
+      <div class="hero-actions">
+        <a href="/cities/" class="btn-primary">Explore Cities</a>
+        <a href="/routes/" class="btn-outline">Plan Your Route</a>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">+73%</span>
+        <span class="stat-label">Tourist growth vs 2019</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">100</span>
+        <span class="stat-label">Visa-free countries</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">7,000</span>
+        <span class="stat-label">Years of history</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">4</span>
+        <span class="stat-label">UNESCO World Heritage Sites</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK NAV TABS -->
+  <div class="quick-nav">
+    <div class="quick-nav-inner">
+      <a href="#cities" class="qnav-item active">
+        <span class="qnav-icon">🏙️</span> Cities
+      </a>
+      <a href="#sights" class="qnav-item">
+        <span class="qnav-icon">🏛</span> Sights
+      </a>
+      <a href="#eat" class="qnav-item">
+        <span class="qnav-icon">🍽️</span> Where to Eat
+      </a>
+      <a href="#stay" class="qnav-item">
+        <span class="qnav-icon">🏨</span> Where to Stay
+      </a>
+      <a href="#routes" class="qnav-item">
+        <span class="qnav-icon">🗺️</span> Routes
+      </a>
+      <a href="#buy" class="qnav-item">
+        <span class="qnav-icon">🛍️</span> What to Buy
+      </a>
+      <a href="#visa" class="qnav-item">
+        <span class="qnav-icon">🛂</span> Visa & Entry
+      </a>
+      <a href="#practical" class="qnav-item">
+        <span class="qnav-icon">ℹ️</span> Practical
+      </a>
+    </div>
+  </div>
+
+  <!-- CITIES SECTION -->
+  <section class="section cities-section" id="cities">
+    <div class="section-inner">
+      <div class="section-header">
+        <h2 class="section-title">Cities of <span>Uzbekistan</span></h2>
+        <a href="/cities/" class="see-all">All cities →</a>
+      </div>
+
+      <div class="cities-grid">
+        <!-- Large card: Samarkand -->
+        <a href="/cities/samarkand/" class="city-card">
+          <img class="city-card-img"
+            src="https://images.unsplash.com/photo-1586105251261-72a756497a11?w=800&q=80"
+            alt="Registan Square, Samarkand"
+            loading="lazy" width="800" height="600">
+          <div class="city-card-overlay"></div>
+          <div class="city-card-body">
+            <span class="city-tag">Must Visit</span>
+            <div class="city-name">Samarkand</div>
+            <div class="city-desc">The jewel of the Silk Road. Home to Registan, Shah-i-Zinda, and the eternal blue domes that define Uzbekistan for the world.</div>
+          </div>
+        </a>
+
+        <!-- Bukhara -->
+        <a href="/cities/bukhara/" class="city-card">
+          <img class="city-card-img"
+            src="https://images.unsplash.com/photo-1597149053889-9e80a1ba7d68?w=600&q=80"
+            alt="Bukhara old city"
+            loading="lazy" width="600" height="450">
+          <div class="city-card-overlay"></div>
+          <div class="city-card-body">
+            <div class="city-name">Bukhara</div>
+          </div>
+        </a>
+
+        <!-- Khiva -->
+        <a href="/cities/khiva/" class="city-card">
+          <img class="city-card-img"
+            src="https://images.unsplash.com/photo-1596523903840-44ca9c8a7d8f?w=600&q=80"
+            alt="Khiva Ichon-Qala old city"
+            loading="lazy" width="600" height="450">
+          <div class="city-card-overlay"></div>
+          <div class="city-card-body">
+            <span class="city-tag">UNESCO</span>
+            <div class="city-name">Khiva</div>
+          </div>
+        </a>
+
+        <!-- Tashkent -->
+        <a href="/cities/tashkent/" class="city-card">
+          <img class="city-card-img"
+            src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80"
+            alt="Tashkent capital of Uzbekistan"
+            loading="lazy" width="600" height="450">
+          <div class="city-card-overlay"></div>
+          <div class="city-card-body">
+            <div class="city-name">Tashkent</div>
+          </div>
+        </a>
+
+        <!-- Nukus -->
+        <a href="/cities/nukus/" class="city-card">
+          <img class="city-card-img"
+            src="https://images.unsplash.com/photo-1509587584298-0f3b3a3a1797?w=600&q=80"
+            alt="Aral Sea and Karakalpakstan"
+            loading="lazy" width="600" height="450">
+          <div class="city-card-overlay"></div>
+          <div class="city-card-body">
+            <div class="city-name">Nukus</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT TO SEE -->
+  <section class="section" id="sights" style="background: var(--cream);">
+    <div class="section-inner">
+      <div class="section-header">
+        <h2 class="section-title">What to <span>See</span></h2>
+        <a href="/sights/" class="see-all">All sights →</a>
+      </div>
+
+      <div class="articles-grid">
+        <a href="/sights/registan/" class="article-card">
+          <img class="article-img"
+            src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80"
+            alt="Registan Square Samarkand" loading="lazy" width="600" height="338">
+          <div class="article-body">
+            <div class="article-cat">🏛 Samarkand</div>
+            <div class="article-title">The Registan: Heart of the Ancient Silk Road</div>
+            <div class="article-meta">Madrasas · Tilya-Kori · Ulugbek · Sher-Dor</div>
+          </div>
+        </a>
+
+        <a href="/sights/kalon-minaret/" class="article-card">
+          <img class="article-img"
+            src="https://images.unsplash.com/photo-1582139329536-e7284fece509?w=600&q=80"
+            alt="Kalon Minaret Bukhara" loading="lazy" width="600" height="338">
+          <div class="article-body">
+            <div class="article-cat">🏙️ Bukhara</div>
+            <div class="article-title">Kalon Minaret — the Tower Genghis Khan Spared</div>
+            <div class="article-meta">Minaret · Kalon Mosque · Old City</div>
+          </div>
+        </a>
+
+        <a href="/sights/chorsu-bazaar/" class="article-card">
+          <img class="article-img"
+            src="https://images.unsplash.com/photo-1578944032637-f09897c5233d?w=600&q=80"
+            alt="Chorsu Bazaar Tashkent" loading="lazy" width="600" height="338">
+          <div class="article-body">
+            <div class="article-cat">🏙️ Tashkent</div>
+            <div class="article-title">Chorsu Bazaar: Sensory Overload in the Best Way</div>
+            <div class="article-meta">Market · Food · Spices · Crafts</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- AD SLOT 2: Mid-page banner (728×90) -->
+  <div class="ad-midpage">
+    <div class="ad-placeholder">
+      <span class="ad-dot"></span>
+      Advertisement — 728 × 90
+      <span class="ad-dot"></span>
+    </div>
+  </div>
+
+  <!-- PRACTICAL INFO STRIP -->
+  <section class="practical-section" id="practical">
+    <div class="section-inner">
+      <div class="practical-grid">
+        <a href="/visa/" class="practical-item">
+          <span class="practical-icon">🛂</span>
+          <div class="practical-title">Visa & Entry</div>
+          <div class="practical-desc">Visa-free for 100+ countries. e-Visa guide & border info.</div>
+        </a>
+        <a href="/practical/sim/" class="practical-item">
+          <span class="practical-icon">📱</span>
+          <div class="practical-title">SIM & eSIM</div>
+          <div class="practical-desc">Ucell, Beeline, UMS. Where to buy, how to top up.</div>
+        </a>
+        <a href="/practical/transport/" class="practical-item">
+          <span class="practical-icon">🚄</span>
+          <div class="practical-title">Getting Around</div>
+          <div class="practical-desc">Afrosiyob train, Yandex Go, shared taxis, metro.</div>
+        </a>
+        <a href="/practical/currency/" class="practical-item">
+          <span class="practical-icon">💱</span>
+          <div class="practical-title">Money & Currency</div>
+          <div class="practical-desc">UZS, exchange rates, where to change money safely.</div>
+        </a>
+        <a href="/practical/weather/" class="practical-item">
+          <span class="practical-icon">☀️</span>
+          <div class="practical-title">Best Time to Visit</div>
+          <div class="practical-desc">Spring (Apr–May) and autumn (Sep–Oct) are ideal.</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROUTES -->
+  <section class="section" id="routes" style="background: white;">
+    <div class="section-inner">
+      <div class="section-header">
+        <h2 class="section-title">Travel <span>Routes</span></h2>
+        <a href="/routes/" class="see-all">All routes →</a>
+      </div>
+
+      <div class="routes-grid">
+        <a href="/routes/silk-road-classic/" class="route-card">
+          <div class="route-card-bg" style="background-image: url('https://images.unsplash.com/photo-1586105251261-72a756497a11?w=500&q=80')"></div>
+          <div class="route-card-overlay"></div>
+          <div class="route-card-body">
+            <div class="route-duration">5 Days</div>
+            <div class="route-title">Silk Road Classic</div>
+            <div class="route-cities">Samarkand · Bukhara · Khiva</div>
+          </div>
+        </a>
+
+        <a href="/routes/grand-uzbekistan/" class="route-card">
+          <div class="route-card-bg" style="background-image: url('https://images.unsplash.com/photo-1597149053889-9e80a1ba7d68?w=500&q=80')"></div>
+          <div class="route-card-overlay"></div>
+          <div class="route-card-body">
+            <div class="route-duration">10 Days</div>
+            <div class="route-title">Grand Uzbekistan</div>
+            <div class="route-cities">Tashkent · Samarkand · Bukhara · Khiva · Nukus</div>
+          </div>
+        </a>
+
+        <a href="/routes/tashkent-weekend/" class="route-card">
+          <div class="route-card-bg" style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=500&q=80')"></div>
+          <div class="route-card-overlay"></div>
+          <div class="route-card-body">
+            <div class="route-duration">2–3 Days</div>
+            <div class="route-title">Tashkent Weekend</div>
+            <div class="route-cities">Capital deep dive</div>
+          </div>
+        </a>
+
+        <a href="/routes/fergana-valley/" class="route-card">
+          <div class="route-card-bg" style="background-image: url('https://images.unsplash.com/photo-1509587584298-0f3b3a3a1797?w=500&q=80')"></div>
+          <div class="route-card-overlay"></div>
+          <div class="route-card-body">
+            <div class="route-duration">4 Days</div>
+            <div class="route-title">Fergana Valley</div>
+            <div class="route-cities">Andijan · Namangan · Kokand · Rishtan</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWS + SIDEBAR (with ad slots 3 & 4) -->
+  <section class="section news-section">
+    <div class="section-inner">
+      <div class="news-layout">
+        <div>
+          <div class="section-header">
+            <h2 class="section-title">Latest <span>Tips</span></h2>
+            <a href="/blog/" class="see-all">All articles →</a>
+          </div>
+
+          <!-- AD SLOT 3: City/blog inline 728x90 -->
+          <div class="ad-article">
+            <div class="ad-placeholder">
+              <span class="ad-dot"></span>
+              Advertisement — 728 × 90
+              <span class="ad-dot"></span>
+            </div>
+          </div>
+
+          <div class="news-main-grid">
+            <a href="/blog/best-food-uzbekistan/" class="article-card">
+              <img class="article-img"
+                src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&q=80"
+                alt="Plov Uzbek food" loading="lazy" width="500" height="281">
+              <div class="article-body">
+                <div class="article-cat">🍽️ Food Guide</div>
+                <div class="article-title">10 Dishes You Must Try in Uzbekistan</div>
+                <div class="article-meta">Plov · Samsa · Shurpa · Lagman</div>
+              </div>
+            </a>
+
+            <a href="/blog/uzbekistan-sim-card/" class="article-card">
+              <img class="article-img"
+                src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&q=80"
+                alt="Phone SIM card" loading="lazy" width="500" height="281">
+              <div class="article-body">
+                <div class="article-cat">📱 Practical</div>
+                <div class="article-title">Best SIM Card in Uzbekistan for Tourists (2025)</div>
+                <div class="article-meta">Ucell vs Beeline vs UMS</div>
+              </div>
+            </a>
+
+            <a href="/blog/tashkent-metro/" class="article-card">
+              <img class="article-img"
+                src="https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?w=500&q=80"
+                alt="Tashkent metro stations" loading="lazy" width="500" height="281">
+              <div class="article-body">
+                <div class="article-cat">🚇 Tashkent</div>
+                <div class="article-title">Tashkent Metro: The Most Beautiful Underground in Central Asia</div>
+                <div class="article-meta">Art stations · Map · Tips</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- SIDEBAR -->
+        <div class="news-sidebar-sticky">
+          <div class="sidebar-title">Popular Now</div>
+
+          <a href="/blog/uzbekistan-visa-free/" class="sidebar-news-item">
+            <img class="sidebar-thumb"
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80"
+              alt="Passport visa" loading="lazy" width="64" height="64">
+            <div>
+              <div class="sidebar-news-title">Uzbekistan Visa-Free Countries 2025 — Full List</div>
+              <div class="sidebar-news-date">Updated May 2025</div>
+            </div>
+          </a>
+
+          <a href="/blog/best-hotels-samarkand/" class="sidebar-news-item">
+            <img class="sidebar-thumb"
+              src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=100&q=80"
+              alt="Hotel in Samarkand" loading="lazy" width="64" height="64">
+            <div>
+              <div class="sidebar-news-title">Best Hotels in Samarkand — by Booking.com Rating</div>
+              <div class="sidebar-news-date">May 2025</div>
+            </div>
+          </a>
+
+          <a href="/blog/green-bazaar-tashkent/" class="sidebar-news-item">
+            <img class="sidebar-thumb"
+              src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=100&q=80"
+              alt="Bazaar market" loading="lazy" width="64" height="64">
+            <div>
+              <div class="sidebar-news-title">Chorsu Bazaar Guide: What to Buy, What to Avoid</div>
+              <div class="sidebar-news-date">April 2025</div>
+            </div>
+          </a>
+
+          <a href="/blog/afrosiyob-train/" class="sidebar-news-item">
+            <img class="sidebar-thumb"
+              src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=100&q=80"
+              alt="Train Afrosiyob" loading="lazy" width="64" height="64">
+            <div>
+              <div class="sidebar-news-title">Afrosiyob High-Speed Train: Tashkent to Samarkand</div>
+              <div class="sidebar-news-date">March 2025</div>
+            </div>
+          </a>
+
+          <!-- AD SLOT 4: Sidebar 300×250 -->
+          <div class="ad-sidebar">
+            <div class="ad-placeholder" style="width:280px;height:220px;border-color:rgba(0,0,0,0.12);color:var(--muted)">
+              <span class="ad-dot" style="background:var(--gold)"></span>
+              300 × 250
+              <span class="ad-dot" style="background:var(--gold)"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISA BANNER -->
+  <section class="visa-banner" id="visa">
+    <div class="visa-banner-inner">
+      <h2>🛂 Visa-Free for 100+ Countries</h2>
+      <p>Uzbekistan has opened its doors to the world. Check if your country qualifies for visa-free entry, or learn how to apply for an e-Visa in minutes.</p>
+      <div class="visa-flags">
+        <span class="visa-flag">🇺🇸 USA</span>
+        <span class="visa-flag">🇬🇧 UK</span>
+        <span class="visa-flag">🇩🇪 Germany</span>
+        <span class="visa-flag">🇫🇷 France</span>
+        <span class="visa-flag">🇯🇵 Japan</span>
+        <span class="visa-flag">🇰🇷 South Korea</span>
+        <span class="visa-flag">🇨🇳 China</span>
+        <span class="visa-flag">🇮🇳 India</span>
+        <span class="visa-flag">+90 more →</span>
+      </div>
+      <a href="/visa/" class="btn-primary">Full Visa Guide →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="logo">Uzbek<span>Guide</span></a>
+          <p class="footer-tagline">
+            The most complete independent travel guide to Uzbekistan.
+            Written by travelers, for travelers.
+          </p>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Cities</div>
+          <ul class="footer-links">
+            <li><a href="/cities/samarkand/">Samarkand</a></li>
+            <li><a href="/cities/bukhara/">Bukhara</a></li>
+            <li><a href="/cities/tashkent/">Tashkent</a></li>
+            <li><a href="/cities/khiva/">Khiva</a></li>
+            <li><a href="/cities/fergana/">Fergana</a></li>
+            <li><a href="/cities/">All Cities →</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Useful Info</div>
+          <ul class="footer-links">
+            <li><a href="/visa/">Visa & Entry</a></li>
+            <li><a href="/practical/sim/">SIM & eSIM</a></li>
+            <li><a href="/practical/transport/">Transport</a></li>
+            <li><a href="/practical/currency/">Money & Currency</a></li>
+            <li><a href="/practical/weather/">Best Time to Visit</a></li>
+            <li><a href="/practical/">All Practical Info →</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Discover</div>
+          <ul class="footer-links">
+            <li><a href="/routes/">Travel Routes</a></li>
+            <li><a href="/blog/">Travel Blog</a></li>
+            <li><a href="/sights/">Top Sights</a></li>
+            <li><a href="/restaurants/">Restaurants</a></li>
+            <li><a href="/hotels/">Hotels</a></li>
+            <li><a href="/shopping/">Shopping</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">About</div>
+          <ul class="footer-links">
+            <li><a href="/about/">About Us</a></li>
+            <li><a href="/advertise/">Advertise</a></li>
+            <li><a href="/contact/">Contact</a></li>
+            <li><a href="/sitemap/">Sitemap</a></li>
+            <li><a href="/privacy/">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copy">
+          © 2025 UzbekGuide. Independent travel guide to Uzbekistan.
+        </div>
+        <div class="footer-socials">
+          <a href="#" class="social-btn" aria-label="Instagram">📸</a>
+          <a href="#" class="social-btn" aria-label="Telegram">✈️</a>
+          <a href="#" class="social-btn" aria-label="YouTube">▶️</a>
+          <a href="#" class="social-btn" aria-label="Facebook">f</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Active quick-nav on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navItems = document.querySelectorAll('.qnav-item');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navItems.forEach(item => {
+            item.classList.toggle('active',
+              item.getAttribute('href') === '#' + entry.target.id);
+          });
+        }
+      });
+    }, { threshold: 0.4 });
+
+    sections.forEach(s => observer.observe(s));
+
+    // Lang switcher — highlight current locale (links now, no JS toggle needed)
+    // Active state is set server-side via Wagtail locale context
+    // This just handles the demo prototype:
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>

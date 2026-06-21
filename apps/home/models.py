@@ -53,6 +53,10 @@ class HomePage(SEOMixin, Page):
     parent_page_types = ["wagtailcore.Page"]
     subpage_types = [
         "cities.CityIndexPage",
+        "sights.SightsIndexPage",
+        "restaurants.RestaurantIndexPage",
+        "hotels.HotelIndexPage",
+        "visa.VisaIndexPage",
         "news.NewsIndexPage",
         "blog.BlogIndexPage",
         "practical.PracticalIndexPage",
@@ -97,12 +101,18 @@ class HomePage(SEOMixin, Page):
 
     def get_context(self, request):
         from apps.cities.models import CityPage
+        from apps.sights.models import SightPage
         from apps.news.models import NewsArticle
         from apps.routes.models import RoutePage
 
         ctx = super().get_context(request)
         ctx["featured_cities"] = (
             CityPage.objects.live().public().order_by("featured_order", "title")[:5]
+        )
+        ctx["featured_sights"] = (
+            SightPage.objects.live().public()
+            .select_related("primary_city", "cover_image")
+            .order_by("-is_featured", "title")[:3]
         )
         ctx["featured_articles"] = (
             NewsArticle.objects.live().public()

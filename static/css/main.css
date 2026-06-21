@@ -1104,3 +1104,25 @@ body.no-nav .quick-nav       { top: 0; }
 /* Landing page body */
 .landing-body { }
 .landing-body--no-nav { margin-top: 0; }
+
+/* ── LIVE AD CONTAINERS — admin-pasted code, no fixed placeholder size ──── */
+.ad-leaderboard--live,
+.ad-midpage--live,
+.ad-article--live,
+.ad-sidebar--live { overflow: hidden; max-width: 100%; }
+
+.ad-footer-banner {
+  display: flex; justify-content: center;
+  padding: 1.5rem 2rem; overflow: hidden;
+  border-bottom: 1px solid rgba(201,168,76,0.1);
+}
+
+/* ── PARTNER / AFFILIATE DISCLOSURE BADGE ──────────────────────────────── */
+.partner-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.15); color: white;
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 0.2rem 0.55rem; border-radius: 2px;
+  border: 1px solid rgba(255,255,255,0.25);
+  margin-left: 0.4rem;
+}

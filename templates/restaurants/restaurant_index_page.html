@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load wagtailimages_tags wagtailcore_tags %}
+
+{% block content %}
+<div style="margin-top:64px; background:var(--terracotta); padding:3rem 2rem 2rem;">
+  <div style="max-width:1280px;margin:0 auto;">
+    <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3.2rem);color:white;margin-bottom:0.5rem;">
+      Where to <span style="color:var(--gold-light);">Eat</span>
+    </h1>
+    {% if page.intro %}<div style="color:rgba(255,255,255,0.85);max-width:600px;">{{ page.intro|richtext }}</div>{% endif %}
+
+    <form method="get" style="margin-top:1.5rem;display:flex;gap:0.75rem;flex-wrap:wrap;">
+      <select name="city" onchange="this.form.submit()" style="padding:0.4rem 0.8rem;border-radius:3px;border:1px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.12);color:white;font-size:0.85rem;">
+        <option value="" {% if not selected_city %}selected{% endif %}>All Cities</option>
+        {% for city in all_cities %}
+        <option value="{{ city.slug }}" {% if selected_city == city.slug %}selected{% endif %}>{{ city.title }}</option>
+        {% endfor %}
+      </select>
+      <select name="cuisine" onchange="this.form.submit()" style="padding:0.4rem 0.8rem;border-radius:3px;border:1px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.12);color:white;font-size:0.85rem;">
+        <option value="" {% if not selected_cuisine %}selected{% endif %}>All Cuisines</option>
+        {% for val, label in cuisines %}
+        <option value="{{ val }}" {% if selected_cuisine == val %}selected{% endif %}>{{ label }}</option>
+        {% endfor %}
+      </select>
+    </form>
+  </div>
+</div>
+
+<div style="max-width:1280px;margin:0 auto;padding:3rem 2rem;">
+  <div class="block-cards block-cards--cols-3">
+    {% for r in restaurants %}
+    <a href="{{ r.url }}" class="block-card">
+      {% if r.cover_image %}
+      {% image r.cover_image fill-600x400 format-webp as rimg %}
+      <img class="block-card__img" src="{{ rimg.url }}" alt="{{ r.title }}" loading="lazy" width="600" height="400">
+      {% endif %}
+      <div class="block-card__body">
+        <div class="news-card__meta">
+          <span class="news-cat-badge">{{ r.get_cuisine_display }}</span>
+          <span class="news-card__city">{{ r.get_price_range_display }}</span>
+          {% if r.is_partner %}<span class="partner-badge">Partner</span>{% endif %}
+        </div>
+        <h3 class="block-card__title">{{ r.title }}</h3>
+        {% if r.excerpt %}<p class="block-card__text">{{ r.excerpt }}</p>{% endif %}
+        {% if r.primary_city %}<div class="news-card__city">📍 {{ r.primary_city.title }}</div>{% endif %}
+      </div>
+    </a>
+    {% empty %}
+    <p style="color:var(--muted);grid-column:1/-1;padding:3rem 0;text-align:center;">No restaurants found for this filter.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

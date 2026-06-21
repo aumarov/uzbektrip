@@ -9,6 +9,7 @@ from modelcluster.contrib.taggit import ClusterTaggableManager
 
 from apps.core.seo import SEOMixin
 from apps.core.blocks import STANDARD_BLOCKS
+from apps.core.sections import SectionToggleMixin
 
 
 class BlogPostTag(TaggedItemBase):
@@ -17,7 +18,8 @@ class BlogPostTag(TaggedItemBase):
     )
 
 
-class BlogIndexPage(Page):
+class BlogIndexPage(SectionToggleMixin, Page):
+    section_flag = "show_blog"
     intro = RichTextField(blank=True)
 
     content_panels = Page.content_panels + [FieldPanel("intro")]
@@ -34,7 +36,8 @@ class BlogIndexPage(Page):
         return ctx
 
 
-class BlogPost(SEOMixin, Page):
+class BlogPost(SectionToggleMixin, SEOMixin, Page):
+    section_flag = "show_blog"
     CATEGORY_CHOICES = [
         ("food", "Food & Drink"),
         ("practical", "Practical Info"),

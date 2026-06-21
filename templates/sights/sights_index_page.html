@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load wagtailimages_tags wagtailcore_tags %}
+
+{% block content %}
+<div style="margin-top:64px; background:var(--lapis); padding:3rem 2rem 2rem;">
+  <div style="max-width:1280px;margin:0 auto;">
+    <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3.2rem);color:white;margin-bottom:0.5rem;">
+      What to <span style="color:var(--gold);">See</span>
+    </h1>
+    {% if page.intro %}<div style="color:rgba(255,255,255,0.7);max-width:600px;">{{ page.intro|richtext }}</div>{% endif %}
+
+    <form method="get" style="margin-top:1.5rem;display:flex;gap:0.75rem;flex-wrap:wrap;">
+      <select name="city" onchange="this.form.submit()" style="padding:0.4rem 0.8rem;border-radius:3px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.1);color:white;font-size:0.85rem;">
+        <option value="" {% if not selected_city %}selected{% endif %}>All Cities</option>
+        {% for city in all_cities %}
+        <option value="{{ city.slug }}" {% if selected_city == city.slug %}selected{% endif %}>{{ city.title }}</option>
+        {% endfor %}
+      </select>
+      <select name="category" onchange="this.form.submit()" style="padding:0.4rem 0.8rem;border-radius:3px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.1);color:white;font-size:0.85rem;">
+        <option value="" {% if not selected_category %}selected{% endif %}>All Categories</option>
+        {% for val, label in categories %}
+        <option value="{{ val }}" {% if selected_category == val %}selected{% endif %}>{{ label }}</option>
+        {% endfor %}
+      </select>
+      {% if selected_city or selected_category %}
+      <a href="{{ page.url }}" style="padding:0.4rem 0.8rem;border-radius:3px;border:1px solid rgba(201,168,76,0.5);color:var(--gold-light);font-size:0.85rem;text-decoration:none;">✕ Clear</a>
+      {% endif %}
+    </form>
+  </div>
+</div>
+
+<div style="max-width:1280px;margin:0 auto;padding:3rem 2rem;">
+  <div class="block-cards block-cards--cols-3">
+    {% for sight in sights %}
+    <a href="{{ sight.url }}" class="block-card">
+      {% if sight.cover_image %}
+      {% image sight.cover_image fill-600x400 format-webp as simg %}
+      <img class="block-card__img" src="{{ simg.url }}" alt="{{ sight.title }}" loading="lazy" width="600" height="400">
+      {% endif %}
+      <div class="block-card__body">
+        <div class="news-card__meta">
+          <span class="news-cat-badge">{{ sight.get_category_icon }} {{ sight.get_category_display }}</span>
+          {% if sight.is_unesco %}<span class="news-cat-badge news-cat-badge--practical">UNESCO</span>{% endif %}
+        </div>
+        <h3 class="block-card__title">{{ sight.title }}</h3>
+        {% if sight.tagline %}<p class="block-card__text">{{ sight.tagline }}</p>{% endif %}
+        {% if sight.primary_city %}<div class="news-card__city">📍 {{ sight.primary_city.title }}</div>{% endif %}
+      </div>
+    </a>
+    {% empty %}
+    <p style="color:var(--muted);grid-column:1/-1;padding:3rem 0;text-align:center;">No sights found for this filter.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

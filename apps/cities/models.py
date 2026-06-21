@@ -6,9 +6,11 @@ from wagtail.search import index
 
 from apps.core.seo import SEOMixin
 from apps.core.blocks import STANDARD_BLOCKS
+from apps.core.sections import SectionToggleMixin
 
 
-class CityIndexPage(Page):
+class CityIndexPage(SectionToggleMixin, Page):
+    section_flag = "show_cities"
     intro = RichTextField(blank=True)
 
     content_panels = Page.content_panels + [FieldPanel("intro")]
@@ -21,7 +23,8 @@ class CityIndexPage(Page):
         return ctx
 
 
-class CityPage(SEOMixin, Page):
+class CityPage(SectionToggleMixin, SEOMixin, Page):
+    section_flag = "show_cities"
     tagline = models.CharField(max_length=255, blank=True)
     description = RichTextField()
     hero_image = models.ForeignKey(

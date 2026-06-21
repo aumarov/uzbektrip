@@ -10,14 +10,10 @@
 
 {% block content %}
 
-  {# ── AD SLOT 1: Leaderboard 970×90 ──────────────────────────── #}
-  <div class="ad-leaderboard">
-    <div class="ad-placeholder">
-      <span class="ad-dot"></span>
-      Advertisement — 970 × 90
-      <span class="ad-dot"></span>
-    </div>
-  </div>
+  {# ── AD SLOT 1: Leaderboard 970×90 — admin-controlled (Settings → Ad Placements) ── #}
+  {% if ads.leaderboard_enabled and ads.leaderboard_code %}
+  <div class="ad-leaderboard ad-leaderboard--live">{{ ads.leaderboard_code|safe }}</div>
+  {% endif %}
 
   {# ── HERO ────────────────────────────────────────────────────── #}
   <section class="hero">
@@ -29,8 +25,8 @@
       <h1>{{ page.hero_title|linebreaksbr }}</h1>
       <p class="hero-sub">{{ page.hero_subtitle }}</p>
       <div class="hero-actions">
-        <a href="/cities/" class="btn-primary">{{ page.hero_cta_primary_text }}</a>
-        <a href="/routes/" class="btn-outline">{{ page.hero_cta_secondary_text }}</a>
+        <a href="/{{ LANGUAGE_CODE }}/cities/" class="btn-primary">{{ page.hero_cta_primary_text }}</a>
+        <a href="/{{ LANGUAGE_CODE }}/routes/" class="btn-outline">{{ page.hero_cta_secondary_text }}</a>
       </div>
     </div>
 
@@ -57,23 +53,23 @@
   {# ── QUICK NAV TABS ──────────────────────────────────────────── #}
   <div class="quick-nav">
     <div class="quick-nav-inner">
-      <a href="#cities"    class="qnav-item active"><span class="qnav-icon">🏙️</span> Cities</a>
-      <a href="#sights"    class="qnav-item"><span class="qnav-icon">🏛</span> Sights</a>
-      <a href="#eat"       class="qnav-item"><span class="qnav-icon">🍽️</span> Where to Eat</a>
-      <a href="#stay"      class="qnav-item"><span class="qnav-icon">🏨</span> Where to Stay</a>
-      <a href="#routes"    class="qnav-item"><span class="qnav-icon">🗺️</span> Routes</a>
-      <a href="#buy"       class="qnav-item"><span class="qnav-icon">🛍️</span> What to Buy</a>
-      <a href="#visa"      class="qnav-item"><span class="qnav-icon">🛂</span> Visa &amp; Entry</a>
-      <a href="#practical" class="qnav-item"><span class="qnav-icon">ℹ️</span> Practical</a>
+      {% if sections.show_cities %}<a href="#cities" class="qnav-item active"><span class="qnav-icon">🏙️</span> Cities</a>{% endif %}
+      {% if sections.show_sights %}<a href="#sights" class="qnav-item"><span class="qnav-icon">🏛</span> Sights</a>{% endif %}
+      {% if sections.show_eat %}<a href="/{{ LANGUAGE_CODE }}/restaurants/" class="qnav-item"><span class="qnav-icon">🍽️</span> Where to Eat</a>{% endif %}
+      {% if sections.show_stay %}<a href="/{{ LANGUAGE_CODE }}/hotels/" class="qnav-item"><span class="qnav-icon">🏨</span> Where to Stay</a>{% endif %}
+      {% if sections.show_routes %}<a href="#routes" class="qnav-item"><span class="qnav-icon">🗺️</span> Routes</a>{% endif %}
+      {% if sections.show_visa %}<a href="#visa" class="qnav-item"><span class="qnav-icon">🛂</span> Visa &amp; Entry</a>{% endif %}
+      {% if sections.show_practical %}<a href="#practical" class="qnav-item"><span class="qnav-icon">ℹ️</span> Practical</a>{% endif %}
     </div>
   </div>
 
   {# ── CITIES SECTION ──────────────────────────────────────────── #}
+  {% if sections.show_cities %}
   <section class="section cities-section" id="cities">
     <div class="section-inner">
       <div class="section-header">
         <h2 class="section-title">Cities of <span>Uzbekistan</span></h2>
-        <a href="/cities/" class="see-all">All cities →</a>
+        <a href="/{{ LANGUAGE_CODE }}/cities/" class="see-all">All cities →</a>
       </div>
 
       <div class="cities-grid">
@@ -131,77 +127,70 @@
       </div>
     </div>
   </section>
+  {% endif %}{# /sections.show_cities #}
 
   {# ── WHAT TO SEE ─────────────────────────────────────────────── #}
+  {% if sections.show_sights %}
   <section class="section" id="sights" style="background: var(--cream);">
     <div class="section-inner">
       <div class="section-header">
         <h2 class="section-title">What to <span>See</span></h2>
-        <a href="/sights/" class="see-all">All sights →</a>
+        <a href="/{{ LANGUAGE_CODE }}/sights/" class="see-all">All sights →</a>
       </div>
       <div class="articles-grid">
-        <a href="/sights/registan/" class="article-card">
-          <img class="article-img" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80" alt="Registan Square Samarkand" loading="lazy" width="600" height="338">
+        {% for sight in featured_sights %}
+        <a href="{{ sight.url }}" class="article-card">
+          {% if sight.cover_image %}
+          {% image sight.cover_image fill-600x338 format-webp as simg %}
+          <img class="article-img" src="{{ simg.url }}" alt="{{ sight.title }}" loading="lazy" width="600" height="338">
+          {% endif %}
           <div class="article-body">
-            <div class="article-cat">🏛 Samarkand</div>
-            <div class="article-title">The Registan: Heart of the Ancient Silk Road</div>
-            <div class="article-meta">Madrasas · Tilya-Kori · Ulugbek · Sher-Dor</div>
+            <div class="article-cat">{{ sight.get_category_icon }} {% if sight.primary_city %}{{ sight.primary_city.title }}{% else %}{{ sight.get_category_display }}{% endif %}</div>
+            <div class="article-title">{{ sight.title }}</div>
+            {% if sight.tagline %}<div class="article-meta">{{ sight.tagline }}</div>{% endif %}
           </div>
         </a>
-        <a href="/sights/kalon-minaret/" class="article-card">
-          <img class="article-img" src="https://images.unsplash.com/photo-1582139329536-e7284fece509?w=600&q=80" alt="Kalon Minaret Bukhara" loading="lazy" width="600" height="338">
-          <div class="article-body">
-            <div class="article-cat">🏙️ Bukhara</div>
-            <div class="article-title">Kalon Minaret — the Tower Genghis Khan Spared</div>
-            <div class="article-meta">Minaret · Kalon Mosque · Old City</div>
-          </div>
-        </a>
-        <a href="/sights/chorsu-bazaar/" class="article-card">
-          <img class="article-img" src="https://images.unsplash.com/photo-1578944032637-f09897c5233d?w=600&q=80" alt="Chorsu Bazaar Tashkent" loading="lazy" width="600" height="338">
-          <div class="article-body">
-            <div class="article-cat">🏙️ Tashkent</div>
-            <div class="article-title">Chorsu Bazaar: Sensory Overload in the Best Way</div>
-            <div class="article-meta">Market · Food · Spices · Crafts</div>
-          </div>
-        </a>
+        {% empty %}
+        <p style="color:var(--muted);grid-column:1/-1;">No sights published yet — add some under the Sights section in the admin.</p>
+        {% endfor %}
       </div>
     </div>
   </section>
+  {% endif %}
 
-  {# ── AD SLOT 2: Mid-page 728×90 ──────────────────────────────── #}
-  <div class="ad-midpage">
-    <div class="ad-placeholder">
-      <span class="ad-dot"></span>
-      Advertisement — 728 × 90
-      <span class="ad-dot"></span>
-    </div>
-  </div>
+  {# ── AD SLOT 2: Mid-page 728×90 — admin-controlled ───────────── #}
+  {% if ads.midpage_enabled and ads.midpage_code %}
+  <div class="ad-midpage ad-midpage--live">{{ ads.midpage_code|safe }}</div>
+  {% endif %}
 
   {# ── PRACTICAL INFO STRIP ────────────────────────────────────── #}
+  {% if sections.show_practical %}
   <section class="practical-section" id="practical">
     <div class="section-inner">
       <div class="practical-grid">
-        <a href="/visa/" class="practical-item">
+        {% if sections.show_visa %}
+        <a href="/{{ LANGUAGE_CODE }}/visa/" class="practical-item">
           <span class="practical-icon">🛂</span>
           <div class="practical-title">Visa &amp; Entry</div>
           <div class="practical-desc">Visa-free for 100+ countries. e-Visa guide &amp; border info.</div>
         </a>
-        <a href="/practical/sim/" class="practical-item">
+        {% endif %}
+        <a href="/{{ LANGUAGE_CODE }}/practical/sim/" class="practical-item">
           <span class="practical-icon">📱</span>
           <div class="practical-title">SIM &amp; eSIM</div>
           <div class="practical-desc">Ucell, Beeline, UMS. Where to buy, how to top up.</div>
         </a>
-        <a href="/practical/transport/" class="practical-item">
+        <a href="/{{ LANGUAGE_CODE }}/practical/transport/" class="practical-item">
           <span class="practical-icon">🚂</span>
           <div class="practical-title">Getting Around</div>
           <div class="practical-desc">Afrosiyob train, Yandex Go, shared taxis, metro.</div>
         </a>
-        <a href="/practical/currency/" class="practical-item">
+        <a href="/{{ LANGUAGE_CODE }}/practical/currency/" class="practical-item">
           <span class="practical-icon">💱</span>
           <div class="practical-title">Money &amp; Currency</div>
           <div class="practical-desc">UZS, exchange rates, where to change money safely.</div>
         </a>
-        <a href="/practical/weather/" class="practical-item">
+        <a href="/{{ LANGUAGE_CODE }}/practical/weather/" class="practical-item">
           <span class="practical-icon">☀️</span>
           <div class="practical-title">Best Time to Visit</div>
           <div class="practical-desc">Spring (Apr–May) and autumn (Sep–Oct) are ideal.</div>
@@ -209,13 +198,15 @@
       </div>
     </div>
   </section>
+  {% endif %}{# /sections.show_practical #}
 
   {# ── ROUTES ──────────────────────────────────────────────────── #}
+  {% if sections.show_routes %}
   <section class="section" id="routes" style="background: white;">
     <div class="section-inner">
       <div class="section-header">
         <h2 class="section-title">Travel <span>Routes</span></h2>
-        <a href="/routes/" class="see-all">All routes →</a>
+        <a href="/{{ LANGUAGE_CODE }}/routes/" class="see-all">All routes →</a>
       </div>
       <div class="routes-grid">
         {% for route in featured_routes %}
@@ -274,8 +265,10 @@
       </div>
     </div>
   </section>
+  {% endif %}{# /sections.show_routes #}
 
   {# ── NEWS + SIDEBAR ──────────────────────────────────────────── #}
+  {% if sections.show_news %}
   <section class="section news-section">
     <div class="section-inner">
       <div class="news-layout">
@@ -285,14 +278,10 @@
             <a href="/blog/" class="see-all">All articles →</a>
           </div>
 
-          {# AD SLOT 3: Inline 728×90 #}
-          <div class="ad-article">
-            <div class="ad-placeholder">
-              <span class="ad-dot"></span>
-              Advertisement — 728 × 90
-              <span class="ad-dot"></span>
-            </div>
-          </div>
+          {# AD SLOT 3: Inline 728×90 — admin-controlled #}
+          {% if ads.article_inline_enabled and ads.article_inline_code %}
+          <div class="ad-article ad-article--live">{{ ads.article_inline_code|safe }}</div>
+          {% endif %}
 
           <div class="news-main-grid">
             {% for post in featured_articles %}
@@ -378,20 +367,18 @@
           </a>
           {% endfor %}
 
-          {# AD SLOT 4: Sidebar 300×250 #}
-          <div class="ad-sidebar">
-            <div class="ad-placeholder" style="width:280px;height:220px;border-color:rgba(0,0,0,0.12);color:var(--muted)">
-              <span class="ad-dot" style="background:var(--gold)"></span>
-              300 × 250
-              <span class="ad-dot" style="background:var(--gold)"></span>
-            </div>
-          </div>
+          {# AD SLOT 4: Sidebar 300×250 — admin-controlled #}
+          {% if ads.sidebar_enabled and ads.sidebar_code %}
+          <div class="ad-sidebar ad-sidebar--live">{{ ads.sidebar_code|safe }}</div>
+          {% endif %}
         </div>
       </div>
     </div>
   </section>
+  {% endif %}{# /sections.show_news #}
 
   {# ── VISA BANNER ─────────────────────────────────────────────── #}
+  {% if sections.show_visa %}
   <section class="visa-banner" id="visa">
     <div class="visa-banner-inner">
       <h2>🛂 {{ page.visa_title }}</h2>
@@ -407,9 +394,10 @@
         <span class="visa-flag">🇮🇳 India</span>
         <span class="visa-flag">+90 more →</span>
       </div>
-      <a href="/visa/" class="btn-primary">Full Visa Guide →</a>
+      <a href="/{{ LANGUAGE_CODE }}/visa/" class="btn-primary">Full Visa Guide →</a>
     </div>
   </section>
+  {% endif %}{# /sections.show_visa #}
 
 {% endblock %}
 

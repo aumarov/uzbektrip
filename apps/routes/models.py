@@ -5,9 +5,11 @@ from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 
 from apps.core.seo import SEOMixin
 from apps.core.blocks import STANDARD_BLOCKS
+from apps.core.sections import SectionToggleMixin
 
 
-class RoutesIndexPage(Page):
+class RoutesIndexPage(SectionToggleMixin, Page):
+    section_flag = "show_routes"
     intro = RichTextField(blank=True)
 
     content_panels = Page.content_panels + [FieldPanel("intro")]
@@ -20,7 +22,8 @@ class RoutesIndexPage(Page):
         return ctx
 
 
-class RoutePage(SEOMixin, Page):
+class RoutePage(SectionToggleMixin, SEOMixin, Page):
+    section_flag = "show_routes"
     duration = models.CharField(max_length=50)
     cities_covered = models.CharField(max_length=300, blank=True)
     cover_image = models.ForeignKey(
