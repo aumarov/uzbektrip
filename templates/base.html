@@ -131,8 +131,7 @@
       </ul>
 
       <div class="nav-right">
-        {# Language switcher — built from the Locales actually configured in Settings -> Locales.
-           Hidden entirely when there's nothing to switch to. #}
+        {# Language switcher — built from the Locales configured in Settings -> Locales. Hidden when there's nothing to switch to. #}
         {% if active_locales|length > 1 %}
         <div class="lang-switcher" role="navigation" aria-label="Language switcher">
           {% with path_suffix=request.path|slice:"3:" %}
