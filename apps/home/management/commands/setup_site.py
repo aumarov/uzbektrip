@@ -83,25 +83,34 @@ class Command(BaseCommand):
             else:
                 self.stdout.write(f"  {title} already exists, skipping.")
 
-        # Create or update the site record
+        # Create or update the site record. Hostname/port are ONLY set when
+        # creating a brand-new Site — never overwritten on an existing one.
+        # Wagtail's page-preview feature builds its dummy request's Host
+        # header from this record, so clobbering a correctly-configured
+        # production hostname back to "localhost:8000" on every command run
+        # breaks Preview in production (DisallowedHost -> 400) without
+        # affecting live serving, which routes by Django's URLconf instead —
+        # this is exactly what happened here, twice.
+        import os
+
         site = Site.objects.first()
         if site:
             site.root_page = home
-            site.hostname = "localhost"
-            site.port = 8000
             site.site_name = "UzbekTrip"
             site.is_default_site = True
             site.save()
-            self.stdout.write(self.style.SUCCESS("✓ Updated Wagtail site record"))
+            self.stdout.write(self.style.SUCCESS(f"✓ Updated Wagtail site record ({site.hostname}:{site.port})"))
         else:
+            hostname = os.environ.get("WAGTAIL_SITE_HOSTNAME", "localhost")
+            port = int(os.environ.get("WAGTAIL_SITE_PORT", "8000"))
             Site.objects.create(
-                hostname="localhost",
-                port=8000,
+                hostname=hostname,
+                port=port,
                 site_name="UzbekTrip",
                 root_page=home,
                 is_default_site=True,
             )
-            self.stdout.write(self.style.SUCCESS("✓ Created Wagtail site record"))
+            self.stdout.write(self.style.SUCCESS(f"✓ Created Wagtail site record ({hostname}:{port})"))
 
         self.stdout.write(self.style.SUCCESS("\nSetup complete!"))
         self.stdout.write("  Admin: http://localhost:8000/cms/")
