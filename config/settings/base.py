@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     "wagtail.documents",
     "wagtail.images",
     "wagtail.search",
+    "wagtail.sites",
     "wagtail.admin",
     "wagtail",
     # Third party
