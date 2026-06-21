@@ -225,6 +225,11 @@ body {
 }
 
 .hero-stats {
+  position: relative; z-index: 2;  /* .hero-bg is position:absolute -- without this,
+                                       positioned elements paint above static ones
+                                       regardless of source order, so the photo
+                                       covered this box no matter what background
+                                       or text-shadow it had. */
   display: flex; justify-content: center; gap: 4rem;
   margin-top: 3rem;   /* equal to hero padding-bottom = equal gaps both sides */
   flex-shrink: 0;
