@@ -96,6 +96,17 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
+# wagtail==5.2.8's published package ships wagtailcore migrations only up to
+# 0089 even though its models.py already defines Embed/UserProfile — every
+# app with a Page subclass needs a migration that creates them. Rather than
+# relying on `makemigrations` silently writing that missing file into
+# site-packages (non-portable, invisible to git, and the source of a real
+# deploy failure once), we vendor the full wagtailcore migration history here
+# so it's identical and version-controlled across every environment.
+MIGRATION_MODULES = {
+    "wagtailcore": "apps.core.wagtailcore_migrations",
+}
+
 WAGTAIL_I18N_ENABLED = True
 
 WAGTAIL_CONTENT_LANGUAGES = LANGUAGES = [
