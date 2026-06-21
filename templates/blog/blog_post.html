@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load wagtailimages_tags wagtailcore_tags %}
+
+{% block og_type %}article{% endblock %}
+
+{% block og_article %}
+<meta property="article:published_time" content="{{ page.first_published_at|date:'c' }}">
+{% if page.last_published_at %}<meta property="article:modified_time" content="{{ page.last_published_at|date:'c' }}">{% endif %}
+<meta property="article:author" content="{{ page.author_name }}">
+<meta property="article:section" content="Travel">
+{% endblock %}
+
+{% block schema_ld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{ page.title }}",
+  "description": "{{ page.search_description|default:page.excerpt }}",
+  "datePublished": "{{ page.first_published_at|date:'c' }}",
+  "dateModified": "{{ page.last_published_at|default:page.first_published_at|date:'c' }}",
+  "author": {"@type": "Person", "name": "{{ page.author_name }}"},
+  "publisher": {"@type": "Organization", "name": "UzbekTrip"},
+  "timeRequired": "PT{{ page.reading_time }}M",
+  "inLanguage": "{{ LANGUAGE_CODE }}"
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<article style="margin-top: 64px;">
+  {% if page.cover_image %}
+  {% image page.cover_image fill-1280x640 format-webp as cover %}
+  <div style="height: 55vh; min-height: 380px; background: url('{{ cover.url }}') center/cover; position: relative;">
+    <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(26,21,16,0.7) 0%, transparent 50%);"></div>
+  </div>
+  {% endif %}
+
+  <div style="max-width: 800px; margin: 0 auto; padding: 3rem 2rem;">
+    <div class="article-cat" style="font-size: 0.75rem; margin-bottom: 0.75rem;">
+      {{ page.get_category_display_icon }} {{ page.get_category_display }}
+    </div>
+    <h1 style="font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.15; margin-bottom: 1rem;">{{ page.title }}</h1>
+    <div style="color: var(--muted); font-size: 0.875rem; margin-bottom: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+      <span>{{ page.author_name }}</span>
+      <span>{{ page.first_published_at|date:"F j, Y" }}</span>
+      {% if page.reading_time %}<span>{{ page.reading_time }} min read</span>{% endif %}
+    </div>
+
+    {% if page.excerpt %}
+    <p style="font-size: 1.15rem; font-weight: 400; color: var(--muted); line-height: 1.7; margin-bottom: 2rem; border-left: 3px solid var(--gold); padding-left: 1.25rem;">{{ page.excerpt }}</p>
+    {% endif %}
+
+    <div class="rich-text">
+      {% for block in page.body %}
+        {% if block.block_type == 'rich_text' %}
+          {{ block.value|richtext }}
+        {% elif block.block_type == 'pull_quote' %}
+          <blockquote style="font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-style: italic; color: var(--lapis); border-left: 3px solid var(--gold); padding: 1rem 1.5rem; margin: 2rem 0;">
+            {{ block.value.quote }}
+            {% if block.value.attribution %}<cite style="font-size: 0.9rem; font-style: normal; color: var(--muted); display: block; margin-top: 0.5rem;">— {{ block.value.attribution }}</cite>{% endif %}
+          </blockquote>
+        {% elif block.block_type == 'image_block' %}
+          {% image block.value.image original format-webp as bimg %}
+          <figure style="margin: 2rem 0;">
+            <img src="{{ bimg.url }}" alt="{{ block.value.caption }}" loading="lazy" style="width: 100%; border-radius: 4px;">
+            {% if block.value.caption %}<figcaption style="font-size: 0.8rem; color: var(--muted); margin-top: 0.5rem; text-align: center;">{{ block.value.caption }}</figcaption>{% endif %}
+          </figure>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</article>
+{% endblock %}

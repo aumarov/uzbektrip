@@ -1,0 +1,11 @@
+<div class="block-stats">
+  {% if value.heading %}<h3 class="block-stats__heading">{{ value.heading }}</h3>{% endif %}
+  <div class="block-stats__row">
+    {% for stat in value.stats %}
+    <div class="block-stat">
+      <span class="block-stat__num">{{ stat.number }}</span>
+      <span class="block-stat__label">{{ stat.label }}</span>
+    </div>
+    {% endfor %}
+  </div>
+</div>

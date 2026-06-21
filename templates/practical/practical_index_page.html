@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+<div style="margin-top: 64px; background: var(--lapis);">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 4rem 2rem;">
+    <h1 style="font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; color: white; margin-bottom: 0.75rem;">Practical <span style="color: var(--gold);">Information</span></h1>
+    {% if page.intro %}<div style="color: rgba(255,255,255,0.7); max-width: 600px;">{{ page.intro|richtext }}</div>{% endif %}
+  </div>
+</div>
+<div style="max-width: 1280px; margin: 0 auto; padding: 3rem 2rem;">
+  <div class="practical-grid" style="background: none; gap: 1.5rem;">
+    {% for p in pages %}
+    <a href="{{ p.url }}" class="practical-item" style="background: white; border: 1px solid var(--border); border-radius: 4px;">
+      <span class="practical-icon">{{ p.icon }}</span>
+      <div class="practical-title" style="color: var(--ink);">{{ p.title }}</div>
+      {% if p.short_desc %}<div class="practical-desc" style="color: var(--muted);">{{ p.short_desc }}</div>{% endif %}
+    </a>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% load wagtailimages_tags wagtailcore_tags %}
+<div class="block-timeline">
+  {% if value.heading %}<h3 class="block-timeline__heading">{{ value.heading }}</h3>{% endif %}
+  {% for item in value.items %}
+  <div class="timeline-item">
+    <div class="timeline-item__marker">{{ item.marker }}</div>
+    <div class="timeline-item__content">
+      <h4 class="timeline-item__title">{{ item.title }}</h4>
+      <div class="timeline-item__desc">{{ item.description|richtext }}</div>
+      {% if item.image %}
+      {% image item.image fill-800x400 format-webp as timg %}
+      <img src="{{ timg.url }}" alt="{{ item.title }}" loading="lazy" width="800" height="400" style="width:100%;border-radius:4px;margin-top:1rem;">
+      {% endif %}
+    </div>
+  </div>
+  {% endfor %}
+</div>

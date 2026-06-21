@@ -1,0 +1,4 @@
+<div class="block-cta">
+  <a href="{% if value.url %}{{ value.url }}{% elif value.page %}{{ value.page.url }}{% else %}#{% endif %}"
+     class="btn-{{ value.style }}">{{ value.text }}</a>
+</div>

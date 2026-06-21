@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load wagtailimages_tags %}
+
+{% block content %}
+<div style="margin-top: 64px; padding: 4rem 2rem; max-width: 1280px; margin-left: auto; margin-right: auto;">
+  <h1 class="section-title" style="margin-bottom: 2.5rem;">Travel <span>Routes</span></h1>
+  <div class="routes-grid">
+    {% for route in routes %}
+    <a href="{{ route.url }}" class="route-card">
+      {% if route.cover_image %}
+      {% image route.cover_image fill-400x533 format-webp as img %}
+      <div class="route-card-bg" style="background-image: url('{{ img.url }}')"></div>
+      {% else %}
+      <div class="route-card-bg" style="background-image: url('https://images.unsplash.com/photo-1586105251261-72a756497a11?w=500&q=80')"></div>
+      {% endif %}
+      <div class="route-card-overlay"></div>
+      <div class="route-card-body">
+        <div class="route-duration">{{ route.duration }}</div>
+        <div class="route-title">{{ route.title }}</div>
+        <div class="route-cities">{{ route.cities_covered }}</div>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

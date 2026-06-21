@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block body_class %}landing{% endblock %}
+
+{% block content %}
+{# No wrapper — blocks render edge-to-edge or full-width as each block defines #}
+<div class="landing-body{% if page.hide_nav %} landing-body--no-nav{% endif %}">
+  {% for block in page.body %}
+    {% include_block block %}
+  {% endfor %}
+</div>
+{% endblock %}

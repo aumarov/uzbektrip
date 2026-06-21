@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% load wagtailimages_tags wagtailcore_tags %}
+
+{% block og_type %}place{% endblock %}
+
+{% block schema_ld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TouristDestination",
+  "name": "{{ page.title|escapejs }}",
+  "description": "{{ page.search_description|default:page.tagline|escapejs }}",
+  "url": "{{ page.full_url }}"{% if page.latitude and page.longitude %},
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "{{ page.latitude }}",
+    "longitude": "{{ page.longitude }}"
+  }{% endif %}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home",   "item": "{{ request.scheme }}://{{ request.get_host }}/{{ LANGUAGE_CODE }}/"},
+    {"@type": "ListItem", "position": 2, "name": "Cities", "item": "{{ page.get_parent.full_url }}"},
+    {"@type": "ListItem", "position": 3, "name": "{{ page.title|escapejs }}"}
+  ]
+}
+</script>
+{% endblock %}
+
+{% block hero_preload %}
+{% if page.hero_image %}{% image page.hero_image fill-1440x600 format-webp as h %}
+<link rel="preload" as="image" href="{{ h.url }}">{% endif %}
+{% endblock %}
+
+{% block content %}
+
+  {# ── HERO ────────────────────────────────────────────────────── #}
+  <div style="position:relative;height:60vh;min-height:400px;display:flex;align-items:flex-end;overflow:hidden;">
+    {% if page.hero_image %}
+    {% image page.hero_image fill-1440x600 format-webp as hero %}
+    <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(26,21,16,.85) 0%,rgba(0,0,0,.2) 60%),url('{{ hero.url }}') center/cover;"></div>
+    {% else %}
+    <div style="position:absolute;inset:0;background:linear-gradient(135deg,var(--lapis) 0%,var(--lapis-mid) 100%);"></div>
+    {% endif %}
+    <div style="position:relative;padding:3rem 2rem;max-width:1280px;margin:0 auto;width:100%;">
+      {# HTML breadcrumb #}
+      <nav style="font-size:0.8rem;color:rgba(255,255,255,0.6);margin-bottom:1rem;" aria-label="Breadcrumb">
+        <a href="/{{ LANGUAGE_CODE }}/" style="color:rgba(255,255,255,0.6);text-decoration:none;">Home</a>
+        <span style="margin:0 0.4rem;">/</span>
+        <a href="{{ page.get_parent.url }}" style="color:rgba(255,255,255,0.6);text-decoration:none;">Cities</a>
+        <span style="margin:0 0.4rem;">/</span>
+        <span style="color:white;">{{ page.title }}</span>
+      </nav>
+      {% if page.badge %}<span class="city-tag">{{ page.badge }}</span>{% endif %}
+      <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,6vw,5rem);color:white;margin:.5rem 0;">{{ page.title }}</h1>
+      {% if page.tagline %}<p style="color:rgba(255,255,255,.8);font-size:1.1rem;max-width:600px;">{{ page.tagline }}</p>{% endif %}
+    </div>
+  </div>
+
+  {# ── BODY ────────────────────────────────────────────────────── #}
+  <div style="max-width:860px;margin:0 auto;padding:3rem 2rem;">
+    {% if page.description %}
+    <div class="rich-text" style="margin-bottom:2rem;font-size:1.05rem;line-height:1.8;">{{ page.description|richtext }}</div>
+    {% endif %}
+
+    {% for block in page.body %}
+      {% include_block block %}
+    {% endfor %}
+  </div>
+
+  {# ── CITY NEWS ────────────────────────────────────────────────── #}
+  {% if city_news %}
+  <section style="background:var(--cream);padding:3rem 2rem;border-top:1px solid var(--border);">
+    <div style="max-width:1280px;margin:0 auto;">
+      <div class="section-header">
+        <h2 class="section-title">Latest News from <span>{{ page.title }}</span></h2>
+        <a href="/{{ LANGUAGE_CODE }}/news/?city={{ page.slug }}" class="see-all">All {{ page.title }} news →</a>
+      </div>
+      <div class="news-grid news-grid--4">
+        {% for article in city_news %}
+        <a href="{{ article.url }}" class="news-card">
+          {% if article.cover_image %}
+          {% image article.cover_image fill-500x280 format-webp as cn_img %}
+          <img class="news-card__img" src="{{ cn_img.url }}" alt="{{ article.title }}" loading="lazy" width="500" height="280">
+          {% endif %}
+          <div class="news-card__body">
+            <div class="news-card__meta">
+              <span class="news-cat-badge news-cat-badge--{{ article.category }}">{{ article.get_category_icon }} {{ article.get_category_display }}</span>
+            </div>
+            <h3 class="news-card__title">{{ article.title }}</h3>
+            <div class="news-card__byline">{{ article.published_date|date:"j M Y" }} · {{ article.reading_time }} min</div>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+{% endblock %}

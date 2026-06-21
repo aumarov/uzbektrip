@@ -1,0 +1,19 @@
+{% load wagtailimages_tags wagtailcore_tags %}
+<div class="block-cards block-cards--cols-{{ value.columns }}">
+  {% for card in value.cards %}
+  <div class="block-card">
+    {% if card.image %}
+    {% image card.image fill-600x400 format-webp as cimg %}
+    <img class="block-card__img" src="{{ cimg.url }}" alt="{{ card.title }}" loading="lazy" width="600" height="400">
+    {% endif %}
+    <div class="block-card__body">
+      <h3 class="block-card__title">{{ card.title }}</h3>
+      {% if card.text %}<div class="block-card__text rich-text">{{ card.text|richtext }}</div>{% endif %}
+      {% if card.cta.text %}
+      <a href="{% if card.cta.url %}{{ card.cta.url }}{% elif card.cta.page %}{{ card.cta.page.url }}{% else %}#{% endif %}"
+         class="btn-{{ card.cta.style }}">{{ card.cta.text }}</a>
+      {% endif %}
+    </div>
+  </div>
+  {% endfor %}
+</div>

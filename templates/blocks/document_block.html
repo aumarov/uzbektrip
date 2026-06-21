@@ -1,0 +1,11 @@
+<div class="block-document">
+  <a href="{{ value.document.url }}" class="block-document__link" download>
+    <span class="block-document__icon">📄</span>
+    <div class="block-document__meta">
+      <span class="block-document__title">{{ value.title|default:value.document.title }}</span>
+      {% if value.description %}<span class="block-document__desc">{{ value.description }}</span>{% endif %}
+      <span class="block-document__size">{{ value.document.file_size|filesizeformat }}</span>
+    </div>
+    <span class="block-document__download">↓ Download</span>
+  </a>
+</div>

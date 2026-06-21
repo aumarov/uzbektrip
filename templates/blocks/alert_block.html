@@ -1,0 +1,5 @@
+{% load wagtailcore_tags %}
+<div class="block-alert block-alert--{{ value.style }}">
+  {% if value.heading %}<strong class="block-alert__heading">{{ value.heading }}</strong>{% endif %}
+  <div class="block-alert__body">{{ value.text|richtext }}</div>
+</div>

@@ -1,0 +1,10 @@
+{% load wagtailimages_tags %}
+<div class="block-gallery block-gallery--cols-{{ value.columns }}">
+  {% for item in value.images %}
+  <figure class="block-gallery__item">
+    {% image item.image fill-600x400 format-webp as gimg %}
+    <img src="{{ gimg.url }}" alt="{{ item.caption|default:item.image.title }}" loading="lazy" width="600" height="400">
+    {% if item.caption %}<figcaption>{{ item.caption }}</figcaption>{% endif %}
+  </figure>
+  {% endfor %}
+</div>

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load wagtailimages_tags %}
+
+{% block content %}
+<div style="margin-top: 64px; padding: 4rem 2rem; max-width: 1280px; margin-left: auto; margin-right: auto;">
+  <h1 class="section-title" style="margin-bottom: 2rem;">Cities of <span>Uzbekistan</span></h1>
+  {% if page.intro %}<div style="margin-bottom: 2rem; color: var(--muted);">{{ page.intro|richtext }}</div>{% endif %}
+
+  <div class="cities-grid">
+    {% for city in cities %}
+    <a href="{{ city.url }}" class="city-card">
+      {% if city.hero_image %}
+      {% if forloop.first %}{% image city.hero_image fill-800x1000 format-webp as img %}
+      {% else %}{% image city.hero_image fill-600x450 format-webp as img %}{% endif %}
+      <img class="city-card-img" src="{{ img.url }}" alt="{{ city.title }}" loading="{% if forloop.first %}eager{% else %}lazy{% endif %}" width="{{ img.width }}" height="{{ img.height }}">
+      {% else %}
+      <img class="city-card-img" src="https://images.unsplash.com/photo-1586105251261-72a756497a11?w=600&q=80" alt="{{ city.title }}" loading="lazy" width="600" height="450">
+      {% endif %}
+      <div class="city-card-overlay"></div>
+      <div class="city-card-body">
+        {% if city.badge %}<span class="city-tag">{{ city.badge }}</span>{% endif %}
+        <div class="city-name">{{ city.title }}</div>
+        {% if forloop.first and city.tagline %}<div class="city-desc">{{ city.tagline }}</div>{% endif %}
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

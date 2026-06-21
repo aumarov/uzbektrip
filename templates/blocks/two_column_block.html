@@ -1,0 +1,5 @@
+{% load wagtailcore_tags %}
+<div class="block-two-cols block-two-cols--{{ value.ratio }}">
+  <div class="block-two-cols__left rich-text">{{ value.left|richtext }}</div>
+  <div class="block-two-cols__right rich-text">{{ value.right|richtext }}</div>
+</div>

@@ -1,0 +1,15 @@
+{% load wagtailcore_tags %}
+<div class="block-accordion">
+  {% if value.heading %}<h3 class="block-accordion__heading">{{ value.heading }}</h3>{% endif %}
+  {% for item in value.items %}
+  <div class="accordion-item">
+    <button class="accordion-trigger" aria-expanded="false" aria-controls="acc-{{ forloop.parentloop.counter0 }}-{{ forloop.counter0 }}">
+      <span>{{ item.title }}</span>
+      <span class="accordion-icon" aria-hidden="true"></span>
+    </button>
+    <div class="accordion-panel" id="acc-{{ forloop.parentloop.counter0 }}-{{ forloop.counter0 }}" hidden>
+      <div class="accordion-panel__inner">{{ item.content|richtext }}</div>
+    </div>
+  </div>
+  {% endfor %}
+</div>

@@ -1,0 +1,5 @@
+{% load wagtailembeds_tags %}
+<figure class="block-video">
+  <div class="block-video__wrapper">{% embed value.video %}</div>
+  {% if value.caption %}<figcaption>{{ value.caption }}</figcaption>{% endif %}
+</figure>

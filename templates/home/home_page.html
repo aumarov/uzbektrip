@@ -1,0 +1,432 @@
+{% extends "base.html" %}
+{% load static wagtailimages_tags wagtailcore_tags %}
+
+{% block hero_preload %}
+{% if page.hero_image %}
+{% image page.hero_image fill-1440x810 format-webp as hero_img %}
+<link rel="preload" as="image" href="{{ hero_img.url }}">
+{% endif %}
+{% endblock %}
+
+{% block content %}
+
+  {# ── AD SLOT 1: Leaderboard 970×90 ──────────────────────────── #}
+  <div class="ad-leaderboard">
+    <div class="ad-placeholder">
+      <span class="ad-dot"></span>
+      Advertisement — 970 × 90
+      <span class="ad-dot"></span>
+    </div>
+  </div>
+
+  {# ── HERO ────────────────────────────────────────────────────── #}
+  <section class="hero">
+    <div class="hero-bg"{% if page.hero_image %}{% image page.hero_image fill-1440x810 format-webp as hero_img %} style="background-image: linear-gradient(to bottom, rgba(26,21,16,0.3) 0%, rgba(26,21,16,0.6) 100%), url('{{ hero_img.url }}')"{% endif %}></div>
+    <div class="hero-ornament"></div>
+
+    <div class="hero-content">
+      <span class="hero-eyebrow">✦ {{ page.hero_eyebrow }} ✦</span>
+      <h1>{{ page.hero_title|linebreaksbr }}</h1>
+      <p class="hero-sub">{{ page.hero_subtitle }}</p>
+      <div class="hero-actions">
+        <a href="/cities/" class="btn-primary">{{ page.hero_cta_primary_text }}</a>
+        <a href="/routes/" class="btn-outline">{{ page.hero_cta_secondary_text }}</a>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">{{ page.stat1_number }}</span>
+        <span class="stat-label">{{ page.stat1_label }}</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">{{ page.stat2_number }}</span>
+        <span class="stat-label">{{ page.stat2_label }}</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">{{ page.stat3_number }}</span>
+        <span class="stat-label">{{ page.stat3_label }}</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">{{ page.stat4_number }}</span>
+        <span class="stat-label">{{ page.stat4_label }}</span>
+      </div>
+    </div>
+  </section>
+
+  {# ── QUICK NAV TABS ──────────────────────────────────────────── #}
+  <div class="quick-nav">
+    <div class="quick-nav-inner">
+      <a href="#cities"    class="qnav-item active"><span class="qnav-icon">🏙️</span> Cities</a>
+      <a href="#sights"    class="qnav-item"><span class="qnav-icon">🏛</span> Sights</a>
+      <a href="#eat"       class="qnav-item"><span class="qnav-icon">🍽️</span> Where to Eat</a>
+      <a href="#stay"      class="qnav-item"><span class="qnav-icon">🏨</span> Where to Stay</a>
+      <a href="#routes"    class="qnav-item"><span class="qnav-icon">🗺️</span> Routes</a>
+      <a href="#buy"       class="qnav-item"><span class="qnav-icon">🛍️</span> What to Buy</a>
+      <a href="#visa"      class="qnav-item"><span class="qnav-icon">🛂</span> Visa &amp; Entry</a>
+      <a href="#practical" class="qnav-item"><span class="qnav-icon">ℹ️</span> Practical</a>
+    </div>
+  </div>
+
+  {# ── CITIES SECTION ──────────────────────────────────────────── #}
+  <section class="section cities-section" id="cities">
+    <div class="section-inner">
+      <div class="section-header">
+        <h2 class="section-title">Cities of <span>Uzbekistan</span></h2>
+        <a href="/cities/" class="see-all">All cities →</a>
+      </div>
+
+      <div class="cities-grid">
+        {% for city in featured_cities %}
+        <a href="{{ city.url }}" class="city-card">
+          {% if city.hero_image %}
+          {% if forloop.first %}
+          {% image city.hero_image fill-800x1000 format-webp as city_img %}
+          {% else %}
+          {% image city.hero_image fill-600x450 format-webp as city_img %}
+          {% endif %}
+          <img class="city-card-img" src="{{ city_img.url }}" alt="{{ city.title }}" loading="{% if forloop.first %}eager{% else %}lazy{% endif %}" width="{{ city_img.width }}" height="{{ city_img.height }}">
+          {% else %}
+          <img class="city-card-img" src="https://images.unsplash.com/photo-1586105251261-72a756497a11?w=800&q=80" alt="{{ city.title }}" loading="lazy" width="800" height="600">
+          {% endif %}
+          <div class="city-card-overlay"></div>
+          <div class="city-card-body">
+            {% if city.badge %}<span class="city-tag">{{ city.badge }}</span>{% endif %}
+            <div class="city-name">{{ city.title }}</div>
+            {% if forloop.first and city.tagline %}<div class="city-desc">{{ city.tagline }}</div>{% endif %}
+          </div>
+        </a>
+        {% empty %}
+        {# Fallback static cards shown before any content is added via CMS #}
+        <a href="/cities/samarkand/" class="city-card">
+          <img class="city-card-img" src="https://images.unsplash.com/photo-1586105251261-72a756497a11?w=800&q=80" alt="Registan Square, Samarkand" loading="eager" width="800" height="600">
+          <div class="city-card-overlay"></div>
+          <div class="city-card-body">
+            <span class="city-tag">Must Visit</span>
+            <div class="city-name">Samarkand</div>
+            <div class="city-desc">The jewel of the Silk Road. Home to Registan, Shah-i-Zinda, and the eternal blue domes.</div>
+          </div>
+        </a>
+        <a href="/cities/bukhara/" class="city-card">
+          <img class="city-card-img" src="https://images.unsplash.com/photo-1597149053889-9e80a1ba7d68?w=600&q=80" alt="Bukhara old city" loading="lazy" width="600" height="450">
+          <div class="city-card-overlay"></div>
+          <div class="city-card-body"><div class="city-name">Bukhara</div></div>
+        </a>
+        <a href="/cities/khiva/" class="city-card">
+          <img class="city-card-img" src="https://images.unsplash.com/photo-1596523903840-44ca9c8a7d8f?w=600&q=80" alt="Khiva Ichon-Qala" loading="lazy" width="600" height="450">
+          <div class="city-card-overlay"></div>
+          <div class="city-card-body"><span class="city-tag">UNESCO</span><div class="city-name">Khiva</div></div>
+        </a>
+        <a href="/cities/tashkent/" class="city-card">
+          <img class="city-card-img" src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80" alt="Tashkent" loading="lazy" width="600" height="450">
+          <div class="city-card-overlay"></div>
+          <div class="city-card-body"><div class="city-name">Tashkent</div></div>
+        </a>
+        <a href="/cities/nukus/" class="city-card">
+          <img class="city-card-img" src="https://images.unsplash.com/photo-1509587584298-0f3b3a3a1797?w=600&q=80" alt="Karakalpakstan" loading="lazy" width="600" height="450">
+          <div class="city-card-overlay"></div>
+          <div class="city-card-body"><div class="city-name">Nukus</div></div>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  {# ── WHAT TO SEE ─────────────────────────────────────────────── #}
+  <section class="section" id="sights" style="background: var(--cream);">
+    <div class="section-inner">
+      <div class="section-header">
+        <h2 class="section-title">What to <span>See</span></h2>
+        <a href="/sights/" class="see-all">All sights →</a>
+      </div>
+      <div class="articles-grid">
+        <a href="/sights/registan/" class="article-card">
+          <img class="article-img" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80" alt="Registan Square Samarkand" loading="lazy" width="600" height="338">
+          <div class="article-body">
+            <div class="article-cat">🏛 Samarkand</div>
+            <div class="article-title">The Registan: Heart of the Ancient Silk Road</div>
+            <div class="article-meta">Madrasas · Tilya-Kori · Ulugbek · Sher-Dor</div>
+          </div>
+        </a>
+        <a href="/sights/kalon-minaret/" class="article-card">
+          <img class="article-img" src="https://images.unsplash.com/photo-1582139329536-e7284fece509?w=600&q=80" alt="Kalon Minaret Bukhara" loading="lazy" width="600" height="338">
+          <div class="article-body">
+            <div class="article-cat">🏙️ Bukhara</div>
+            <div class="article-title">Kalon Minaret — the Tower Genghis Khan Spared</div>
+            <div class="article-meta">Minaret · Kalon Mosque · Old City</div>
+          </div>
+        </a>
+        <a href="/sights/chorsu-bazaar/" class="article-card">
+          <img class="article-img" src="https://images.unsplash.com/photo-1578944032637-f09897c5233d?w=600&q=80" alt="Chorsu Bazaar Tashkent" loading="lazy" width="600" height="338">
+          <div class="article-body">
+            <div class="article-cat">🏙️ Tashkent</div>
+            <div class="article-title">Chorsu Bazaar: Sensory Overload in the Best Way</div>
+            <div class="article-meta">Market · Food · Spices · Crafts</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {# ── AD SLOT 2: Mid-page 728×90 ──────────────────────────────── #}
+  <div class="ad-midpage">
+    <div class="ad-placeholder">
+      <span class="ad-dot"></span>
+      Advertisement — 728 × 90
+      <span class="ad-dot"></span>
+    </div>
+  </div>
+
+  {# ── PRACTICAL INFO STRIP ────────────────────────────────────── #}
+  <section class="practical-section" id="practical">
+    <div class="section-inner">
+      <div class="practical-grid">
+        <a href="/visa/" class="practical-item">
+          <span class="practical-icon">🛂</span>
+          <div class="practical-title">Visa &amp; Entry</div>
+          <div class="practical-desc">Visa-free for 100+ countries. e-Visa guide &amp; border info.</div>
+        </a>
+        <a href="/practical/sim/" class="practical-item">
+          <span class="practical-icon">📱</span>
+          <div class="practical-title">SIM &amp; eSIM</div>
+          <div class="practical-desc">Ucell, Beeline, UMS. Where to buy, how to top up.</div>
+        </a>
+        <a href="/practical/transport/" class="practical-item">
+          <span class="practical-icon">🚂</span>
+          <div class="practical-title">Getting Around</div>
+          <div class="practical-desc">Afrosiyob train, Yandex Go, shared taxis, metro.</div>
+        </a>
+        <a href="/practical/currency/" class="practical-item">
+          <span class="practical-icon">💱</span>
+          <div class="practical-title">Money &amp; Currency</div>
+          <div class="practical-desc">UZS, exchange rates, where to change money safely.</div>
+        </a>
+        <a href="/practical/weather/" class="practical-item">
+          <span class="practical-icon">☀️</span>
+          <div class="practical-title">Best Time to Visit</div>
+          <div class="practical-desc">Spring (Apr–May) and autumn (Sep–Oct) are ideal.</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {# ── ROUTES ──────────────────────────────────────────────────── #}
+  <section class="section" id="routes" style="background: white;">
+    <div class="section-inner">
+      <div class="section-header">
+        <h2 class="section-title">Travel <span>Routes</span></h2>
+        <a href="/routes/" class="see-all">All routes →</a>
+      </div>
+      <div class="routes-grid">
+        {% for route in featured_routes %}
+        <a href="{{ route.url }}" class="route-card">
+          {% if route.cover_image %}
+          {% image route.cover_image fill-400x533 format-webp as route_img %}
+          <div class="route-card-bg" style="background-image: url('{{ route_img.url }}')"></div>
+          {% else %}
+          <div class="route-card-bg" style="background-image: url('https://images.unsplash.com/photo-1586105251261-72a756497a11?w=500&q=80')"></div>
+          {% endif %}
+          <div class="route-card-overlay"></div>
+          <div class="route-card-body">
+            <div class="route-duration">{{ route.duration }}</div>
+            <div class="route-title">{{ route.title }}</div>
+            <div class="route-cities">{{ route.cities_covered }}</div>
+          </div>
+        </a>
+        {% empty %}
+        <a href="/routes/silk-road-classic/" class="route-card">
+          <div class="route-card-bg" style="background-image: url('https://images.unsplash.com/photo-1586105251261-72a756497a11?w=500&q=80')"></div>
+          <div class="route-card-overlay"></div>
+          <div class="route-card-body">
+            <div class="route-duration">5 Days</div>
+            <div class="route-title">Silk Road Classic</div>
+            <div class="route-cities">Samarkand · Bukhara · Khiva</div>
+          </div>
+        </a>
+        <a href="/routes/grand-uzbekistan/" class="route-card">
+          <div class="route-card-bg" style="background-image: url('https://images.unsplash.com/photo-1597149053889-9e80a1ba7d68?w=500&q=80')"></div>
+          <div class="route-card-overlay"></div>
+          <div class="route-card-body">
+            <div class="route-duration">10 Days</div>
+            <div class="route-title">Grand Uzbekistan</div>
+            <div class="route-cities">Tashkent · Samarkand · Bukhara · Khiva · Nukus</div>
+          </div>
+        </a>
+        <a href="/routes/tashkent-weekend/" class="route-card">
+          <div class="route-card-bg" style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=500&q=80')"></div>
+          <div class="route-card-overlay"></div>
+          <div class="route-card-body">
+            <div class="route-duration">2–3 Days</div>
+            <div class="route-title">Tashkent Weekend</div>
+            <div class="route-cities">Capital deep dive</div>
+          </div>
+        </a>
+        <a href="/routes/fergana-valley/" class="route-card">
+          <div class="route-card-bg" style="background-image: url('https://images.unsplash.com/photo-1509587584298-0f3b3a3a1797?w=500&q=80')"></div>
+          <div class="route-card-overlay"></div>
+          <div class="route-card-body">
+            <div class="route-duration">4 Days</div>
+            <div class="route-title">Fergana Valley</div>
+            <div class="route-cities">Andijan · Namangan · Kokand · Rishtan</div>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  {# ── NEWS + SIDEBAR ──────────────────────────────────────────── #}
+  <section class="section news-section">
+    <div class="section-inner">
+      <div class="news-layout">
+        <div>
+          <div class="section-header">
+            <h2 class="section-title">Latest <span>Tips</span></h2>
+            <a href="/blog/" class="see-all">All articles →</a>
+          </div>
+
+          {# AD SLOT 3: Inline 728×90 #}
+          <div class="ad-article">
+            <div class="ad-placeholder">
+              <span class="ad-dot"></span>
+              Advertisement — 728 × 90
+              <span class="ad-dot"></span>
+            </div>
+          </div>
+
+          <div class="news-main-grid">
+            {% for post in featured_articles %}
+            <a href="{{ post.url }}" class="article-card">
+              {% if post.cover_image %}
+              {% image post.cover_image fill-500x281 format-webp as post_img %}
+              <img class="article-img" src="{{ post_img.url }}" alt="{{ post.title }}" loading="lazy" width="500" height="281">
+              {% else %}
+              <img class="article-img" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&q=80" alt="{{ post.title }}" loading="lazy" width="500" height="281">
+              {% endif %}
+              <div class="article-body">
+                <div class="article-cat">{{ post.get_category_display_icon }} {{ post.get_category_display }}</div>
+                <div class="article-title">{{ post.title }}</div>
+                {% if post.excerpt %}<div class="article-meta">{{ post.excerpt|truncatechars:80 }}</div>{% endif %}
+              </div>
+            </a>
+            {% empty %}
+            <a href="/blog/best-food-uzbekistan/" class="article-card">
+              <img class="article-img" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&q=80" alt="Plov Uzbek food" loading="lazy" width="500" height="281">
+              <div class="article-body">
+                <div class="article-cat">🍽️ Food Guide</div>
+                <div class="article-title">10 Dishes You Must Try in Uzbekistan</div>
+                <div class="article-meta">Plov · Samsa · Shurpa · Lagman</div>
+              </div>
+            </a>
+            <a href="/blog/uzbekistan-sim-card/" class="article-card">
+              <img class="article-img" src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&q=80" alt="SIM card" loading="lazy" width="500" height="281">
+              <div class="article-body">
+                <div class="article-cat">📱 Practical</div>
+                <div class="article-title">Best SIM Card in Uzbekistan for Tourists (2025)</div>
+                <div class="article-meta">Ucell vs Beeline vs UMS</div>
+              </div>
+            </a>
+            <a href="/blog/tashkent-metro/" class="article-card">
+              <img class="article-img" src="https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?w=500&q=80" alt="Tashkent metro" loading="lazy" width="500" height="281">
+              <div class="article-body">
+                <div class="article-cat">🚂 Tashkent</div>
+                <div class="article-title">Tashkent Metro: The Most Beautiful Underground in Central Asia</div>
+                <div class="article-meta">Art stations · Map · Tips</div>
+              </div>
+            </a>
+            {% endfor %}
+          </div>
+        </div>
+
+        {# ── SIDEBAR ──────────────────────────────────────────── #}
+        <div class="news-sidebar-sticky">
+          <div class="sidebar-title">Popular Now</div>
+          {% for post in popular_posts %}
+          <a href="{{ post.url }}" class="sidebar-news-item">
+            {% if post.cover_image %}
+            {% image post.cover_image fill-64x64 format-webp as sb_img %}
+            <img class="sidebar-thumb" src="{{ sb_img.url }}" alt="{{ post.title }}" loading="lazy" width="64" height="64">
+            {% else %}
+            <img class="sidebar-thumb" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="{{ post.title }}" loading="lazy" width="64" height="64">
+            {% endif %}
+            <div>
+              <div class="sidebar-news-title">{{ post.title }}</div>
+              <div class="sidebar-news-date">{{ post.first_published_at|date:"N Y" }}</div>
+            </div>
+          </a>
+          {% empty %}
+          <a href="/blog/uzbekistan-visa-free/" class="sidebar-news-item">
+            <img class="sidebar-thumb" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Visa" loading="lazy" width="64" height="64">
+            <div>
+              <div class="sidebar-news-title">Uzbekistan Visa-Free Countries 2025 — Full List</div>
+              <div class="sidebar-news-date">Updated May 2025</div>
+            </div>
+          </a>
+          <a href="/blog/best-hotels-samarkand/" class="sidebar-news-item">
+            <img class="sidebar-thumb" src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=100&q=80" alt="Hotel Samarkand" loading="lazy" width="64" height="64">
+            <div>
+              <div class="sidebar-news-title">Best Hotels in Samarkand — by Booking.com Rating</div>
+              <div class="sidebar-news-date">May 2025</div>
+            </div>
+          </a>
+          <a href="/blog/afrosiyob-train/" class="sidebar-news-item">
+            <img class="sidebar-thumb" src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=100&q=80" alt="Afrosiyob train" loading="lazy" width="64" height="64">
+            <div>
+              <div class="sidebar-news-title">Afrosiyob High-Speed Train: Tashkent to Samarkand</div>
+              <div class="sidebar-news-date">March 2025</div>
+            </div>
+          </a>
+          {% endfor %}
+
+          {# AD SLOT 4: Sidebar 300×250 #}
+          <div class="ad-sidebar">
+            <div class="ad-placeholder" style="width:280px;height:220px;border-color:rgba(0,0,0,0.12);color:var(--muted)">
+              <span class="ad-dot" style="background:var(--gold)"></span>
+              300 × 250
+              <span class="ad-dot" style="background:var(--gold)"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {# ── VISA BANNER ─────────────────────────────────────────────── #}
+  <section class="visa-banner" id="visa">
+    <div class="visa-banner-inner">
+      <h2>🛂 {{ page.visa_title }}</h2>
+      <p>{{ page.visa_body }}</p>
+      <div class="visa-flags">
+        <span class="visa-flag">🇺🇸 USA</span>
+        <span class="visa-flag">🇬🇧 UK</span>
+        <span class="visa-flag">🇩🇪 Germany</span>
+        <span class="visa-flag">🇫🇷 France</span>
+        <span class="visa-flag">🇯🇵 Japan</span>
+        <span class="visa-flag">🇰🇷 South Korea</span>
+        <span class="visa-flag">🇨🇳 China</span>
+        <span class="visa-flag">🇮🇳 India</span>
+        <span class="visa-flag">+90 more →</span>
+      </div>
+      <a href="/visa/" class="btn-primary">Full Visa Guide →</a>
+    </div>
+  </section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  // Active quick-nav on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navItems = document.querySelectorAll('.qnav-item');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navItems.forEach(item => {
+          item.classList.toggle('active', item.getAttribute('href') === '#' + entry.target.id);
+        });
+      }
+    });
+  }, { threshold: 0.4 });
+  sections.forEach(s => observer.observe(s));
+</script>
+{% endblock %}
