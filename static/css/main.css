@@ -575,7 +575,10 @@ body {
   font-size: 2.6rem; color: white; margin-bottom: 1rem;
 }
 
-.visa-banner p { color: rgba(255,255,255,0.7); font-size: 1rem; margin-bottom: 2rem; }
+.visa-banner p { color: #fff; font-size: 1rem; margin-bottom: 2rem; }
+
+.visa-banner a { color: #fff; text-decoration: underline; }
+.visa-banner a:hover { color: var(--gold-light); }
 
 .visa-flags {
   display: flex; gap: 0.5rem; justify-content: center;
