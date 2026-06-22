@@ -3,6 +3,32 @@
 <div style="margin-top: 64px; min-height: 60vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 2rem;">
   <div style="max-width: 560px;">
     <div style="font-family: 'Cormorant Garamond', serif; font-size: 8rem; color: var(--gold-deep); line-height: 1;">404</div>
+
+    {% if LANGUAGE_CODE == 'ru' %}
+    <h1 style="font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; margin-bottom: 1rem;">Похоже, вы сбились с маршрута...</h1>
+    <p style="color: var(--muted); margin-bottom: 1.5rem; line-height: 1.7;">
+      Даже самые опытные путешественники иногда теряются. Этой конкретной страницы не существует
+      на нашей карте, но самые яркие открытия случаются именно тогда, когда сворачиваешь не туда.
+    </p>
+    <p style="color: var(--ink); font-weight: 600; margin-bottom: 1.5rem;">Поможем вам вернуться на знакомую территорию:</p>
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      <a href="/{{ LANGUAGE_CODE }}/" class="btn-primary">🗺️ Вернуться на базу (Главная)</a>
+      <a href="/{{ LANGUAGE_CODE }}/cities/" class="btn-outline btn-outline--on-light">✈️ Смотреть направления</a>
+    </div>
+
+    {% elif LANGUAGE_CODE == 'uz' %}
+    <h1 style="font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; margin-bottom: 1rem;">Siz yo'ldan adashib qoldingiz shekilli...</h1>
+    <p style="color: var(--muted); margin-bottom: 1.5rem; line-height: 1.7;">
+      Hatto eng tajribali sayohatchilar ham vaqti-vaqti bilan yo'lni yo'qotib qo'yadi. Bu sahifa
+      xaritamizda mavjud bo'lmasa-da, ba'zan eng ajoyib kashfiyotlar aynan noto'g'ri burilishdan keyin yuz beradi.
+    </p>
+    <p style="color: var(--ink); font-weight: 600; margin-bottom: 1.5rem;">Sizni tanish hududga qaytaramiz:</p>
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      <a href="/{{ LANGUAGE_CODE }}/" class="btn-primary">🗺️ Bazaga qaytish (Bosh sahifa)</a>
+      <a href="/{{ LANGUAGE_CODE }}/cities/" class="btn-outline btn-outline--on-light">✈️ Yo'nalishlarimizni ko'rish</a>
+    </div>
+
+    {% else %}
     <h1 style="font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; margin-bottom: 1rem;">Looks like you've wandered off the trail...</h1>
     <p style="color: var(--muted); margin-bottom: 1.5rem; line-height: 1.7;">
       Even the best explorers get a little lost sometimes. While this specific destination
@@ -13,6 +39,8 @@
       <a href="/{{ LANGUAGE_CODE }}/" class="btn-primary">🗺️ Return to Basecamp (Homepage)</a>
       <a href="/{{ LANGUAGE_CODE }}/cities/" class="btn-outline btn-outline--on-light">✈️ Discover Our Destinations</a>
     </div>
+    {% endif %}
+
   </div>
 </div>
 {% endblock %}
