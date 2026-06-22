@@ -1,5 +1,5 @@
 {% load wagtailimages_tags %}
-{% image value.image original format-webp as img %}
+{% image value.image width-1600 format-webp as img %}
 <figure class="block-image block-image--{{ value.alignment }}">
   <img src="{{ img.url }}" alt="{{ value.caption|default:value.image.title }}" loading="lazy" width="{{ img.width }}" height="{{ img.height }}">
   {% if value.caption or value.attribution %}

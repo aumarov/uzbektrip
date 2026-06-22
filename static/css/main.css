@@ -6,6 +6,7 @@
 :root {
   --gold:       #C9A84C;
   --gold-light: #E8C96D;
+  --gold-deep:  #8A6D1F;  /* WCAG AA-passing gold for text on white/cream -- --gold itself is ~2.2:1, fails contrast as foreground text on light backgrounds */
   --lapis:      #1A3A6B;
   --lapis-mid:  #2B5499;
   --turquoise:  #2AABB8;
@@ -18,12 +19,13 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 
 body {
   font-family: 'DM Sans', sans-serif;
   background: var(--cream);
   color: var(--ink);
+  overflow-x: hidden;
   line-height: 1.6;
 }
 
@@ -70,8 +72,8 @@ body {
   letter-spacing: 0.02em;
 }
 .logo span { color: white; }
-.logo-img { height: 34px; width: auto; display: block; }
-.footer-brand .logo-img { height: 42px; }
+.logo-img { height: 46px; width: auto; display: block; }
+.footer-brand .logo-img { height: 48px; }
 
 .nav-links {
   display: flex; gap: 2rem; list-style: none;
@@ -347,7 +349,7 @@ body {
   font-size: 2.4rem; font-weight: 700; line-height: 1.15;
   color: var(--ink);
 }
-.section-title span { color: var(--gold); }
+.section-title span { color: var(--gold-deep); }
 
 .see-all {
   color: var(--lapis-mid); font-size: 0.85rem;
@@ -439,7 +441,7 @@ body {
 
 .article-cat {
   font-size: 0.7rem; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--gold);
+  text-transform: uppercase; color: var(--gold-deep);
   font-weight: 700; margin-bottom: 0.4rem;
 }
 
@@ -872,7 +874,7 @@ footer {
 .timeline-item__marker {
   font-family: 'Cormorant Garamond', serif;
   font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--gold); padding-top: 0.2rem;
+  text-transform: uppercase; color: var(--gold-deep); padding-top: 0.2rem;
 }
 .timeline-item__title {
   font-family: 'Cormorant Garamond', serif;

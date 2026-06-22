@@ -61,9 +61,9 @@
             {% if block.value.attribution %}<cite style="font-size: 0.9rem; font-style: normal; color: var(--muted); display: block; margin-top: 0.5rem;">— {{ block.value.attribution }}</cite>{% endif %}
           </blockquote>
         {% elif block.block_type == 'image_block' %}
-          {% image block.value.image original format-webp as bimg %}
+          {% image block.value.image width-1600 format-webp as bimg %}
           <figure style="margin: 2rem 0;">
-            <img src="{{ bimg.url }}" alt="{{ block.value.caption }}" loading="lazy" style="width: 100%; border-radius: 4px;">
+            <img src="{{ bimg.url }}" alt="{{ block.value.caption }}" loading="lazy" width="{{ bimg.width }}" height="{{ bimg.height }}" style="width: 100%; border-radius: 4px;">
             {% if block.value.caption %}<figcaption style="font-size: 0.8rem; color: var(--muted); margin-top: 0.5rem; text-align: center;">{{ block.value.caption }}</figcaption>{% endif %}
           </figure>
         {% endif %}
