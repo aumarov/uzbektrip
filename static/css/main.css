@@ -302,6 +302,11 @@ body {
 }
 .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.1); }
 
+/* For use on light/cream backgrounds -- .btn-outline's white-on-transparent
+   style only works on dark hero-style backgrounds. */
+.btn-outline--on-light { border-color: var(--lapis); color: var(--lapis); }
+.btn-outline--on-light:hover { background: var(--lapis); color: white; }
+
 /* ── QUICK NAV ──────────────────────────────────────────────────── */
 .quick-nav {
   background: white;

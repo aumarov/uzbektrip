@@ -1,11 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
 <div style="margin-top: 64px; min-height: 60vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 2rem;">
-  <div>
-    <div style="font-family: 'Cormorant Garamond', serif; font-size: 8rem; color: var(--gold); line-height: 1;">404</div>
-    <h1 style="font-family: 'Cormorant Garamond', serif; font-size: 2rem; margin-bottom: 1rem;">Page Not Found</h1>
-    <p style="color: var(--muted); margin-bottom: 2rem;">The page you're looking for doesn't exist or has been moved.</p>
-    <a href="/" class="btn-primary">Back to Home</a>
+  <div style="max-width: 560px;">
+    <div style="font-family: 'Cormorant Garamond', serif; font-size: 8rem; color: var(--gold-deep); line-height: 1;">404</div>
+    <h1 style="font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; margin-bottom: 1rem;">Looks like you've wandered off the trail...</h1>
+    <p style="color: var(--muted); margin-bottom: 1.5rem; line-height: 1.7;">
+      Even the best explorers get a little lost sometimes. While this specific destination
+      doesn't exist on our map, some of the greatest discoveries happen when you take a wrong turn.
+    </p>
+    <p style="color: var(--ink); font-weight: 600; margin-bottom: 1.5rem;">Let's get you back to familiar territory:</p>
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      <a href="/{{ LANGUAGE_CODE }}/" class="btn-primary">🗺️ Return to Basecamp (Homepage)</a>
+      <a href="/{{ LANGUAGE_CODE }}/cities/" class="btn-outline btn-outline--on-light">✈️ Discover Our Destinations</a>
+    </div>
   </div>
 </div>
 {% endblock %}
