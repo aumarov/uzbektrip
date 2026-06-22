@@ -28,7 +28,7 @@
 {% block content %}
 
   {# ── HERO ────────────────────────────────────────────────────── #}
-  <div style="position:relative;height:60vh;min-height:400px;display:flex;align-items:flex-end;overflow:hidden;">
+  <div style="position:relative;height:65vh;min-height:550px;display:flex;align-items:flex-end;overflow:hidden;">
     {% if page.hero_image %}
     {% image page.hero_image fill-1440x600 format-webp as hero %}
     <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(26,21,16,.85) 0%,rgba(0,0,0,.2) 60%),url('{{ hero.url }}') center/cover;"></div>
