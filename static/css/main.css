@@ -570,7 +570,7 @@ body {
 
 .visa-banner-inner { position: relative; max-width: 640px; margin: 0 auto; }
 
-.visa-banner h2 {
+.visa-banner h1, .visa-banner h2 {
   font-family: 'Cormorant Garamond', serif;
   font-size: 2.6rem; color: white; margin-bottom: 1rem;
 }
@@ -734,7 +734,7 @@ footer {
   margin: 0 0 0.5rem;
 }
 .block-quote__footer {
-  font-size: 0.85rem; color: var(--muted);
+  display: block; font-size: 0.85rem; color: var(--muted); font-style: normal;
 }
 
 /* ── ALERT BLOCK ─────────────────────────────────────────────────── */
