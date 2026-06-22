@@ -182,3 +182,47 @@ class SEOSettings(BaseGenericSetting):
 
     def get_same_as_list(self):
         return [url.strip() for url in self.same_as_links.splitlines() if url.strip()]
+
+
+@register_setting(icon="resubmit")
+class AnalyticsSettings(BaseGenericSetting):
+    """
+    Visitor tracking codes, injected on every page when enabled. Each
+    platform has its own on/off switch and a raw code box — paste the
+    snippet exactly as the platform gives it to you (script tags and all).
+    """
+
+    ga4_enabled = models.BooleanField(default=False, verbose_name="Enabled")
+    ga4_code = models.TextField(
+        blank=True,
+        verbose_name="GA4 tracking code",
+        help_text="Paste the full Google tag (gtag.js) snippet from Google Analytics, including <script> tags.",
+    )
+
+    yandex_metrica_enabled = models.BooleanField(default=False, verbose_name="Enabled")
+    yandex_metrica_code = models.TextField(
+        blank=True,
+        verbose_name="Yandex Metrica tracking code",
+        help_text="Paste the full counter code from Yandex Metrica, including <script> tags.",
+    )
+
+    panels = [
+        HelpPanel(
+            content=(
+                "Paste each platform's tracking snippet exactly as given (script tags and "
+                "all), then tick Enabled. Code entered here renders as-is on every page — "
+                "only paste code from sources you trust."
+            )
+        ),
+        MultiFieldPanel(
+            [FieldPanel("ga4_enabled"), FieldPanel("ga4_code")],
+            heading="Google Analytics 4",
+        ),
+        MultiFieldPanel(
+            [FieldPanel("yandex_metrica_enabled"), FieldPanel("yandex_metrica_code")],
+            heading="Yandex Metrica",
+        ),
+    ]
+
+    class Meta:
+        verbose_name = "Analytics"

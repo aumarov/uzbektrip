@@ -5,6 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  {# ── ANALYTICS (Settings -> Analytics) — placed first, per GA4/Yandex's own guidance #}
+  {% if analytics.ga4_enabled and analytics.ga4_code %}{{ analytics.ga4_code|safe }}{% endif %}
+  {% if analytics.yandex_metrica_enabled and analytics.yandex_metrica_code %}{{ analytics.yandex_metrica_code|safe }}{% endif %}
+
   {# ── CORE SEO ───────────────────────────────────────────────── #}
   <title>{% block title %}{% if page.seo_title %}{{ page.seo_title }}{% elif page.title %}{{ page.title }} — UzbekTrip{% else %}UzbekTrip — Discover Uzbekistan{% endif %}{% endblock %}</title>
   <meta name="description" content="{% block meta_desc %}{% if page.search_description %}{{ page.search_description }}{% else %}Your complete guide to tourism in Uzbekistan. Explore Samarkand, Bukhara, Tashkent, Khiva and more.{% endif %}{% endblock %}">
