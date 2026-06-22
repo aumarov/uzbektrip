@@ -328,7 +328,7 @@ body {
 
 .section-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 2.4rem; font-weight: 700;
+  font-size: 2.4rem; font-weight: 700; line-height: 1.15;
   color: var(--ink);
 }
 .section-title span { color: var(--gold); }
@@ -337,7 +337,7 @@ body {
   color: var(--lapis-mid); font-size: 0.85rem;
   font-weight: 600; text-decoration: none;
   letter-spacing: 0.05em; display: flex; align-items: center; gap: 0.4rem;
-  transition: gap 0.2s;
+  transition: gap 0.2s; flex-shrink: 0; white-space: nowrap;
 }
 .see-all:hover { gap: 0.7rem; }
 
@@ -670,6 +670,10 @@ footer {
   .footer-top { grid-template-columns: 1fr; }
   .hero-stats { display: none; }
   .section { padding: 3rem 1.25rem; }
+  /* justify-content:center clips the edges of an overflowing scroll
+     row on mobile -- centered content that's wider than the viewport
+     leaves unreachable overflow on the left. Start flush-left instead. */
+  .quick-nav-inner { justify-content: flex-start; }
 }
 
 @media (max-width: 480px) {
