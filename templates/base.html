@@ -124,8 +124,8 @@
     <div class="nav-inner">
       <a href="/{{ lang }}/" class="logo"><img src="{% static 'img/logo-horizontal.svg' %}" alt="UzbekTrip" class="logo-img"></a>
 
-      <ul class="nav-links">
-        {% if sections.show_cities %}<li><a href="/{{ lang }}/cities/">Cities</a></li>{% endif %}
+      <ul class="nav-links" id="primary-nav-links">
+        {% if sections.show_cities %}<li><a href="/{{ lang }}/cities/">Destinations</a></li>{% endif %}
         {% if sections.show_sights %}<li><a href="/{{ lang }}/sights/">Sights</a></li>{% endif %}
         {% if sections.show_eat %}<li><a href="/{{ lang }}/restaurants/">Eat</a></li>{% endif %}
         {% if sections.show_stay %}<li><a href="/{{ lang }}/hotels/">Stay</a></li>{% endif %}
@@ -145,6 +145,9 @@
           {% endwith %}
         </div>
         {% endif %}
+        <button class="nav-burger" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav-links">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
   </nav>
@@ -176,13 +179,13 @@
 
         {% if sections.show_cities %}
         <div>
-          <div class="footer-col-title">Cities</div>
+          <div class="footer-col-title">Destinations</div>
           <ul class="footer-links">
             <li><a href="/{{ lang }}/cities/samarkand/">Samarkand</a></li>
             <li><a href="/{{ lang }}/cities/bukhara/">Bukhara</a></li>
             <li><a href="/{{ lang }}/cities/tashkent/">Tashkent</a></li>
             <li><a href="/{{ lang }}/cities/khiva/">Khiva</a></li>
-            <li><a href="/{{ lang }}/cities/">All Cities →</a></li>
+            <li><a href="/{{ lang }}/cities/">All Destinations →</a></li>
           </ul>
         </div>
         {% endif %}

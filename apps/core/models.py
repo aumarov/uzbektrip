@@ -12,7 +12,7 @@ class SectionSettings(BaseGenericSetting):
     Stay aren't ready to launch yet.
     """
 
-    show_cities = models.BooleanField(default=True, verbose_name="Cities")
+    show_cities = models.BooleanField(default=True, verbose_name="Destinations")
     show_sights = models.BooleanField(default=True, verbose_name="Sights")
     show_eat = models.BooleanField(
         default=False,

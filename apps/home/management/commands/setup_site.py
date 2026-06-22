@@ -65,7 +65,7 @@ class Command(BaseCommand):
 
         # Create sub-sections
         sections = [
-            ("Cities", "cities", CityIndexPage),
+            ("Destinations", "cities", CityIndexPage),
             ("Sights", "sights", SightsIndexPage),
             ("Eat", "restaurants", RestaurantIndexPage),
             ("Stay", "hotels", HotelIndexPage),

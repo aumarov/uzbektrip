@@ -40,3 +40,28 @@ document.querySelectorAll('.accordion-trigger').forEach(trigger => {
 
   sections.forEach(s => observer.observe(s));
 })();
+
+// Mobile hamburger menu
+(function () {
+  const burger = document.querySelector('.nav-burger');
+  const nav = document.querySelector('.main-nav');
+  if (!burger || !nav) return;
+
+  const close = () => {
+    nav.classList.remove('nav-open');
+    burger.setAttribute('aria-expanded', 'false');
+  };
+
+  burger.addEventListener('click', () => {
+    const isOpen = nav.classList.toggle('nav-open');
+    burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+
+  // Close after tapping a link, or when tapping outside the open menu
+  nav.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', close);
+  });
+  document.addEventListener('click', (e) => {
+    if (nav.classList.contains('nav-open') && !nav.contains(e.target)) close();
+  });
+})();
