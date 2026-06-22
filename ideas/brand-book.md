@@ -120,13 +120,15 @@ See `editorial-standards.md` for the full content style guide.
 
 ```
 ideas/
-├── brand-book.md              ← this file
-├── editorial-standards.md
+├── brand-book.md              ← this file (PDF version: brand-book.pdf)
+├── editorial-standards.md     (PDF version: editorial-standards.pdf)
 └── logo/
     ├── icon-mark.svg
     ├── icon-mark-on-cream.svg
     ├── logo-horizontal-dark.svg
     └── logo-horizontal-light.svg
 ```
+
+The `.md` files are the source of truth — regenerate the PDFs from them whenever either is updated, so the two formats never drift apart.
 
 Production-ready raster exports (`logo.png`, `favicon-32.png`, `apple-touch-icon.png`) live in `static/img/` and should be regenerated from these SVGs whenever the mark changes, to keep brand book and shipped assets in sync.
