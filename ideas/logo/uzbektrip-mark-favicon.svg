@@ -1,0 +1,22 @@
+<svg width="64" height="64" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>uzbektrip.com mark</title>
+  <desc>Silk Road compass star — uzbektrip.com brand mark and favicon</desc>
+
+  <!-- Outer star -->
+  <polygon 
+    points="24,3 27.5,14 38.5,11 31,21 42,24.5 31,27.5 38,38 24,31 10,38 17,27.5 6,24.5 17,21 9.5,11 20.5,14"
+    fill="none" 
+    stroke="#C9A84C" 
+    stroke-width="1.5"
+    stroke-linejoin="round"
+  />
+  <!-- Decorative inner ring -->
+  <circle cx="24" cy="24" r="7" fill="none" stroke="#1A3A6B" stroke-width="1.2"/>
+  <!-- Center -->
+  <circle cx="24" cy="24" r="3" fill="#1A3A6B"/>
+  <!-- Cardinal dots -->
+  <circle cx="24" cy="3" r="1.5" fill="#C9A84C" opacity="0.7"/>
+  <circle cx="24" cy="45" r="1.5" fill="#C9A84C" opacity="0.7"/>
+  <circle cx="6" cy="24.5" r="1.5" fill="#C9A84C" opacity="0.7"/>
+  <circle cx="42" cy="24.5" r="1.5" fill="#C9A84C" opacity="0.7"/>
+</svg>

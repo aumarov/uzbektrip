@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Brand Book</title>
+<style>
+  @page {
+    margin: 24mm 20mm 22mm 20mm;
+    @bottom-right { content: counter(page) " / " counter(pages); color: #6B6258; font-size: 8pt; }
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'DM Sans', Helvetica, Arial, sans-serif;
+    color: #1A1510;
+    line-height: 1.65;
+    font-size: 11pt;
+    background: #FAF6EE;
+  }
+
+  /* ── COVER PAGE ──────────────────────────────────────────── */
+  .cover {
+    page-break-after: always;
+    margin: -24mm -20mm 0 -20mm;
+    height: 297mm;
+    background:
+      radial-gradient(circle at 15% 15%, rgba(201,168,76,0.18) 0%, transparent 40%),
+      radial-gradient(circle at 85% 85%, rgba(42,171,184,0.15) 0%, transparent 40%),
+      linear-gradient(160deg, #1A3A6B 0%, #14294d 100%);
+    color: white;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 0 20mm;
+  }
+  .cover .mark { width: 90px; height: 90px; margin-bottom: 1.6em; }
+  .cover .eyebrow {
+    font-family: 'DM Sans', sans-serif; font-size: 11pt; letter-spacing: 0.25em;
+    text-transform: uppercase; color: #E8C96D; margin-bottom: 1.2em;
+  }
+  .cover h1 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 46pt; font-weight: 700; color: white;
+    margin: 0 0 0.4em 0; line-height: 1.1; border: none;
+  }
+  .cover h1 .accent { color: #E8C96D; font-style: italic; }
+  .cover .subtitle {
+    font-size: 13pt; color: rgba(255,255,255,0.75); max-width: 420px;
+    margin-bottom: 2.5em; line-height: 1.6;
+  }
+  .cover .version {
+    font-size: 9.5pt; letter-spacing: 0.1em; text-transform: uppercase;
+    color: #C9A84C; border-top: 1px solid rgba(201,168,76,0.4);
+    padding-top: 1em; margin-top: 1em;
+  }
+
+  /* ── CONTENT ─────────────────────────────────────────────── */
+  h1, h2, h3 { font-family: 'Cormorant Garamond', Georgia, serif; }
+  h2 {
+    font-size: 16pt; color: white; font-weight: 700;
+    background: linear-gradient(120deg, #1A3A6B, #2B5499);
+    padding: 0.55em 0.9em; margin: 1.9em 0 0.7em 0;
+    border-radius: 4px;
+    page-break-after: avoid;
+  }
+  h3 {
+    font-size: 13pt; color: #8A6D1F; font-weight: 700;
+    margin-top: 1.4em; margin-bottom: 0.4em;
+    page-break-after: avoid;
+  }
+  p { margin: 0 0 0.9em 0; }
+  em { color: #6B6258; }
+  strong { color: #1A3A6B; }
+  a { color: #2B5499; }
+
+  code {
+    background: #FFFFFF; border: 1px solid #E8DFD0;
+    padding: 1px 6px; border-radius: 3px;
+    font-size: 0.9em; color: #1A3A6B;
+  }
+  .swatch {
+    display: inline-block; width: 11px; height: 11px; border-radius: 50%;
+    margin-right: 4px; vertical-align: middle;
+    border: 1px solid rgba(0,0,0,0.15);
+  }
+
+  table {
+    width: 100%; border-collapse: collapse; margin: 0.8em 0 1.4em 0;
+    font-size: 9.8pt; background: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  th, td { border: 1px solid #E8DFD0; padding: 7px 10px; text-align: left; vertical-align: top; }
+  th { background: #1A3A6B; color: white; font-weight: 600; }
+  tr:nth-child(even) td { background: #FBF8F1; }
+  tr { page-break-inside: avoid; }
+
+  hr { border: none; border-top: 2px solid #E8DFD0; margin: 2.2em 0; }
+  blockquote {
+    border-left: 4px solid #C9A84C; background: rgba(201,168,76,0.07);
+    margin: 1em 0; padding: 0.6em 1.3em; border-radius: 0 4px 4px 0;
+    color: #6B6258; font-style: italic;
+  }
+  ul, ol { margin: 0.4em 0 1em 1.4em; }
+  li { margin-bottom: 0.35em; }
+  li::marker { color: #C9A84C; }
+
+  .footer-note {
+    margin-top: 3em; padding: 0.9em 1.2em; border-radius: 4px;
+    background: #1A3A6B; color: rgba(255,255,255,0.85);
+    font-size: 9pt; text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <svg class="mark" viewBox="0 0 100 100">
+    
+  <!-- UzbekTrip icon mark: 8-pointed girih star, a geometric motif found
+       across Registan, Shah-i-Zinda, and Ichon-Qala tilework. -->
+  <circle cx="50" cy="50" r="50" fill="#1A3A6B"/>
+  <path d="M 50.0,12.0 L 56.89,33.37 L 76.87,23.13 L 66.63,43.11 L 88.0,50.0 L 66.63,56.89 L 76.87,76.87 L 56.89,66.63 L 50.0,88.0 L 43.11,66.63 L 23.13,76.87 L 33.37,56.89 L 12.0,50.0 L 33.37,43.11 L 23.13,23.13 L 43.11,33.37 Z"
+        fill="#C9A84C"/>
+  <circle cx="50" cy="50" r="10" fill="#1A3A6B"/>
+
+  </svg>
+  <div class="eyebrow">UzbekTrip</div>
+  <h1>Brand Book</h1>
+  <div class="subtitle">The voice, visual identity, and design system behind UzbekTrip</div>
+  <div class="version">Version 1.0 &nbsp;&middot;&nbsp; June 2026</div>
+</div>
+
+<h2>1. Brand Positioning</h2>
+<p><strong>What we are:</strong> The most complete, independently-written travel guide to Uzbekistan — built for the moment Uzbekistan became one of the fastest-growing tourism destinations on earth (+73% growth vs. 2019, UN Tourism 2025).</p>
+<p><strong>The gap we fill:</strong> Existing Uzbekistan tourism sites are dated, government-run, or thin SEO content farms. UzbekTrip is the first portal built with the production quality, photography, and structured depth that travelers already expect from guides to Japan, Italy, or Morocco.</p>
+<p><strong>One-line positioning:</strong> <em>"Uzbekistan, the way travelers actually need it — by city, not by category."</em></p>
+<p><strong>Audience:</strong> International independent travelers (FIT — Free Independent Travelers) in the research and booking phase, aged 25–55, planning a first or second trip to Central Asia. Secondary audience: travel agents and tour operators sourcing structured city/route content.</p>
+<p><strong>Competitive set:</strong> Lonely Planet country pages, Trip.com destination guides, VisitUzbekistan.travel (the official government site — we're more current and more usable), TengriGuide (regional reference point).</p>
+<p><strong>What we are not:</strong> A booking engine, a forum, or a listicle farm. Every page should read like it was written by someone who has actually stood in the Registan at sunrise.</p>
+<hr />
+<h2>2. Logo</h2>
+<p>Located in <code>ideas/logo/</code>:</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>icon-mark.svg</code></td>
+<td>App icon, favicon, social avatar — dark lapis background</td>
+</tr>
+<tr>
+<td><code>icon-mark-on-cream.svg</code></td>
+<td>Same icon, light background variant</td>
+</tr>
+<tr>
+<td><code>logo-horizontal-dark.svg</code></td>
+<td>Primary lockup — site nav, dark UI, video intros</td>
+</tr>
+<tr>
+<td><code>logo-horizontal-light.svg</code></td>
+<td>Primary lockup — print, partner decks, light UI</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The mark:</strong> An 8-pointed girih star — the geometric motif found in the tilework of the Registan, Shah-i-Zinda, and Ichon-Qala. It is not a generic globe-and-pin travel-logo cliché; it is specific to the region we cover, and it scales cleanly from a 16px favicon to a banner.</p>
+<p><strong>Construction:</strong> Icon mark + wordmark, separated by 14px minimum clear space (measured as the icon's own radius). Never stretch, rotate, recolor outside the approved palette, or place the wordmark above/below the icon — horizontal lockup only.</p>
+<p><strong>Minimum size:</strong> Icon mark alone: 16px. Horizontal lockup: 120px wide (below this, drop to icon-only).</p>
+<p><strong>Don'ts:</strong>
+- Don't recreate the star with rounded corners or fewer/more than 8 points
+- Don't place the dark lockup on any background lighter than <code>--lapis-mid</code> (<span class="swatch" style="background:#2B5499"></span><code>#2B5499</code>) — contrast fails
+- Don't add a drop shadow, outline, or gradient to the mark
+- Don't translate "UzbekTrip" — the brand name stays Latin-script across EN/RU/UZ; only surrounding copy is translated</p>
+<hr />
+<h2>3. Color System</h2>
+<p>These are the production CSS variables (<code>static/css/main.css</code>) — the brand book and the codebase share one source of truth.</p>
+<table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Hex</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--lapis</code></td>
+<td><span class="swatch" style="background:#1A3A6B"></span><code>#1A3A6B</code></td>
+<td>Primary brand color — nav, headers, dark sections. Named for lapis lazuli, historically mined in the region and used to color Silk Road tilework blue.</td>
+</tr>
+<tr>
+<td><code>--lapis-mid</code></td>
+<td><span class="swatch" style="background:#2B5499"></span><code>#2B5499</code></td>
+<td>Secondary blue — links, hover states</td>
+</tr>
+<tr>
+<td><code>--gold</code></td>
+<td><span class="swatch" style="background:#C9A84C"></span><code>#C9A84C</code></td>
+<td>Accent — badges, CTAs, the star mark. Evokes Registan's gilded madrasa interiors.</td>
+</tr>
+<tr>
+<td><code>--gold-light</code></td>
+<td><span class="swatch" style="background:#E8C96D"></span><code>#E8C96D</code></td>
+<td>Lighter accent — headlines on dark backgrounds, hover states</td>
+</tr>
+<tr>
+<td><code>--turquoise</code></td>
+<td><span class="swatch" style="background:#2AABB8"></span><code>#2AABB8</code></td>
+<td>Tertiary accent — used sparingly (category tags, dome-blue callouts)</td>
+</tr>
+<tr>
+<td><code>--terracotta</code></td>
+<td><span class="swatch" style="background:#C4612A"></span><code>#C4612A</code></td>
+<td>Warm accent — Eat section, food content, warning-adjacent UI</td>
+</tr>
+<tr>
+<td><code>--cream</code></td>
+<td><span class="swatch" style="background:#FAF6EE"></span><code>#FAF6EE</code></td>
+<td>Page background — desert sand / aged paper, never pure white</td>
+</tr>
+<tr>
+<td><code>--ink</code></td>
+<td><span class="swatch" style="background:#1A1510"></span><code>#1A1510</code></td>
+<td>Primary text, footer background</td>
+</tr>
+<tr>
+<td><code>--muted</code></td>
+<td><span class="swatch" style="background:#6B6258"></span><code>#6B6258</code></td>
+<td>Secondary text, captions, metadata</td>
+</tr>
+<tr>
+<td><code>--border</code></td>
+<td><span class="swatch" style="background:#E8DFD0"></span><code>#E8DFD0</code></td>
+<td>Hairlines, card borders</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Rule of thumb:</strong> Lapis and cream carry 80% of every page. Gold is a spotlight color — used for one or two focal points per screen (a badge, a CTA, a headline accent), never as a fill for large areas. Terracotta is reserved for Eat/food contexts so the category has its own visual identity once it launches.</p>
+<hr />
+<h2>4. Typography</h2>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Font</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Display / headlines</td>
+<td><strong>Cormorant Garamond</strong> (serif, weights 400/600/700, italic)</td>
+<td>H1–H3, hero text, pull quotes, logo wordmark</td>
+</tr>
+<tr>
+<td>Body / UI</td>
+<td><strong>DM Sans</strong> (weights 300/400/500/600)</td>
+<td>Paragraphs, nav, buttons, forms, metadata</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why this pairing:</strong> Cormorant Garamond has the editorial, slightly classical weight of a travel magazine masthead — it reads as written-by-humans, not generated-by-template. DM Sans is a clean geometric sans that keeps long-form practical content (visa rules, SIM card prices) legible and modern. The contrast between the two is the brand's typographic signature — don't introduce a third typeface.</p>
+<p><strong>Usage rules:</strong>
+- Headlines: Cormorant Garamond, weight 700, occasional italic for emphasis within a headline (e.g. <em>"Discover </em>Uzbekistan<em>"</em>)
+- Body copy: DM Sans 400, line-height 1.6–1.8 for readability in long-form city/sight descriptions
+- Labels, badges, nav: DM Sans 500/600, uppercase, letter-spacing 0.05–0.12em
+- Never set body copy in Cormorant Garamond — it's a display face only, legibility drops at small sizes</p>
+<hr />
+<h2>5. Imagery Style</h2>
+<ul>
+<li><strong>Subject:</strong> Architecture and people over abstract landscape. The Registan at golden hour outperforms a generic desert shot every time.</li>
+<li><strong>Color grading:</strong> Warm, slightly desaturated — avoid oversaturated HDR "Instagram filter" looks. Skies should look like skies, not neon.</li>
+<li><strong>Composition:</strong> Wide environmental shots for hero/cover images; close, human-scale shots (market stalls, craftspeople, food) for in-article imagery.</li>
+<li><strong>People:</strong> Always with informed consent context implied — candid, not staged-tourist-in-frame shots. Local people doing local things, not travelers posing.</li>
+<li><strong>Aspect ratios:</strong> 16:9 for article covers, 4:3 for city cards, 1:1 for gallery thumbnails — matches the grid system already built into the templates.</li>
+<li><strong>Never use:</strong> Stock photos with visible watermarks, AI-generated images presented as real locations (see Editorial Standards §6), or images that don't match the actual content (a Bukhara photo on a Samarkand page).</li>
+</ul>
+<hr />
+<h2>6. Voice &amp; Tone</h2>
+<p><strong>We sound like:</strong> A well-traveled friend who's done the research, not a brochure and not a Reddit thread.</p>
+<ul>
+<li><strong>Confident, not breathless.</strong> "The Registan is the single best reason to visit Samarkand" — not "OMG you HAVE to see this AMAZING place!!"</li>
+<li><strong>Specific over generic.</strong> "Madrasas built 1417–1660" beats "ancient and historic."</li>
+<li><strong>Practical without being dry.</strong> Visa rules and SIM card prices get the same care as the poetic intro — readers came here to actually plan a trip.</li>
+<li><strong>Respectful of the culture we're covering.</strong> We are guests writing about a host country; avoid exoticizing language ("mysterious," "exotic," "untouched") that flattens Uzbekistan into a backdrop.</li>
+</ul>
+<p>See <code>editorial-standards.md</code> for the full content style guide.</p>
+<hr />
+<h2>7. Application Examples</h2>
+<ul>
+<li><strong>Nav bar:</strong> Dark lapis, gold-light wordmark, white nav links — already live in <code>templates/base.html</code></li>
+<li><strong>Category badges:</strong> Gold-on-cream pill badges, uppercase, letter-spaced — see <code>.news-cat-badge</code> in <code>static/css/main.css</code></li>
+<li><strong>CTAs:</strong> Gold fill for primary actions, outline-white for secondary — <code>.btn-primary</code> / <code>.btn-outline</code></li>
+<li><strong>Section dividers:</strong> Lapis full-width bands (Practical strip, Visa banner) break up long cream-background scroll — don't overuse, max 2–3 per page</li>
+</ul>
+<hr />
+<h2>8. File Index</h2>
+<pre><code>ideas/
+├── brand-book.md              ← this file (PDF version: brand-book.pdf)
+├── editorial-standards.md     (PDF version: editorial-standards.pdf)
+└── logo/
+    ├── icon-mark.svg
+    ├── icon-mark-on-cream.svg
+    ├── logo-horizontal-dark.svg
+    └── logo-horizontal-light.svg
+</code></pre>
+<p>The <code>.md</code> files are the source of truth — regenerate the PDFs from them whenever either is updated, so the two formats never drift apart.</p>
+<p>Production-ready raster exports (<code>logo.png</code>, <code>favicon-32.png</code>, <code>apple-touch-icon.png</code>) live in <code>static/img/</code> and should be regenerated from these SVGs whenever the mark changes, to keep brand book and shipped assets in sync.</p>
+<div class="footer-note">UzbekTrip &middot; uzbektrip.com &middot; The most complete independent travel guide to Uzbekistan</div>
+</body>
+</html>

@@ -1,0 +1,1725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>uzbektrip.com — Brand Book</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --gold:        #C9A84C;
+    --gold-light:  #E8C96D;
+    --gold-pale:   #F5EDD4;
+    --lapis:       #1A3A6B;
+    --lapis-mid:   #2B5499;
+    --lapis-light: #D4E0F2;
+    --turquoise:   #2AABB8;
+    --turquoise-light: #C8EEF2;
+    --terracotta:  #C4612A;
+    --terra-light: #F2DDD3;
+    --cream:       #FAF6EE;
+    --cream-dark:  #F0E9D9;
+    --ink:         #1A1510;
+    --ink-mid:     #3D3428;
+    --muted:       #6B6258;
+    --border:      #E8DFD0;
+    --white:       #FFFFFF;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #F4EFE6;
+    color: var(--ink);
+    line-height: 1.6;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    background: var(--lapis);
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 20% 80%, rgba(42,171,184,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 80% 20%, rgba(201,168,76,0.14) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cover-ornament {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 2.5rem;
+  }
+
+  .cover h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--gold-light);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .cover h1 span { color: white; }
+
+  .cover-domain {
+    font-family: 'DM Mono', monospace;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.15em;
+    margin-bottom: 3rem;
+  }
+
+  .cover-rule {
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 0 auto 3rem;
+  }
+
+  .cover-subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* ── LAYOUT ── */
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 5rem 2.5rem;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 600;
+    color: var(--lapis);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-divider {
+    border: none;
+    height: 1px;
+    background: var(--border);
+    margin: 4rem 0;
+  }
+
+  .intro-text {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 620px;
+    line-height: 1.8;
+  }
+
+  /* ── CHAPTER HEADERS ── */
+  .chapter {
+    background: var(--lapis);
+    color: white;
+    padding: 5rem 2.5rem 4rem;
+  }
+
+  .chapter-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .chapter .section-label { color: var(--gold-light); opacity: 0.7; }
+  .chapter .section-title { color: var(--gold-light); }
+
+  /* ── LOGO SECTION ── */
+  .logo-showcase {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin: 3rem 0;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .logo-cell {
+    padding: 3.5rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .logo-cell-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.4;
+  }
+
+  .lc-cream { background: var(--cream); }
+  .lc-dark  { background: var(--ink); }
+  .lc-lapis { background: var(--lapis); }
+  .lc-gold  { background: var(--gold-pale); }
+  .lc-cream .logo-cell-label { color: var(--muted); }
+  .lc-dark .logo-cell-label  { color: white; }
+  .lc-lapis .logo-cell-label { color: white; }
+  .lc-gold .logo-cell-label  { color: var(--muted); }
+
+  /* ── LOGO SVG ── */
+  .brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+  }
+
+  .brand-logo-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.9rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1;
+  }
+
+  /* ── COLOR PALETTE ── */
+  .palette-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1.5rem;
+    margin: 3rem 0;
+  }
+
+  .swatch-card {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(26,21,16,0.08);
+  }
+
+  .swatch-color {
+    height: 90px;
+  }
+
+  .swatch-info {
+    background: white;
+    padding: 0.75rem 1rem;
+  }
+
+  .swatch-name {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.2rem;
+  }
+
+  .swatch-hex {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+  }
+
+  .swatch-role {
+    font-size: 0.65rem;
+    color: var(--muted);
+    margin-top: 0.25rem;
+    line-height: 1.3;
+  }
+
+  /* ── TYPOGRAPHY ── */
+  .type-specimen {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    background: white;
+  }
+
+  .type-header {
+    background: var(--cream-dark);
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .type-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  .type-badge {
+    background: var(--lapis);
+    color: white;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 3px;
+    letter-spacing: 0.08em;
+  }
+
+  .type-badge.secondary { background: var(--gold); color: var(--ink); }
+  .type-badge.tertiary  { background: var(--turquoise); color: white; }
+
+  .type-body {
+    padding: 2rem 1.5rem;
+  }
+
+  .spec-cormorant-h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--lapis);
+    line-height: 1.05;
+  }
+
+  .spec-cormorant-h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.25rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.15;
+  }
+
+  .spec-cormorant-h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--muted);
+  }
+
+  .spec-dm-lead {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: var(--ink-mid);
+    line-height: 1.7;
+  }
+
+  .spec-dm-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+
+  .spec-dm-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .spec-mono {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--lapis-mid);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── FONT PAIRING TABLE ── */
+  .font-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(26,21,16,0.06);
+  }
+
+  .font-table th {
+    background: var(--lapis);
+    color: white;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.9rem 1.25rem;
+    text-align: left;
+  }
+
+  .font-table td {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.88rem;
+    color: var(--ink);
+    vertical-align: top;
+  }
+
+  .font-table tr:last-child td { border-bottom: none; }
+  .font-table tr:nth-child(even) td { background: var(--cream); }
+
+  .font-table td.role { font-weight: 600; color: var(--lapis); width: 200px; }
+  .font-table td.font { font-family: 'DM Mono', monospace; font-size: 0.78rem; color: var(--muted); }
+
+  /* ── USAGE GRID ── */
+  .usage-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 3rem 0;
+  }
+
+  .usage-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+  }
+
+  .usage-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--lapis);
+    margin-bottom: 1rem;
+  }
+
+  .usage-list {
+    list-style: none;
+  }
+
+  .usage-list li {
+    font-size: 0.85rem;
+    color: var(--muted);
+    padding: 0.35rem 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .usage-list li:last-child { border-bottom: none; }
+
+  .usage-list li::before {
+    content: '—';
+    color: var(--gold);
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  /* ── VOICE & TONE ── */
+  .voice-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin: 3rem 0;
+  }
+
+  .voice-card {
+    border-top: 3px solid var(--gold);
+    padding: 1.5rem 0 0;
+  }
+
+  .voice-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--lapis);
+    margin-bottom: 0.75rem;
+  }
+
+  .voice-card p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* ── COPY EXAMPLES ── */
+  .copy-example {
+    background: white;
+    border-left: 3px solid var(--gold);
+    padding: 1.25rem 1.5rem;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 1rem;
+    box-shadow: 0 1px 6px rgba(26,21,16,0.05);
+  }
+
+  .copy-example .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+
+  .copy-example p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+
+  /* ── ICONOGRAPHY & PATTERNS ── */
+  .pattern-row {
+    display: flex;
+    gap: 1.5rem;
+    margin: 3rem 0;
+    flex-wrap: wrap;
+  }
+
+  .pattern-box {
+    width: 160px;
+    height: 160px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pattern-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 12px;
+  }
+
+  /* ── STATIONERY MOCKUPS ── */
+  .stationery-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 3rem 0;
+  }
+
+  .mock-card {
+    background: var(--cream);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(26,21,16,0.12);
+    aspect-ratio: 1.75;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid var(--border);
+  }
+
+  .mock-business-card {
+    background: var(--lapis);
+    color: white;
+  }
+
+  .mock-bc-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--gold-light);
+  }
+
+  .mock-bc-logo span { color: white; }
+
+  .mock-bc-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: white;
+  }
+
+  .mock-bc-detail {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.05em;
+    margin-top: 0.2rem;
+  }
+
+  .mock-letterhead {
+    background: white;
+  }
+
+  .mock-lh-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--gold);
+  }
+
+  .mock-lh-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--lapis);
+  }
+  .mock-lh-logo span { color: var(--gold); }
+
+  .mock-lh-address {
+    font-size: 0.55rem;
+    color: var(--muted);
+    text-align: right;
+    line-height: 1.6;
+    letter-spacing: 0.03em;
+  }
+
+  .mock-lh-body {
+    font-size: 0.55rem;
+    color: var(--muted);
+    line-height: 1.7;
+    padding-top: 0.5rem;
+  }
+
+  .mock-lh-footer {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.45rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    border-top: 1px solid var(--border);
+    padding-top: 0.4rem;
+  }
+
+  /* ── EMAIL SIGNATURE ── */
+  .email-sig {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem 2rem;
+    margin: 2rem 0;
+    max-width: 480px;
+  }
+
+  .sig-rule { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+  .sig-bar { width: 4px; height: 48px; background: linear-gradient(180deg, var(--gold) 0%, var(--lapis) 100%); border-radius: 2px; }
+
+  .sig-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--lapis);
+    line-height: 1.2;
+  }
+
+  .sig-title {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 0.15rem;
+  }
+
+  .sig-contact {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--lapis-mid);
+    margin-top: 0.75rem;
+    line-height: 1.8;
+  }
+
+  .sig-contact a { color: var(--gold); text-decoration: none; }
+
+  /* ── SOCIAL MEDIA ── */
+  .social-sizes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin: 3rem 0;
+  }
+
+  .social-card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    background: white;
+  }
+
+  .social-thumb {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--lapis);
+  }
+
+  .social-thumb-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--gold-light);
+  }
+
+  .social-thumb-text span { color: white; }
+
+  .social-info {
+    padding: 0.9rem 1rem;
+  }
+
+  .social-platform {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--lapis);
+    margin-bottom: 0.2rem;
+  }
+
+  .social-spec {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+  }
+
+  /* ── DO / DON'T ── */
+  .dodo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 3rem 0;
+  }
+
+  .do-card, .dont-card {
+    border-radius: 10px;
+    padding: 1.5rem;
+  }
+
+  .do-card {
+    background: #EAF5EF;
+    border: 1px solid #9DD4B2;
+  }
+
+  .dont-card {
+    background: #FAEAEA;
+    border: 1px solid #E8A8A8;
+  }
+
+  .do-card h4 { color: #1A6B3A; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; }
+  .dont-card h4 { color: #8B1A1A; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; }
+
+  .dodo-list { list-style: none; }
+  .dodo-list li { font-size: 0.85rem; padding: 0.35rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); }
+  .dodo-list li:last-child { border-bottom: none; }
+  .do-card .dodo-list li { color: #1A6B3A; }
+  .dont-card .dodo-list li { color: #8B1A1A; }
+  .do-card .dodo-list li::before { content: '✓ '; font-weight: 700; }
+  .dont-card .dodo-list li::before { content: '✗ '; font-weight: 700; }
+
+  /* ── TAGLINES ── */
+  .tagline-list {
+    margin: 2rem 0;
+  }
+
+  .tagline-item {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-style: italic;
+    color: var(--lapis);
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.3;
+  }
+
+  .tagline-item:last-child { border-bottom: none; }
+
+  .tagline-item .tagline-en { display: block; }
+  .tagline-item .tagline-ru {
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 300;
+    color: var(--muted);
+    font-family: 'DM Sans', sans-serif;
+    margin-top: 0.25rem;
+    display: block;
+  }
+
+  /* ── NEXT STEPS ── */
+  .steps-list {
+    counter-reset: step;
+    margin: 2rem 0;
+  }
+
+  .step-item {
+    counter-increment: step;
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .step-item:last-child { border-bottom: none; }
+
+  .step-num {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    background: var(--lapis);
+    color: var(--gold-light);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .step-content h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--lapis);
+    margin-bottom: 0.4rem;
+  }
+
+  .step-content p {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* ── BACK COVER ── */
+  .back-cover {
+    background: var(--ink);
+    color: white;
+    padding: 5rem 2.5rem;
+    text-align: center;
+  }
+
+  .back-cover-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    margin-bottom: 1rem;
+  }
+  .back-cover-logo span { color: white; }
+
+  .back-cover p {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ── PRINT MEDIA ── */
+  @media print {
+    .cover { min-height: auto; padding: 3rem; }
+    .chapter { page-break-before: always; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════ COVER ═══════════════════════════════════════ -->
+<div class="cover">
+  <svg class="cover-ornament" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Uzbek geometric star pattern - 8-pointed -->
+    <circle cx="60" cy="60" r="58" stroke="rgba(201,168,76,0.3)" stroke-width="1"/>
+    <circle cx="60" cy="60" r="44" stroke="rgba(201,168,76,0.2)" stroke-width="0.5"/>
+    <path d="M60 8 L69 38 L99 30 L78 52 L106 63 L76 68 L82 99 L60 80 L38 99 L44 68 L14 63 L42 52 L21 30 L51 38 Z" 
+          fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.6"/>
+    <path d="M60 22 L67 46 L91 40 L74 56 L96 64 L72 68 L77 92 L60 76 L43 92 L48 68 L24 64 L46 56 L29 40 L53 46 Z" 
+          fill="none" stroke="#E8C96D" stroke-width="0.5" opacity="0.4"/>
+    <circle cx="60" cy="60" r="10" fill="rgba(201,168,76,0.2)" stroke="#C9A84C" stroke-width="1"/>
+    <circle cx="60" cy="60" r="3" fill="#C9A84C"/>
+    <!-- cardinal dots -->
+    <circle cx="60" cy="8" r="2" fill="#C9A84C" opacity="0.5"/>
+    <circle cx="60" cy="112" r="2" fill="#C9A84C" opacity="0.5"/>
+    <circle cx="8" cy="60" r="2" fill="#C9A84C" opacity="0.5"/>
+    <circle cx="112" cy="60" r="2" fill="#C9A84C" opacity="0.5"/>
+  </svg>
+
+  <h1>uzbek<span>trip</span></h1>
+  <div class="cover-domain">uzbektrip.com</div>
+  <div class="cover-rule"></div>
+  <div class="cover-subtitle">Brand Identity Guidelines — 2025</div>
+</div>
+
+<!-- ═══════════════════════════════════════ INTRO ═══════════════════════════════════════ -->
+<div class="page">
+  <div class="section-label">01 — About This Document</div>
+  <h2 class="section-title">Brand Overview</h2>
+  <p class="intro-text">
+    uzbektrip.com is a premium independent travel guide to Uzbekistan — the fastest-growing tourism destination in Central Asia. This document defines the visual and verbal identity of the brand across all touchpoints: web, print, social media, and correspondence.
+  </p>
+
+  <hr class="section-divider">
+
+  <div class="section-label">Brand Essence</div>
+  <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--lapis);margin-bottom:1rem;">The Silk Road, made easy.</h3>
+  <p style="color:var(--muted);max-width:620px;line-height:1.8;font-size:0.95rem;">
+    uzbektrip.com bridges the mythic weight of the ancient Silk Road with the practical needs of the modern traveler. Every design choice — from Lapis Blue drawn from medieval tilework to Cormorant Garamond evoking illuminated manuscripts — reflects this duality: <em>historic grandeur, contemporary clarity</em>.
+  </p>
+
+  <hr class="section-divider">
+
+  <!-- Taglines -->
+  <div class="section-label">Taglines</div>
+  <div class="tagline-list">
+    <div class="tagline-item">
+      <span class="tagline-en">"Where the Silk Road is still alive."</span>
+      <span class="tagline-ru">Там, где Шёлковый путь ещё жив.</span>
+    </div>
+    <div class="tagline-item">
+      <span class="tagline-en">"Discover Uzbekistan — the Silk Road Reborn."</span>
+      <span class="tagline-ru">Откройте Узбекистан — возрождённый Шёлковый путь.</span>
+    </div>
+    <div class="tagline-item">
+      <span class="tagline-en">"Your complete guide to ancient wonders."</span>
+      <span class="tagline-ru">Ваш полный путеводитель по древним чудесам.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ CHAPTER 1 — LOGO ═════════════════════════════════ -->
+<div class="chapter">
+  <div class="chapter-inner">
+    <div class="section-label">Chapter 01</div>
+    <h2 class="section-title">Logo &amp; Mark</h2>
+    <p style="color:rgba(255,255,255,0.6);max-width:540px;font-size:0.95rem;line-height:1.75;">
+      The uzbektrip wordmark pairs a calligraphic serif display font with a clean geometric emblem. The mark is an abstracted Silk Road compass — inspired by the 8-pointed Uzbek geometric star motif found in Samarkand tilework.
+    </p>
+  </div>
+</div>
+
+<div class="page">
+  <!-- Logo on multiple backgrounds -->
+  <div class="section-label">Logo on Backgrounds</div>
+  <div class="logo-showcase">
+
+    <!-- Light / Cream -->
+    <div class="logo-cell lc-cream">
+      <svg width="220" height="52" viewBox="0 0 220 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Star mark -->
+        <g transform="translate(0,2)">
+          <polygon points="24,4 27,16 39,13 31,22 41,26 29,28 32,40 24,32 16,40 19,28 7,26 17,22 9,13 21,16" 
+                   fill="none" stroke="#C9A84C" stroke-width="1.2"/>
+          <circle cx="24" cy="24" r="5" fill="none" stroke="#C9A84C" stroke-width="1"/>
+          <circle cx="24" cy="24" r="2" fill="#C9A84C"/>
+        </g>
+        <!-- Wordmark -->
+        <text x="52" y="34" font-family="'Cormorant Garamond', Georgia, serif" font-size="28" font-weight="700" fill="#1A3A6B" letter-spacing="0.5">uzbek</text>
+        <text x="136" y="34" font-family="'Cormorant Garamond', Georgia, serif" font-size="28" font-weight="400" fill="#C9A84C" letter-spacing="0.5">trip</text>
+      </svg>
+      <div class="logo-cell-label">Primary — on cream</div>
+    </div>
+
+    <!-- Dark -->
+    <div class="logo-cell lc-dark">
+      <svg width="220" height="52" viewBox="0 0 220 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(0,2)">
+          <polygon points="24,4 27,16 39,13 31,22 41,26 29,28 32,40 24,32 16,40 19,28 7,26 17,22 9,13 21,16" 
+                   fill="none" stroke="#E8C96D" stroke-width="1.2"/>
+          <circle cx="24" cy="24" r="5" fill="none" stroke="#E8C96D" stroke-width="1"/>
+          <circle cx="24" cy="24" r="2" fill="#E8C96D"/>
+        </g>
+        <text x="52" y="34" font-family="'Cormorant Garamond', Georgia, serif" font-size="28" font-weight="700" fill="#FFFFFF" letter-spacing="0.5">uzbek</text>
+        <text x="136" y="34" font-family="'Cormorant Garamond', Georgia, serif" font-size="28" font-weight="400" fill="#E8C96D" letter-spacing="0.5">trip</text>
+      </svg>
+      <div class="logo-cell-label" style="color:rgba(255,255,255,0.4)">Reversed — on dark</div>
+    </div>
+
+    <!-- Lapis -->
+    <div class="logo-cell lc-lapis">
+      <svg width="220" height="52" viewBox="0 0 220 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(0,2)">
+          <polygon points="24,4 27,16 39,13 31,22 41,26 29,28 32,40 24,32 16,40 19,28 7,26 17,22 9,13 21,16" 
+                   fill="none" stroke="#E8C96D" stroke-width="1.2"/>
+          <circle cx="24" cy="24" r="5" fill="none" stroke="#E8C96D" stroke-width="1"/>
+          <circle cx="24" cy="24" r="2" fill="#E8C96D"/>
+        </g>
+        <text x="52" y="34" font-family="'Cormorant Garamond', Georgia, serif" font-size="28" font-weight="700" fill="#E8C96D" letter-spacing="0.5">uzbek</text>
+        <text x="136" y="34" font-family="'Cormorant Garamond', Georgia, serif" font-size="28" font-weight="400" fill="#FFFFFF" letter-spacing="0.5">trip</text>
+      </svg>
+      <div class="logo-cell-label" style="color:rgba(255,255,255,0.4)">Reversed — on lapis</div>
+    </div>
+
+    <!-- Gold pale -->
+    <div class="logo-cell lc-gold">
+      <svg width="220" height="52" viewBox="0 0 220 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(0,2)">
+          <polygon points="24,4 27,16 39,13 31,22 41,26 29,28 32,40 24,32 16,40 19,28 7,26 17,22 9,13 21,16" 
+                   fill="none" stroke="#1A3A6B" stroke-width="1.2"/>
+          <circle cx="24" cy="24" r="5" fill="none" stroke="#1A3A6B" stroke-width="1"/>
+          <circle cx="24" cy="24" r="2" fill="#1A3A6B"/>
+        </g>
+        <text x="52" y="34" font-family="'Cormorant Garamond', Georgia, serif" font-size="28" font-weight="700" fill="#1A3A6B" letter-spacing="0.5">uzbek</text>
+        <text x="136" y="34" font-family="'Cormorant Garamond', Georgia, serif" font-size="28" font-weight="400" fill="#8A6020" letter-spacing="0.5">trip</text>
+      </svg>
+      <div class="logo-cell-label">On gold pale</div>
+    </div>
+  </div>
+
+  <!-- Icon / mark only -->
+  <div class="section-label" style="margin-top:3rem;">The Mark — Standalone Use</div>
+  <p style="color:var(--muted);font-size:0.88rem;max-width:560px;margin-bottom:2rem;line-height:1.7;">
+    The 8-pointed star compass mark may be used independently as a favicon, social media avatar, app icon, or stamp. It must always appear in Lapis Blue or Silk Gold; never in other colors.
+  </p>
+
+  <div style="display:flex;gap:2rem;flex-wrap:wrap;margin-bottom:3rem;">
+    <!-- Mark on cream -->
+    <div style="background:var(--cream);border:1px solid var(--border);border-radius:12px;padding:2rem;display:flex;flex-direction:column;align-items:center;gap:1rem;">
+      <svg width="64" height="64" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="24,3 27.5,14 38.5,11 31,21 42,24.5 31,27.5 38,38 24,31 10,38 17,27.5 6,24.5 17,21 9.5,11 20.5,14" 
+                 fill="none" stroke="#C9A84C" stroke-width="1.5"/>
+        <circle cx="24" cy="24" r="6" fill="none" stroke="#1A3A6B" stroke-width="1.2"/>
+        <circle cx="24" cy="24" r="2.5" fill="#1A3A6B"/>
+      </svg>
+      <span style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;color:var(--muted);">ON CREAM</span>
+    </div>
+    <!-- Mark on lapis -->
+    <div style="background:var(--lapis);border-radius:12px;padding:2rem;display:flex;flex-direction:column;align-items:center;gap:1rem;">
+      <svg width="64" height="64" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="24,3 27.5,14 38.5,11 31,21 42,24.5 31,27.5 38,38 24,31 10,38 17,27.5 6,24.5 17,21 9.5,11 20.5,14" 
+                 fill="none" stroke="#E8C96D" stroke-width="1.5"/>
+        <circle cx="24" cy="24" r="6" fill="none" stroke="#E8C96D" stroke-width="1.2"/>
+        <circle cx="24" cy="24" r="2.5" fill="#E8C96D"/>
+      </svg>
+      <span style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;color:rgba(255,255,255,0.4);">ON LAPIS</span>
+    </div>
+    <!-- Mark on dark -->
+    <div style="background:var(--ink);border-radius:12px;padding:2rem;display:flex;flex-direction:column;align-items:center;gap:1rem;">
+      <svg width="64" height="64" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="24,3 27.5,14 38.5,11 31,21 42,24.5 31,27.5 38,38 24,31 10,38 17,27.5 6,24.5 17,21 9.5,11 20.5,14" 
+                 fill="none" stroke="#E8C96D" stroke-width="1.5"/>
+        <circle cx="24" cy="24" r="6" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.2"/>
+        <circle cx="24" cy="24" r="2.5" fill="white"/>
+      </svg>
+      <span style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;color:rgba(255,255,255,0.4);">ON DARK</span>
+    </div>
+  </div>
+
+  <!-- Logo Do/Don't -->
+  <div class="section-label">Logo Usage Rules</div>
+  <div class="dodo-grid">
+    <div class="do-card">
+      <h4>Do</h4>
+      <ul class="dodo-list">
+        <li>Use on approved backgrounds (cream, lapis, dark, gold-pale)</li>
+        <li>Maintain minimum clear space of 1× the star mark width on all sides</li>
+        <li>Use the standalone mark for small sizes (below 80px wide)</li>
+        <li>Scale the logo proportionally</li>
+        <li>Use high-resolution SVG/PNG files from the asset kit</li>
+      </ul>
+    </div>
+    <div class="dont-card">
+      <h4>Don't</h4>
+      <ul class="dodo-list">
+        <li>Recolor the mark in non-brand colors</li>
+        <li>Stretch, rotate, or skew the wordmark</li>
+        <li>Place on low-contrast photographic backgrounds without an overlay</li>
+        <li>Separate "uzbek" from "trip" with line breaks in the wordmark</li>
+        <li>Add drop shadows, outlines, or effects to the logo</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ CHAPTER 2 — COLOR ═══════════════════════════ -->
+<div class="chapter">
+  <div class="chapter-inner">
+    <div class="section-label">Chapter 02</div>
+    <h2 class="section-title">Color Palette</h2>
+    <p style="color:rgba(255,255,255,0.6);max-width:560px;font-size:0.95rem;line-height:1.75;">
+      Drawn directly from Uzbekistan's artistic heritage: Lapis Blue from the famous ultramarine tiles of the Registan, Silk Gold from the manuscript borders of Bukhara, Turquoise from Khiva's ceramic domes, and Terracotta from the rammed earth walls of Shakhrisabz.
+    </p>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-label">Primary Palette</div>
+  <div class="palette-grid">
+    <div class="swatch-card">
+      <div class="swatch-color" style="background:#1A3A6B;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Lapis Blue</div>
+        <div class="swatch-hex">#1A3A6B</div>
+        <div class="swatch-role">Brand primary · Nav bg · Headings · CTA buttons</div>
+      </div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch-color" style="background:#C9A84C;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Silk Gold</div>
+        <div class="swatch-hex">#C9A84C</div>
+        <div class="swatch-role">Accents · Logo "trip" · Borders · Category labels</div>
+      </div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch-color" style="background:#E8C96D;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Gold Light</div>
+        <div class="swatch-hex">#E8C96D</div>
+        <div class="swatch-role">Logo on dark bg · Hover states · Highlights</div>
+      </div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch-color" style="background:#FAF6EE;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Parchment Cream</div>
+        <div class="swatch-hex">#FAF6EE</div>
+        <div class="swatch-role">Page background · Card backgrounds</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label" style="margin-top:2rem;">Secondary Palette</div>
+  <div class="palette-grid">
+    <div class="swatch-card">
+      <div class="swatch-color" style="background:#2AABB8;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Khiva Turquoise</div>
+        <div class="swatch-hex">#2AABB8</div>
+        <div class="swatch-role">Links · Info states · Travel tags</div>
+      </div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch-color" style="background:#C4612A;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Terracotta</div>
+        <div class="swatch-hex">#C4612A</div>
+        <div class="swatch-role">Alerts · Food/restaurant category · CTAs secondary</div>
+      </div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch-color" style="background:#1A1510;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Ink</div>
+        <div class="swatch-hex">#1A1510</div>
+        <div class="swatch-role">Body text · Dark backgrounds · Footer</div>
+      </div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch-color" style="background:#6B6258;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Muted</div>
+        <div class="swatch-hex">#6B6258</div>
+        <div class="swatch-role">Secondary text · Captions · Meta info</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label" style="margin-top:2rem;">CSS Custom Properties</div>
+  <div style="background:var(--ink);border-radius:10px;padding:1.5rem 2rem;margin:1.5rem 0;font-family:'DM Mono',monospace;font-size:0.8rem;line-height:2;color:#E8C96D;overflow-x:auto;">
+    <span style="color:#6B6258;">/* uzbektrip.com — CSS Brand Variables */</span><br>
+    <span style="color:rgba(255,255,255,0.6);">:root</span> {<br>
+    &nbsp;&nbsp;<span style="color:var(--turquoise);">--gold:</span> <span style="color:#C9A84C;">#C9A84C</span>;<br>
+    &nbsp;&nbsp;<span style="color:var(--turquoise);">--gold-light:</span> <span style="color:#E8C96D;">#E8C96D</span>;<br>
+    &nbsp;&nbsp;<span style="color:var(--turquoise);">--gold-pale:</span> <span style="color:#F5EDD4;">#F5EDD4</span>;<br>
+    &nbsp;&nbsp;<span style="color:var(--turquoise);">--lapis:</span> <span style="color:#1A3A6B;">#1A3A6B</span>;<br>
+    &nbsp;&nbsp;<span style="color:var(--turquoise);">--lapis-mid:</span> <span style="color:#2B5499;">#2B5499</span>;<br>
+    &nbsp;&nbsp;<span style="color:var(--turquoise);">--turquoise:</span> <span style="color:#2AABB8;">#2AABB8</span>;<br>
+    &nbsp;&nbsp;<span style="color:var(--turquoise);">--terracotta:</span> <span style="color:#C4612A;">#C4612A</span>;<br>
+    &nbsp;&nbsp;<span style="color:var(--turquoise);">--cream:</span> <span style="color:#FAF6EE;">#FAF6EE</span>;<br>
+    &nbsp;&nbsp;<span style="color:var(--turquoise);">--ink:</span> <span style="color:#1A1510;">#1A1510</span>;<br>
+    &nbsp;&nbsp;<span style="color:var(--turquoise);">--muted:</span> <span style="color:#6B6258;">#6B6258</span>;<br>
+    &nbsp;&nbsp;<span style="color:var(--turquoise);">--border:</span> <span style="color:#E8DFD0;">#E8DFD0</span>;<br>
+    }
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- Theme color reference -->
+  <div class="section-label">meta theme-color (PWA / Browser Chrome)</div>
+  <div style="display:flex;align-items:center;gap:1rem;background:white;border:1px solid var(--border);border-radius:8px;padding:1rem 1.5rem;margin:1.5rem 0;max-width:400px;">
+    <div style="width:32px;height:32px;background:#1A3A6B;border-radius:6px;flex-shrink:0;"></div>
+    <div>
+      <div style="font-size:0.78rem;font-weight:600;color:var(--lapis);">Lapis Blue</div>
+      <div style="font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--muted);">&lt;meta name="theme-color" content="#1A3A6B"&gt;</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ CHAPTER 3 — TYPOGRAPHY ══════════════════════ -->
+<div class="chapter">
+  <div class="chapter-inner">
+    <div class="section-label">Chapter 03</div>
+    <h2 class="section-title">Typography</h2>
+    <p style="color:rgba(255,255,255,0.6);max-width:560px;font-size:0.95rem;line-height:1.75;">
+      A three-font system: Cormorant Garamond for display and editorial presence; DM Sans for interface legibility; DM Mono for technical, code, and metadata contexts.
+    </p>
+  </div>
+</div>
+
+<div class="page">
+  <!-- Cormorant Garamond -->
+  <div class="section-label">Display Font — Cormorant Garamond</div>
+  <div class="type-specimen">
+    <div class="type-header">
+      <div>
+        <div class="type-meta">Cormorant Garamond · Google Fonts</div>
+        <div class="type-meta" style="margin-top:3px;">Weights used: 400, 500, 600, 700 · Italic variants</div>
+      </div>
+      <div class="type-badge">Display</div>
+    </div>
+    <div class="type-body">
+      <div class="spec-cormorant-h1">The Ancient Silk Road</div>
+      <div style="margin-top:0.5rem;"><span class="spec-cormorant-h2">Samarkand — City of Blue Domes</span></div>
+      <div style="margin-top:0.5rem;"><span class="spec-cormorant-h3">A journey across Central Asia</span></div>
+      <div style="margin-top:1.5rem;font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--muted);line-height:1.8;max-width:500px;">
+        For two millennia, caravans of merchants, scholars, and explorers traversed these ancient routes, connecting China to the Mediterranean. <em>Today, Uzbekistan stands at the crossroads of this revival</em>, welcoming the world to its UNESCO-listed cities.
+      </div>
+    </div>
+  </div>
+
+  <!-- DM Sans -->
+  <div class="section-label" style="margin-top:2rem;">Interface Font — DM Sans</div>
+  <div class="type-specimen">
+    <div class="type-header">
+      <div>
+        <div class="type-meta">DM Sans · Google Fonts</div>
+        <div class="type-meta" style="margin-top:3px;">Weights used: 300, 400, 500, 600</div>
+      </div>
+      <div class="type-badge secondary">Interface</div>
+    </div>
+    <div class="type-body">
+      <div class="spec-dm-label">Featured Destination</div>
+      <div style="margin-top:0.75rem;"><span class="spec-dm-lead">Bukhara's old city is one of the most complete examples of medieval Islamic urban planning in the world — a living heritage site with over 140 protected monuments.</span></div>
+      <div style="margin-top:1rem;"><span class="spec-dm-body">Practical details: The historic center (Lyab-i-Hauz) is fully walkable. Temperatures in July reach 40°C; visit in April–May or September–October. Book hotels inside the old city walls for the best experience.</span></div>
+    </div>
+  </div>
+
+  <!-- DM Mono -->
+  <div class="section-label" style="margin-top:2rem;">Mono Font — DM Mono</div>
+  <div class="type-specimen">
+    <div class="type-header">
+      <div>
+        <div class="type-meta">DM Mono · Google Fonts</div>
+        <div class="type-meta" style="margin-top:3px;">Weights used: 400, 500</div>
+      </div>
+      <div class="type-badge tertiary">Technical</div>
+    </div>
+    <div class="type-body">
+      <div class="spec-mono">uzbektrip.com / cities / samarkand</div>
+      <div style="margin-top:0.6rem;"><span class="spec-mono" style="font-size:0.75rem;color:var(--muted);">GPS: 39.6542° N, 66.9597° E · Altitude: 702 m · UNESCO WHS since 2001</span></div>
+      <div style="margin-top:0.6rem;"><span class="spec-mono" style="font-size:0.72rem;color:var(--gold);">#SILK-ROAD · #SAMARKAND · #REGISTAN</span></div>
+    </div>
+  </div>
+
+  <!-- Font pairing table -->
+  <div class="section-label" style="margin-top:3rem;">Font Usage by Context</div>
+  <table class="font-table">
+    <thead>
+      <tr>
+        <th>Use Case</th>
+        <th>Font</th>
+        <th>Weight</th>
+        <th>Size Range</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="role">Hero / Page titles</td>
+        <td class="font">Cormorant Garamond</td>
+        <td>700</td>
+        <td>3rem – 6rem</td>
+      </tr>
+      <tr>
+        <td class="role">Section headings (H2)</td>
+        <td class="font">Cormorant Garamond</td>
+        <td>600</td>
+        <td>2rem – 2.5rem</td>
+      </tr>
+      <tr>
+        <td class="role">Article headings (H3)</td>
+        <td class="font">Cormorant Garamond</td>
+        <td>500 italic</td>
+        <td>1.4rem – 1.75rem</td>
+      </tr>
+      <tr>
+        <td class="role">Pull quotes / captions</td>
+        <td class="font">Cormorant Garamond</td>
+        <td>400 italic</td>
+        <td>1.1rem – 1.3rem</td>
+      </tr>
+      <tr>
+        <td class="role">Navigation links</td>
+        <td class="font">DM Sans</td>
+        <td>500</td>
+        <td>0.875rem (uppercase)</td>
+      </tr>
+      <tr>
+        <td class="role">Body text</td>
+        <td class="font">DM Sans</td>
+        <td>400</td>
+        <td>1rem (16px)</td>
+      </tr>
+      <tr>
+        <td class="role">Lead paragraph</td>
+        <td class="font">DM Sans</td>
+        <td>300</td>
+        <td>1.125rem – 1.25rem</td>
+      </tr>
+      <tr>
+        <td class="role">Buttons / Labels</td>
+        <td class="font">DM Sans</td>
+        <td>500 – 600</td>
+        <td>0.8rem – 0.875rem</td>
+      </tr>
+      <tr>
+        <td class="role">Category labels</td>
+        <td class="font">DM Sans</td>
+        <td>600 uppercase</td>
+        <td>0.7rem – 0.75rem</td>
+      </tr>
+      <tr>
+        <td class="role">URLs / Breadcrumbs</td>
+        <td class="font">DM Mono</td>
+        <td>400</td>
+        <td>0.8rem</td>
+      </tr>
+      <tr>
+        <td class="role">GPS / Technical specs</td>
+        <td class="font">DM Mono</td>
+        <td>400</td>
+        <td>0.75rem – 0.8rem</td>
+      </tr>
+      <tr>
+        <td class="role">Code / HTML snippets</td>
+        <td class="font">DM Mono</td>
+        <td>400</td>
+        <td>0.85rem</td>
+      </tr>
+      <tr>
+        <td class="role">Letterhead / Correspondence</td>
+        <td class="font">Cormorant Garamond (name) + DM Sans (body)</td>
+        <td>700 + 400</td>
+        <td>Brand-standard</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Google Fonts HTML snippet -->
+  <div class="section-label" style="margin-top:3rem;">Google Fonts HTML Snippet</div>
+  <div style="background:var(--ink);border-radius:10px;padding:1.5rem 2rem;margin:1.5rem 0;font-family:'DM Mono',monospace;font-size:0.75rem;line-height:1.9;color:rgba(255,255,255,0.7);overflow-x:auto;">
+    <span style="color:#6B6258;">&lt;!-- uzbektrip.com brand fonts --&gt;</span><br>
+    <span style="color:#E8C96D;">&lt;link</span> rel=<span style="color:#2AABB8;">"preconnect"</span> href=<span style="color:#2AABB8;">"https://fonts.googleapis.com"</span><span style="color:#E8C96D;">&gt;</span><br>
+    <span style="color:#E8C96D;">&lt;link</span> href=<span style="color:#2AABB8;">"https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&amp;family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&amp;family=DM+Mono:wght@400;500&amp;display=swap"</span><br>
+    &nbsp;&nbsp;rel=<span style="color:#2AABB8;">"stylesheet"</span><span style="color:#E8C96D;">&gt;</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ CHAPTER 4 — STATIONERY ══════════════════════ -->
+<div class="chapter">
+  <div class="chapter-inner">
+    <div class="section-label">Chapter 04</div>
+    <h2 class="section-title">Stationery &amp; Correspondence</h2>
+    <p style="color:rgba(255,255,255,0.6);max-width:560px;font-size:0.95rem;line-height:1.75;">
+      All correspondence touchpoints — letterheads, business cards, email signatures — follow a consistent visual language that balances brand warmth with professional credibility.
+    </p>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-label">Mockups</div>
+  <div class="stationery-grid">
+
+    <!-- Business Card -->
+    <div>
+      <div style="font-size:0.78rem;font-weight:600;color:var(--lapis);margin-bottom:0.75rem;">Business Card — 90 × 50 mm</div>
+      <div class="mock-card mock-business-card">
+        <div>
+          <div class="mock-bc-logo">uzbek<span>trip</span></div>
+          <div style="font-family:'DM Mono',monospace;font-size:0.55rem;color:rgba(255,255,255,0.4);letter-spacing:0.12em;margin-top:0.2rem;">UZBEKTRIP.COM</div>
+        </div>
+        <div>
+          <div class="mock-bc-name">Anvar Karimov</div>
+          <div class="mock-bc-detail">Editor & Content Director</div>
+          <div class="mock-bc-detail" style="margin-top:0.5rem;">anvar@uzbektrip.com · +998 71 XXX XXXX</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Letterhead -->
+    <div>
+      <div style="font-size:0.78rem;font-weight:600;color:var(--lapis);margin-bottom:0.75rem;">Letterhead — A4</div>
+      <div class="mock-card mock-letterhead" style="aspect-ratio:0.707;">
+        <div class="mock-lh-top">
+          <div class="mock-lh-logo">uzbek<span>trip</span></div>
+          <div class="mock-lh-address">
+            uzbektrip.com<br>
+            Tashkent, Uzbekistan<br>
+            hello@uzbektrip.com
+          </div>
+        </div>
+        <div class="mock-lh-body">
+          <p style="color:var(--muted);font-size:0.5rem;margin-bottom:0.3rem;">May 31, 2025</p>
+          <p>Dear Partner,</p>
+          <p style="margin-top:0.3rem;">We are pleased to share the latest updates from uzbektrip.com, Uzbekistan's fastest-growing independent travel guide. With over 10,000 monthly visitors and a growing multilingual content library...</p>
+        </div>
+        <div class="mock-lh-footer">uzbektrip.com — Independent Travel Guide to Uzbekistan</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Email Signature -->
+  <div class="section-label" style="margin-top:3rem;">Email Signature</div>
+  <div class="email-sig">
+    <div class="sig-rule">
+      <div class="sig-bar"></div>
+      <div>
+        <div class="sig-name">Anvar Karimov</div>
+        <div class="sig-title">Editor & Content Director · uzbektrip.com</div>
+      </div>
+    </div>
+    <div class="sig-contact">
+      ✉ <a href="mailto:anvar@uzbektrip.com">anvar@uzbektrip.com</a><br>
+      🌐 <a href="https://uzbektrip.com">uzbektrip.com</a><br>
+      📱 +998 71 XXX XXXX
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- Envelope / print specs -->
+  <div class="section-label">Print Specifications</div>
+  <table class="font-table" style="margin-top:1.5rem;">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Dimensions</th>
+        <th>Color Mode</th>
+        <th>Resolution</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="role">Business card</td>
+        <td>90 × 50 mm</td>
+        <td>CMYK + Pantone 7684 C (lapis)</td>
+        <td>300 dpi</td>
+      </tr>
+      <tr>
+        <td class="role">Letterhead A4</td>
+        <td>210 × 297 mm</td>
+        <td>CMYK</td>
+        <td>300 dpi</td>
+      </tr>
+      <tr>
+        <td class="role">Envelope C5</td>
+        <td>162 × 229 mm</td>
+        <td>CMYK</td>
+        <td>300 dpi</td>
+      </tr>
+      <tr>
+        <td class="role">Folder / press kit</td>
+        <td>A4 portrait</td>
+        <td>CMYK + spot gold foil</td>
+        <td>300 dpi</td>
+      </tr>
+      <tr>
+        <td class="role">Pantone equivalents</td>
+        <td>—</td>
+        <td>Lapis: Pantone 7684 C · Gold: Pantone 125 C</td>
+        <td>—</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════════════════════════════════════ CHAPTER 5 — DIGITAL ═════════════════════════ -->
+<div class="chapter">
+  <div class="chapter-inner">
+    <div class="section-label">Chapter 05</div>
+    <h2 class="section-title">Digital &amp; Social Media</h2>
+    <p style="color:rgba(255,255,255,0.6);max-width:560px;font-size:0.95rem;line-height:1.75;">
+      Social presence specs, favicon dimensions, OG image templates, and PWA manifest color values for uzbektrip.com across all platforms.
+    </p>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-label">Social Media Asset Sizes</div>
+  <div class="social-sizes">
+    <div class="social-card">
+      <div class="social-thumb">
+        <div class="social-thumb-text">uzbek<span>trip</span></div>
+      </div>
+      <div class="social-info">
+        <div class="social-platform">Instagram / Facebook</div>
+        <div class="social-spec">Profile: 320 × 320 px</div>
+        <div class="social-spec">Post: 1080 × 1080 px</div>
+        <div class="social-spec">Story: 1080 × 1920 px</div>
+      </div>
+    </div>
+    <div class="social-card">
+      <div class="social-thumb">
+        <div class="social-thumb-text">uzbek<span>trip</span></div>
+      </div>
+      <div class="social-info">
+        <div class="social-platform">Telegram Channel</div>
+        <div class="social-spec">Avatar: 512 × 512 px</div>
+        <div class="social-spec">Banner: 1280 × 720 px</div>
+        <div class="social-spec">Post image: 1280 × 720 px</div>
+      </div>
+    </div>
+    <div class="social-card">
+      <div class="social-thumb">
+        <div class="social-thumb-text">uzbek<span>trip</span></div>
+      </div>
+      <div class="social-info">
+        <div class="social-platform">Twitter / X</div>
+        <div class="social-spec">Profile: 400 × 400 px</div>
+        <div class="social-spec">Header: 1500 × 500 px</div>
+        <div class="social-spec">OG card: 1200 × 630 px</div>
+      </div>
+    </div>
+    <div class="social-card">
+      <div class="social-thumb">
+        <div class="social-thumb-text">uzbek<span>trip</span></div>
+      </div>
+      <div class="social-info">
+        <div class="social-platform">YouTube</div>
+        <div class="social-spec">Banner: 2560 × 1440 px</div>
+        <div class="social-spec">Thumbnail: 1280 × 720 px</div>
+        <div class="social-spec">Avatar: 800 × 800 px</div>
+      </div>
+    </div>
+    <div class="social-card">
+      <div class="social-thumb" style="background:var(--cream);">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="24,3 27.5,14 38.5,11 31,21 42,24.5 31,27.5 38,38 24,31 10,38 17,27.5 6,24.5 17,21 9.5,11 20.5,14" 
+                   fill="none" stroke="#C9A84C" stroke-width="1.5"/>
+          <circle cx="24" cy="24" r="6" fill="none" stroke="#1A3A6B" stroke-width="1.2"/>
+          <circle cx="24" cy="24" r="2.5" fill="#1A3A6B"/>
+        </svg>
+      </div>
+      <div class="social-info">
+        <div class="social-platform">Favicon / PWA</div>
+        <div class="social-spec">favicon.svg (scalable)</div>
+        <div class="social-spec">favicon-32.png</div>
+        <div class="social-spec">apple-touch-icon: 180 × 180 px</div>
+      </div>
+    </div>
+    <div class="social-card">
+      <div class="social-thumb" style="background:var(--cream);">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:700;color:var(--lapis);">OG Image</div>
+      </div>
+      <div class="social-info">
+        <div class="social-platform">Open Graph / Twitter Card</div>
+        <div class="social-spec">1200 × 630 px (JPG/WebP)</div>
+        <div class="social-spec">Logo bottom-left + destination photo</div>
+        <div class="social-spec">Dark overlay: rgba(26,21,16,0.55)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Social handles -->
+  <div class="section-label" style="margin-top:3rem;">Social Media Handles</div>
+  <table class="font-table" style="margin-top:1.5rem;">
+    <thead>
+      <tr><th>Platform</th><th>Handle</th><th>URL</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="role">Instagram</td><td class="font">@uzbektrip</td><td class="font">instagram.com/uzbektrip</td></tr>
+      <tr><td class="role">Telegram</td><td class="font">@uzbektrip</td><td class="font">t.me/uzbektrip</td></tr>
+      <tr><td class="role">YouTube</td><td class="font">@uzbektrip</td><td class="font">youtube.com/@uzbektrip</td></tr>
+      <tr><td class="role">Twitter / X</td><td class="font">@uzbektrip</td><td class="font">x.com/uzbektrip</td></tr>
+      <tr><td class="role">Facebook</td><td class="font">uzbektrip</td><td class="font">facebook.com/uzbektrip</td></tr>
+      <tr><td class="role">TikTok</td><td class="font">@uzbektrip</td><td class="font">tiktok.com/@uzbektrip</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════════════════════════════════════ CHAPTER 6 — VOICE ═══════════════════════════ -->
+<div class="chapter">
+  <div class="chapter-inner">
+    <div class="section-label">Chapter 06</div>
+    <h2 class="section-title">Voice &amp; Tone</h2>
+    <p style="color:rgba(255,255,255,0.6);max-width:560px;font-size:0.95rem;line-height:1.75;">
+      uzbektrip.com speaks like a knowledgeable local friend — someone who has lived and traveled these routes and wants you to experience them fully.
+    </p>
+  </div>
+</div>
+
+<div class="page">
+  <div class="voice-cards">
+    <div class="voice-card">
+      <h4>Knowledgeable</h4>
+      <p>We speak with authority on Uzbekistan. Every fact is verified, every recommendation is personal. We cite distances, opening times, and prices because travelers need specifics.</p>
+    </div>
+    <div class="voice-card">
+      <h4>Warm</h4>
+      <p>Uzbek hospitality — <em>mehmon</em> — is legendary. Our writing reflects this warmth. We write for curious people, not for algorithms. Sentences breathe; we don't rush.</p>
+    </div>
+    <div class="voice-card">
+      <h4>Honest</h4>
+      <p>We mention the bureaucratic friction at Tashkent airport. We warn about summer heat. We're not a tourism board. Travelers trust uzbektrip.com because we tell the full picture.</p>
+    </div>
+  </div>
+
+  <div class="section-label" style="margin-top:2rem;">Copy Examples</div>
+  <div class="copy-example">
+    <div class="tag">Hero headline — EN</div>
+    <p>"Discover Uzbekistan — where the ancient Silk Road still breathes."</p>
+  </div>
+  <div class="copy-example">
+    <div class="tag">Hero headline — RU</div>
+    <p>«Узбекистан: здесь Шёлковый путь живёт до сих пор.»</p>
+  </div>
+  <div class="copy-example">
+    <div class="tag">City intro — Samarkand</div>
+    <p>"Stand in Registan Square at golden hour and you'll understand why Alexander the Great called it 'more beautiful than anything I have ever seen.'"</p>
+  </div>
+  <div class="copy-example">
+    <div class="tag">Practical tip — tone of voice</div>
+    <p>"Book your Afrosiyob tickets at least 48 hours ahead in high season — the train runs only twice daily and fills fast."</p>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- Multilingual note -->
+  <div class="section-label">Multilingual Brand Name Rules</div>
+  <div class="usage-grid">
+    <div class="usage-card">
+      <h4>Always lowercase</h4>
+      <ul class="usage-list">
+        <li>Always written <strong>uzbektrip</strong> in lowercase — even at the start of a sentence</li>
+        <li>Domain always lower: uzbektrip.com</li>
+        <li>Exception: printed letterhead uses mixed case for legibility</li>
+        <li>Hashtags: #uzbektrip (all platforms)</li>
+      </ul>
+    </div>
+    <div class="usage-card">
+      <h4>Transliteration</h4>
+      <ul class="usage-list">
+        <li>Russian: <strong>uzbektrip.com</strong> — no translation needed</li>
+        <li>Uzbek: <strong>uzbektrip.com</strong> — same in Latin script</li>
+        <li>Arabic/Farsi contexts: use English romanization uzbektrip</li>
+        <li>Never translate the brand name; it is always uzbektrip</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ CHAPTER 7 — NEXT STEPS ══════════════════════ -->
+<div class="chapter">
+  <div class="chapter-inner">
+    <div class="section-label">Chapter 07</div>
+    <h2 class="section-title">Recommended Next Steps</h2>
+    <p style="color:rgba(255,255,255,0.6);max-width:560px;font-size:0.95rem;line-height:1.75;">
+      A prioritized roadmap from brand book to live website.
+    </p>
+  </div>
+</div>
+
+<div class="page">
+  <div class="steps-list">
+    <div class="step-item">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h4>Finalize &amp; Export Logo Asset Kit</h4>
+        <p>Export the brand logo in 5 variants (SVG + PNG 2×): primary on cream, reversed on lapis, reversed on dark, single mark, favicon.svg. Deliver in a shared design folder. This is the dependency for all other work.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h4>Register Social Media Handles</h4>
+        <p>Secure <strong>@uzbektrip</strong> on Instagram, Telegram, YouTube, Twitter/X, TikTok, and Facebook immediately — before launch. Even dormant handles prevent competitors from claiming the name. Set profile photos to the standalone star mark.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h4>Migrate uzbekguide.html to uzbektrip.com Design System</h4>
+        <p>The existing uzbekguide-homepage.html is an excellent prototype. Update the domain references, swap the wordmark to uzbektrip, confirm all CSS variables match this brand book, and re-test responsive behavior. The homepage skeleton is already production-quality.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h4>Django + Wagtail Setup (Phase 1)</h4>
+        <p>Follow the development blueprint in uzbekistan-tourism-website-guide.md. Priority: Dokploy Docker stack, wagtail-localize, wagtail-seo, and the SEO base.html template. Deliver Homepage + Samarkand + Bukhara + Tashkent city pages in EN within 8 weeks.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <h4>Commission Hero Photography</h4>
+        <p>The brand lives or dies on imagery. Commission or license 20–30 hero photographs: Registan at golden hour, Khiva rooftops, Bukhara night market, Tashkent metro mosaic art. Always use real Uzbekistan photography — never stock. Unsplash provides a usable starting set; replace with original shots by Month 3.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">6</div>
+      <div class="step-content">
+        <h4>Russian Translation (RU Locale)</h4>
+        <p>Russian is the primary commercial language for CIS tourism to Uzbekistan. Add the RU locale via Wagtail admin after launch. Use DeepL for machine-translation drafts, then editorial review. RU locale should be live within 4 weeks of EN launch. All meta tags, OG data, and hreflang must be complete.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">7</div>
+      <div class="step-content">
+        <h4>OG Image Template System</h4>
+        <p>Build a reusable Open Graph image template (1200 × 630 px) in Figma or Canva: Lapis overlay on destination photo, uzbektrip logo bottom-left, city/article title in Cormorant Garamond. Generate one per major page. This directly improves click-through rates from Telegram and Instagram link shares.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">8</div>
+      <div class="step-content">
+        <h4>Advertiser Rate Card</h4>
+        <p>Design a one-page advertising rate card (PDF) using this brand system. The uzbekistan-tourism-website-guide.md defines 5 ad slots. Price slots competitively for Uzbek and regional travel advertisers. Distribute via email to hotels, tour operators, and SIM card providers (Ucell, Beeline).</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">9</div>
+      <div class="step-content">
+        <h4>Core Web Vitals Audit at Launch</h4>
+        <p>Target LCP &lt; 2.5 s, INP &lt; 200 ms, CLS &lt; 0.1 on mobile. The blueprint specifies Redis caching, WhiteNoise static compression, WebP images with explicit dimensions, and lazy loading. Run PageSpeed Insights on every city page before publishing.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">10</div>
+      <div class="step-content">
+        <h4>Content Seed — 10 High-Intent Articles</h4>
+        <p>Write the 7 highest-intent articles identified in the blueprint before Google indexing (visa-free list, e-visa guide, SIM card guide, Afrosiyob train, currency/UZS, best time to visit, Tashkent airport transfer). These rank within weeks and drive early organic traffic that seeds ad revenue.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ BACK COVER ══════════════════════════════════ -->
+<div class="back-cover">
+  <div class="back-cover-logo">uzbek<span>trip</span></div>
+  <p style="margin-top:0.5rem;">uzbektrip.com</p>
+  <p style="margin-top:2rem;font-size:0.72rem;">Brand Identity Guidelines · Version 1.0 · 2025</p>
+  <p style="margin-top:0.3rem;font-size:0.72rem;">For use by uzbektrip.com team and approved partners only.</p>
+
+  <!-- Final ornament -->
+  <div style="margin-top:3rem;opacity:0.2;">
+    <svg width="60" height="60" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="24,3 27.5,14 38.5,11 31,21 42,24.5 31,27.5 38,38 24,31 10,38 17,27.5 6,24.5 17,21 9.5,11 20.5,14" 
+               fill="none" stroke="white" stroke-width="1.5"/>
+      <circle cx="24" cy="24" r="6" fill="none" stroke="white" stroke-width="1"/>
+      <circle cx="24" cy="24" r="2.5" fill="white"/>
+    </svg>
+  </div>
+</div>
+
+</body>
+</html>

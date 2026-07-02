@@ -1,0 +1,45 @@
+<svg width="300" height="60" viewBox="0 0 300 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>uzbektrip.com logo</title>
+  <desc>uzbektrip wordmark with Silk Road compass star mark</desc>
+
+  <!-- Star compass mark - inspired by Uzbek 8-pointed geometric tilework -->
+  <!-- Outer 12-point star (Silk Road compass) -->
+  <polygon 
+    points="28,5 32,18 45,15 37,26 49,31 37,34 44,46 28,39 12,46 19,34 7,31 19,26 11,15 24,18"
+    fill="none" 
+    stroke="#C9A84C" 
+    stroke-width="1.4"
+    stroke-linejoin="round"
+  />
+  <!-- Inner ring -->
+  <circle cx="28" cy="28" r="7" fill="none" stroke="#1A3A6B" stroke-width="1.1"/>
+  <!-- Center dot -->
+  <circle cx="28" cy="28" r="2.8" fill="#1A3A6B"/>
+  <!-- Cardinal accent dots -->
+  <circle cx="28" cy="5" r="1.4" fill="#C9A84C" opacity="0.6"/>
+  <circle cx="28" cy="51" r="1.4" fill="#C9A84C" opacity="0.6"/>
+  <circle cx="7" cy="28" r="1.4" fill="#C9A84C" opacity="0.6"/>
+  <circle cx="49" cy="28" r="1.4" fill="#C9A84C" opacity="0.6"/>
+
+  <!-- Wordmark: "uzbek" in Lapis Blue -->
+  <text 
+    x="62" 
+    y="40" 
+    font-family="'Cormorant Garamond', 'Cormorant', Georgia, 'Times New Roman', serif"
+    font-size="34"
+    font-weight="700"
+    fill="#1A3A6B"
+    letter-spacing="0.5"
+  >uzbek</text>
+
+  <!-- Wordmark: "trip" in Silk Gold -->
+  <text 
+    x="163" 
+    y="40" 
+    font-family="'Cormorant Garamond', 'Cormorant', Georgia, 'Times New Roman', serif"
+    font-size="34"
+    font-weight="400"
+    fill="#C9A84C"
+    letter-spacing="0.5"
+  >trip</text>
+</svg>

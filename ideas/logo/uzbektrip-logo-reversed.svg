@@ -1,0 +1,44 @@
+<svg width="300" height="60" viewBox="0 0 300 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>uzbektrip.com logo — reversed</title>
+  <desc>uzbektrip wordmark reversed variant for dark and lapis blue backgrounds</desc>
+
+  <!-- Background (lapis) — for preview only; remove when embedding on own dark bg -->
+  <rect width="300" height="60" fill="#1A3A6B" rx="6"/>
+
+  <!-- Star compass mark -->
+  <polygon 
+    points="28,5 32,18 45,15 37,26 49,31 37,34 44,46 28,39 12,46 19,34 7,31 19,26 11,15 24,18"
+    fill="none" 
+    stroke="#E8C96D" 
+    stroke-width="1.4"
+    stroke-linejoin="round"
+  />
+  <circle cx="28" cy="28" r="7" fill="none" stroke="#E8C96D" stroke-width="1.1"/>
+  <circle cx="28" cy="28" r="2.8" fill="#E8C96D"/>
+  <circle cx="28" cy="5" r="1.4" fill="#E8C96D" opacity="0.5"/>
+  <circle cx="28" cy="51" r="1.4" fill="#E8C96D" opacity="0.5"/>
+  <circle cx="7" cy="28" r="1.4" fill="#E8C96D" opacity="0.5"/>
+  <circle cx="49" cy="28" r="1.4" fill="#E8C96D" opacity="0.5"/>
+
+  <!-- Wordmark: "uzbek" in Gold Light -->
+  <text 
+    x="62" 
+    y="40" 
+    font-family="'Cormorant Garamond', 'Cormorant', Georgia, 'Times New Roman', serif"
+    font-size="34"
+    font-weight="700"
+    fill="#E8C96D"
+    letter-spacing="0.5"
+  >uzbek</text>
+
+  <!-- Wordmark: "trip" in White -->
+  <text 
+    x="163" 
+    y="40" 
+    font-family="'Cormorant Garamond', 'Cormorant', Georgia, 'Times New Roman', serif"
+    font-size="34"
+    font-weight="400"
+    fill="#FFFFFF"
+    letter-spacing="0.5"
+  >trip</text>
+</svg>
