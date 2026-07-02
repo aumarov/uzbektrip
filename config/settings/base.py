@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     "wagtail_localize",
     "wagtail_localize.locales",
     # Wagtail core
+    "wagtail.users",
     "wagtail.snippets",
     "wagtail.documents",
     "wagtail.images",
