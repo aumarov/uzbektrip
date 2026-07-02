@@ -1,6 +1,6 @@
 Django==4.2.*
-wagtail==5.2.*
-wagtail-localize==1.8.*
+wagtail==6.3.*
+wagtail-localize==1.11.*
 Pillow==10.*
 psycopg2-binary==2.9.*
 gunicorn==21.*

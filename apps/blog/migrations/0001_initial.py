@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
     dependencies = [
         ('taggit', '0005_auto_20220424_2025'),
         ('wagtailimages', '0025_alter_image_file_alter_rendition_file'),
-        ('wagtailcore', '0090_embed_userprofile'),
+        ('wagtailcore', '0089_log_entry_data_json_null_to_object'),
     ]
 
     operations = [
