@@ -27,6 +27,7 @@ CACHES = {
         "BACKEND": "django_redis.cache.RedisCache",
         "LOCATION": env("REDIS_URL", default="redis://redis:6379/0"),
         "OPTIONS": {"CLIENT_CLASS": "django_redis.client.DefaultClient"},
+        "KEY_PREFIX": "uzbektrip",  # shared Redis with another site: avoid key collisions
         "TIMEOUT": 3600,
     }
 }
