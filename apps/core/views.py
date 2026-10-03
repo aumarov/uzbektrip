@@ -27,7 +27,7 @@ def llms_txt(request):
     base = f"{request.scheme}://{request.get_host()}"
 
     available = [
-        ("Cities", sections.show_cities, "/en/cities/", "City guides for Tashkent, Samarkand, Bukhara, Khiva and more."),
+        ("Cities", sections.show_cities, "/en/destinations/", "City guides for Tashkent, Samarkand, Bukhara, Khiva and more."),
         ("Sights", sections.show_sights, "/en/sights/", "Individual attractions, monuments, and points of interest."),
         ("Eat", sections.show_eat, "/en/restaurants/", "Restaurant recommendations by city and cuisine."),
         ("Stay", sections.show_stay, "/en/hotels/", "Hotel recommendations by city."),
